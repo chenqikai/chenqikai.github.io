@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/12/27/hello-world/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/30/hello-world/index.html">
 <meta property="og:site_name" content="Elichen blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-28T02:27:09.613Z">
+<meta property="og:updated_time" content="2019-04-16T05:09:41.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/27/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/30/hello-world/">
 
 
 
@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/27/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/hello-world/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-27T19:22:50+08:00">
-                2018-12-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T21:18:02+08:00">
+                2019-03-30
               </time>
             
 
@@ -352,16 +352,46 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 20px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 20px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
 
@@ -393,22 +423,6 @@
         
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/28/你好-Hexo/" rel="prev" title="你好,Hexo.">
-                你好,Hexo. <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
 
       
@@ -452,17 +466,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Eli chen">
           <p class="site-author-name" itemprop="name">Eli chen</p>
@@ -475,7 +480,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -505,22 +510,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -537,7 +526,7 @@
         <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
