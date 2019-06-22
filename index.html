@@ -471,67 +471,120 @@
 <p>Python 列表截取可以接收第三个参数，参数作用是截取的步长，以下实例在索引 1 到索引 4 的位置并设置为步长为 2（间隔一个位置）来截取字符串：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1 = [&apos;e&apos;, &apos;l&apos;, &apos;i&apos;, &apos;c&apos;, &apos;h&apos;, &apos;e&apos;, &apos;n&apos;]</span><br><span class="line">print(list1[1:4:2])</span><br><span class="line"># 结果为 [&apos;l&apos;, &apos;c&apos;]</span><br></pre></td></tr></table></figure>
 
-<h3 id="4、Tuple（元组）"><a href="#4、Tuple（元组）" class="headerlink" title="4、Tuple（元组）"></a>4、Tuple（元组）</h3><p>语法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">元组（tuple）与列表类似，不同之处在于元组的元素不能修改。</span><br><span class="line"></span><br><span class="line">元组中的元素类型也可以不相同；</span><br></pre></td></tr></table></figure></p>
-<p>tuple = (‘abcd’, 786, 2.23, ‘elichen’, 70.2)<br>tinytuple = (123, ‘elichen’)</p>
-<p>print(tuple)  # 输出完整元组<br>print(tuple[0])  # 输出元组的第一个元素<br>print(tuple[1:3])  # 输出从第二个元素开始到第三个元素<br>print(tuple[2:])  # 输出从第三个元素开始的所有元素<br>print(tinytuple * 2)  # 输出两次元组<br>print(tuple + tinytuple)  # 连接元组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">以上实例输出结果：</span><br></pre></td></tr></table></figure>
+<h3 id="4、Tuple（元组）"><a href="#4、Tuple（元组）" class="headerlink" title="4、Tuple（元组）"></a>4、Tuple（元组）</h3><p>语法：(,,,)。使用()标识，元素之间用逗号分隔。</p>
+<p>元组（tuple）与列表类似，不同之处在于元组的元素不能修改。</p>
+<p>元组中的元素类型也可以不相同；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tuple = (&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2)</span><br><span class="line">tinytuple = (123, &apos;elichen&apos;)</span><br><span class="line"></span><br><span class="line">print(tuple)  # 输出完整元组</span><br><span class="line">print(tuple[0])  # 输出元组的第一个元素</span><br><span class="line">print(tuple[1:3])  # 输出从第二个元素开始到第三个元素</span><br><span class="line">print(tuple[2:])  # 输出从第三个元素开始的所有元素</span><br><span class="line">print(tinytuple * 2)  # 输出两次元组</span><br><span class="line">print(tuple + tinytuple)  # 连接元组</span><br></pre></td></tr></table></figure>
 
-<p>(‘abcd’, 786, 2.23, ‘elichen’, 70.2)<br>abcd<br>(786, 2.23)<br>(2.23, ‘elichen’, 70.2)<br>(123, ‘elichen’, 123, ‘elichen’)<br>(‘abcd’, 786, 2.23, ‘elichen’, 70.2, 123, ‘elichen’)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">虽然tuple的元素不可改变，但它可以包含可变的对象，比如list列表。</span><br><span class="line"></span><br><span class="line">构造包含 0 个或 1 个元素的元组比较特殊，所以有一些额外的语法规则：</span><br></pre></td></tr></table></figure>
+<p>以上实例输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2)</span><br><span class="line">abcd</span><br><span class="line">(786, 2.23)</span><br><span class="line">(2.23, &apos;elichen&apos;, 70.2)</span><br><span class="line">(123, &apos;elichen&apos;, 123, &apos;elichen&apos;)</span><br><span class="line">(&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2, 123, &apos;elichen&apos;)</span><br></pre></td></tr></table></figure>
 
-<p>tup1 = ()    # 空元组<br>tup2 = (20,) # 一个元素，需要在元素后添加逗号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">string、list 和 tuple 都属于 sequence（序列）。</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line"></span><br><span class="line">- 1、与字符串一样，元组的元素不能修改。</span><br><span class="line">- 2、元组也可以被索引和切片，方法一样。</span><br><span class="line">- 3、注意构造包含 0 或 1 个元素的元组的特殊语法规则。</span><br><span class="line">- 4、元组也可以使用+操作符进行拼接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 5、Set（集合）</span><br><span class="line"></span><br><span class="line">集合（set）是一个无序不重复元素的序列。创建一个空集合必须用 set() 而不是 &#123; &#125;，因为 &#123; &#125; 是用来创建一个空字典。</span><br><span class="line"></span><br><span class="line"> 创建格式：</span><br></pre></td></tr></table></figure>
+<p>虽然tuple的元素不可改变，但它可以包含可变的对象，比如list列表。</p>
+<p>构造包含 0 个或 1 个元素的元组比较特殊，所以有一些额外的语法规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tup1 = ()    # 空元组</span><br><span class="line">tup2 = (20,) # 一个元素，需要在元素后添加逗号</span><br></pre></td></tr></table></figure>
 
-<p>parame = {value01,value02,…}<br>或者<br>set(value)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实例</span><br></pre></td></tr></table></figure>
+<p>string、list 和 tuple 都属于 sequence（序列）。</p>
+<p>注意：</p>
+<ul>
+<li>1、与字符串一样，元组的元素不能修改。</li>
+<li>2、元组也可以被索引和切片，方法一样。</li>
+<li>3、注意构造包含 0 或 1 个元素的元组的特殊语法规则。</li>
+<li>4、元组也可以使用+操作符进行拼接。</li>
+</ul>
+<h3 id="5、Set（集合）"><a href="#5、Set（集合）" class="headerlink" title="5、Set（集合）"></a>5、Set（集合）</h3><p>集合（set）是一个无序不重复元素的序列。创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。</p>
+<p> 创建格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parame = &#123;value01,value02,...&#125;</span><br><span class="line">或者</span><br><span class="line">set(value)</span><br></pre></td></tr></table></figure>
 
-<p>student = {‘Tom’, ‘Jim’, ‘Mary’, ‘Tom’, ‘Jack’, ‘Rose’}</p>
-<p>print(student)   # 输出集合，重复的元素被自动去掉</p>
-<h1 id="成员测试"><a href="#成员测试" class="headerlink" title="成员测试"></a>成员测试</h1><p>if ‘Rose’ in student :<br>    print(‘Rose 在集合中’)<br>else :<br>    print(‘Rose 不在集合中’)</p>
-<h1 id="set可以进行集合运算"><a href="#set可以进行集合运算" class="headerlink" title="set可以进行集合运算"></a>set可以进行集合运算</h1><p>a = set(‘abracadabra’)<br>b = set(‘alacazam’)</p>
-<p>print(a)<br>print(a - b)     # a 和 b 的差集<br>print(a | b)     # a 和 b 的并集<br>print(a &amp; b)     # a 和 b 的交集<br>print(a ^ b)     # a 和 b 中不同时存在的元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">以上实例输出结果：</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">student = &#123;&apos;Tom&apos;, &apos;Jim&apos;, &apos;Mary&apos;, &apos;Tom&apos;, &apos;Jack&apos;, &apos;Rose&apos;&#125;</span><br><span class="line"> </span><br><span class="line">print(student)   # 输出集合，重复的元素被自动去掉</span><br><span class="line"> </span><br><span class="line"># 成员测试</span><br><span class="line">if &apos;Rose&apos; in student :</span><br><span class="line">    print(&apos;Rose 在集合中&apos;)</span><br><span class="line">else :</span><br><span class="line">    print(&apos;Rose 不在集合中&apos;)</span><br><span class="line"></span><br><span class="line"># set可以进行集合运算</span><br><span class="line">a = set(&apos;abracadabra&apos;)</span><br><span class="line">b = set(&apos;alacazam&apos;)</span><br><span class="line"> </span><br><span class="line">print(a)</span><br><span class="line">print(a - b)     # a 和 b 的差集</span><br><span class="line">print(a | b)     # a 和 b 的并集</span><br><span class="line">print(a &amp; b)     # a 和 b 的交集</span><br><span class="line">print(a ^ b)     # a 和 b 中不同时存在的元素</span><br></pre></td></tr></table></figure>
 
-<p>{‘Mary’, ‘Jim’, ‘Rose’, ‘Jack’, ‘Tom’}<br>Rose 在集合中<br>{‘b’, ‘a’, ‘c’, ‘r’, ‘d’}<br>{‘b’, ‘d’, ‘r’}<br>{‘l’, ‘r’, ‘a’, ‘c’, ‘z’, ‘m’, ‘b’, ‘d’}<br>{‘a’, ‘c’}<br>{‘l’, ‘r’, ‘z’, ‘m’, ‘b’, ‘d’}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 6、Dictionary（字典）</span><br><span class="line">字典是一种映射类型，字典用&#123; &#125;标识，它是一个无序的键(key) : 值(value)对集合。</span><br><span class="line"></span><br><span class="line">字典（dictionary）是Python中另一个非常有用的内置数据类型，键(key)必须使用不可变类型，键(key)必须是唯一的。</span><br></pre></td></tr></table></figure>
+<p>以上实例输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;Mary&apos;, &apos;Jim&apos;, &apos;Rose&apos;, &apos;Jack&apos;, &apos;Tom&apos;&#125;</span><br><span class="line">Rose 在集合中</span><br><span class="line">&#123;&apos;b&apos;, &apos;a&apos;, &apos;c&apos;, &apos;r&apos;, &apos;d&apos;&#125;</span><br><span class="line">&#123;&apos;b&apos;, &apos;d&apos;, &apos;r&apos;&#125;</span><br><span class="line">&#123;&apos;l&apos;, &apos;r&apos;, &apos;a&apos;, &apos;c&apos;, &apos;z&apos;, &apos;m&apos;, &apos;b&apos;, &apos;d&apos;&#125;</span><br><span class="line">&#123;&apos;a&apos;, &apos;c&apos;&#125;</span><br><span class="line">&#123;&apos;l&apos;, &apos;r&apos;, &apos;z&apos;, &apos;m&apos;, &apos;b&apos;, &apos;d&apos;&#125;</span><br></pre></td></tr></table></figure>
 
-<p>dict = {}<br>dict[‘one’] = “1”<br>dict[2]     = “2”</p>
-<p>tinydict = {‘name’: ‘elichen’,’code’:1, ‘site’: ‘<a href="http://www.elichen.club&#39;}" target="_blank" rel="noopener">www.elichen.club&#39;}</a></p>
-<p>print (dict[‘one’])       # 输出键为 ‘one’ 的值<br>print (dict[2])           # 输出键为 2 的值<br>print (tinydict)          # 输出完整的字典<br>print (tinydict.keys())   # 输出所有键<br>print (tinydict.values()) # 输出所有值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">以上实例输出结果：</span><br></pre></td></tr></table></figure>
+<h3 id="6、Dictionary（字典）"><a href="#6、Dictionary（字典）" class="headerlink" title="6、Dictionary（字典）"></a>6、Dictionary（字典）</h3><p>字典是一种映射类型，字典用{ }标识，它是一个无序的键(key) : 值(value)对集合。</p>
+<p>字典（dictionary）是Python中另一个非常有用的内置数据类型，键(key)必须使用不可变类型，键(key)必须是唯一的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;&#125;</span><br><span class="line">dict[&apos;one&apos;] = &quot;1&quot;</span><br><span class="line">dict[2]     = &quot;2&quot;</span><br><span class="line"> </span><br><span class="line">tinydict = &#123;&apos;name&apos;: &apos;elichen&apos;,&apos;code&apos;:1, &apos;site&apos;: &apos;www.elichen.club&apos;&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">print (dict[&apos;one&apos;])       # 输出键为 &apos;one&apos; 的值</span><br><span class="line">print (dict[2])           # 输出键为 2 的值</span><br><span class="line">print (tinydict)          # 输出完整的字典</span><br><span class="line">print (tinydict.keys())   # 输出所有键</span><br><span class="line">print (tinydict.values()) # 输出所有值</span><br></pre></td></tr></table></figure>
 
-<p>1
-2<br>{‘name’: ‘elichen’, ‘code’: 1, ‘site’: ‘<a href="http://www.elichen.club&#39;}" target="_blank" rel="noopener">www.elichen.club&#39;}</a><br>dict_keys([‘name’, ‘code’, ‘site’])<br>dict_values([‘elichen’, 1, ‘<a href="http://www.elichen.club&#39;]" target="_blank" rel="noopener">www.elichen.club&#39;]</a>)</p>
-<pre><code>注意：
-- 1、字典是一种映射类型，它的元素是键值对。
-- 2、字典的关键字必须为不可变类型，且不能重复。
-- 3、创建空字典使用 { }。
+<p>以上实例输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#123;&apos;name&apos;: &apos;elichen&apos;, &apos;code&apos;: 1, &apos;site&apos;: &apos;www.elichen.club&apos;&#125;</span><br><span class="line">dict_keys([&apos;name&apos;, &apos;code&apos;, &apos;site&apos;])</span><br><span class="line">dict_values([&apos;elichen&apos;, 1, &apos;www.elichen.club&apos;])</span><br></pre></td></tr></table></figure>
 
-## Python数据类型转换
+<p>注意：</p>
+<ul>
+<li>1、字典是一种映射类型，它的元素是键值对。</li>
+<li>2、字典的关键字必须为不可变类型，且不能重复。</li>
+<li>3、创建空字典使用 { }。</li>
+</ul>
+<h2 id="Python数据类型转换"><a href="#Python数据类型转换" class="headerlink" title="Python数据类型转换"></a>Python数据类型转换</h2><p>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
+<p>以下几个内置的函数可以执行数据类型之间的转换。这些函数返回一个新的对象，表示转换的值。</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">int(x [,base])</td>
+<td align="center">将x转换为一个整数</td>
+</tr>
+<tr>
+<td align="center">float(x)</td>
+<td align="center">将x转换到一个浮点数</td>
+</tr>
+<tr>
+<td align="center">complex(real [,imag])</td>
+<td align="center">创建一个复数</td>
+</tr>
+<tr>
+<td align="center">str(x)</td>
+<td align="center">将对象 x 转换为字符串</td>
+</tr>
+<tr>
+<td align="center">repr(x)</td>
+<td align="center">将对象 x 转换为表达式字符串</td>
+</tr>
+<tr>
+<td align="center">eval(str)</td>
+<td align="center">用来计算在字符串中的有效Python表达式,并返回一个对象</td>
+</tr>
+<tr>
+<td align="center">tuple(s)</td>
+<td align="center">将序列 s 转换为一个元组</td>
+</tr>
+<tr>
+<td align="center">list(s)</td>
+<td align="center">将序列 s 转换为一个列表</td>
+</tr>
+<tr>
+<td align="center">set(s)</td>
+<td align="center">转换为可变集合</td>
+</tr>
+<tr>
+<td align="center">dict(d)</td>
+<td align="center">创建一个字典。d 必须是一个序列 (key,value)元组。</td>
+</tr>
+<tr>
+<td align="center">frozenset(s)</td>
+<td align="center">转换为不可变集合</td>
+</tr>
+<tr>
+<td align="center">chr(x)</td>
+<td align="center">将一个整数转换为一个字符</td>
+</tr>
+<tr>
+<td align="center">ord(x)</td>
+<td align="center">将一个字符转换为它的整数值</td>
+</tr>
+<tr>
+<td align="center">hex(x)</td>
+<td align="center">将一个整数转换为一个十六进制字符串</td>
+</tr>
+<tr>
+<td align="center">oct(x)</td>
+<td align="center">将一个整数转换为一个八进制字符串</td>
+</tr>
+</tbody></table>
 
-有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。
-
-以下几个内置的函数可以执行数据类型之间的转换。这些函数返回一个新的对象，表示转换的值。
-
-
-
-|  函数 | 描述 | 
-|:-----:|:-----:|
-|int(x [,base]) |  将x转换为一个整数  |
-|float(x)|将x转换到一个浮点数|
-|complex(real [,imag])|创建一个复数|
-|str(x)|将对象 x 转换为字符串|
-|repr(x)|将对象 x 转换为表达式字符串|
-|eval(str)|用来计算在字符串中的有效Python表达式,并返回一个对象|
-|tuple(s)|将序列 s 转换为一个元组|
-|list(s)|将序列 s 转换为一个列表|
-|set(s)|转换为可变集合|
-|dict(d)|创建一个字典。d 必须是一个序列 (key,value)元组。|
-|frozenset(s)|转换为不可变集合|
-|chr(x)|将一个整数转换为一个字符|
-|ord(x)|将一个字符转换为它的整数值|
-|hex(x)|将一个整数转换为一个十六进制字符串|
-|oct(x)|将一个整数转换为一个八进制字符串|</code></pre>
           
         
       
@@ -879,7 +932,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19neGuuyh87XxgyFwsl6EY0an3dMnFOAfTpoEZo2LnxrMbsCwRzG53HtaV7MSiijuLpOx8fdlDuSR4c5kLlWY2zx3YGHP53bZIaAmWz4bHT6xB47MDdYJGxfrWgBUJefIx0KuvG2jilnF1Kk4sJzSSEKg2Cjjum4YDXwOx1NLQRBp0Kvc5s/zg8</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19LEMzQaUp3ILSKAtDOI3GSK/s2gXV3HBqBx11Z48rpQ4osv4SBxmaTdICiDMzGal7zHBH8boinRRd9jaWL0JLbamFGrckXtGU5+VdntWfCZ/11eInPZrWSuXXs/H3GmF5C49E7KSfuCX9oAkPnlRTgMV2ZsiM5Mecy7iCWKtijid/2AiBvMVIB</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1038,7 +1091,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+uC0q6rwZye248T2Tu9m4ROrVfDYIelXx9n9OXE+LgkA0CSEUHJ7RFA3iZzVvNlYMFwHfbsE4+z9wV+RXZ40icU8zzt6GyGPc9YGrDfgokLkZ800LsjozZIxJgLTYixoDrBSsS8l3XoRdsWubIQMTl2ra7PbtnBPCL2FJjB6p1wkw3wBEmcc2v</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19lto6CQbm4knzAwH5yEb/cWsSBqxnl8A82+MSrwEES8V4ZEKxlDyS/EGHzveJS1PtWBD+i7ZGLdkUYdPzaH/GYN9MVoExMgBehVd5R0be7M3gvem/BGGKEji33OXBuEj86Z15uSe/XgqyBGbimHSBCs2dT1Hq/9nla4Zb/hc/RVhhUv7G9tTIw</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
