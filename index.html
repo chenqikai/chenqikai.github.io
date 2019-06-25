@@ -278,6 +278,261 @@
   
 
   <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/25/Python爬虫从零开始(五)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/06/25/Python爬虫从零开始(五)/" itemprop="url">
+                  Python爬虫从零开始(五)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-25T16:42:05+08:00">
+                2019-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><h2 id="Python-输入输出"><a href="#Python-输入输出" class="headerlink" title="Python 输入输出"></a>Python 输入输出</h2><h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><p>读写文件是最常见的IO操作。Python内置了读写文件的函数，用法和C是兼容的。<br>要以读文件的模式打开一个文件对象，使用Python内置的<code>open()</code>函数，传入文件名和标示符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/test.txt&apos;, &apos;r&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>标示符’r’表示读，这样，我们就成功地打开了一个文件。</p>
+<p>如果文件不存在，<code>open()</code>函数就会抛出一个<code>IOError</code>的错误，并且给出错误码和详细的信息告诉你文件不存在：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f=open(&apos;/Users/michael/notfound.txt&apos;, &apos;r&apos;)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">FileNotFoundError: [Errno 2] No such file or directory: &apos;/Users/michael/notfound.txt&apos;</span><br></pre></td></tr></table></figure>
+
+<p>如果文件打开成功，接下来，调用<code>read()</code>方法可以一次读取文件的全部内容，Python把内容读到内存，用一个<code>str</code>对象表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f.read()</span><br><span class="line">&apos;Hello, world!&apos;</span><br></pre></td></tr></table></figure>
+
+<p>最后一步是调用<code>close()</code>方法关闭文件。文件使用完毕后必须关闭，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f.close()</span><br></pre></td></tr></table></figure>
+
+<p>由于文件读写时都有可能产生<code>IOError</code>，一旦出错，后面的<code>f.close()</code>就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用<code>try ... finally</code>来实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    f = open(&apos;/path/to/file&apos;, &apos;r&apos;)</span><br><span class="line">    print(f.read())</span><br><span class="line">finally:</span><br><span class="line">    if f:</span><br><span class="line">        f.close()</span><br></pre></td></tr></table></figure>
+
+<p>但是每次都这么写实在太繁琐，所以，Python引入了<code>with</code>语句来自动帮我们调用<code>close()</code>方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(&apos;/path/to/file&apos;, &apos;r&apos;) as f:</span><br><span class="line">    print(f.read())</span><br></pre></td></tr></table></figure>
+
+<p>这和前面的<code>try ... finally</code>是一样的，但是代码更佳简洁，并且不必调用<code>f.close()</code>方法。</p>
+<p>调用<code>read()</code>会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用<code>read(size)</code>方法，每次最多读取<code>size</code>个字节的内容。另外，调用<code>readline()</code>可以每次读取一行内容，调用<code>readlines()</code>一次读取所有内容并按行返回<code>list</code>。因此，要根据需要决定怎么调用。</p>
+<p>如果文件很小，<code>read()</code>一次性读取最方便；如果不能确定文件大小，反复调用<code>read(size)</code>比较保险；如果是配置文件，调用<code>readlines()</code>最方便：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for line in f.readlines():</span><br><span class="line">    print(line.strip()) # 把末尾的&apos;\n&apos;删掉</span><br><span class="line">file-like Object</span><br></pre></td></tr></table></figure>
+
+<p>像<code>open()</code>函数返回的这种有个<code>read()</code>方法的对象，在Python中统称为file-like Object。除了file外，还可以是内存的字节流，网络流，自定义流等等。file-like Object不要求从特定类继承，只要写个<code>read()</code>方法就行。</p>
+<p><code>StringIO</code>就是在内存中创建的file-like Object，常用作临时缓冲。</p>
+<h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3><p>前面讲的默认都是读取文本文件，并且是UTF-8编码的文本文件。要读取二进制文件，比如图片、视频等等，用<code>&#39;rb&#39;</code>模式打开文件即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/test.jpg&apos;, &apos;rb&apos;)</span><br><span class="line">&gt;&gt;&gt; f.read()</span><br><span class="line">b&apos;\xff\xd8\xff\xe1\x00\x18Exif\x00\x00...&apos; # 十六进制表示的字节</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><p>要读取非UTF-8编码的文本文件，需要给<code>open()</code>函数传入<code>encoding</code>参数，例如，读取GBK编码的文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;)</span><br><span class="line">&gt;&gt;&gt; f.read()</span><br><span class="line">&apos;测试&apos;</span><br></pre></td></tr></table></figure>
+
+<p>遇到有些编码不规范的文件，你可能会遇到<code>UnicodeDecodeError</code>，因为在文本文件中可能夹杂了一些非法编码的字符。遇到这种情况，<code>open()</code>函数还接收一个<code>errors</code>参数，表示如果遇到编码错误后如何处理。最简单的方式是直接忽略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;, errors=&apos;ignore&apos;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h3><p>写文件和读文件是一样的，唯一区别是调用<code>open()</code>函数时，传入标识符<code>&#39;w&#39;</code>或者<code>&#39;wb&#39;</code>表示写文本文件或写二进制文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/test.txt&apos;, &apos;w&apos;)</span><br><span class="line">&gt;&gt;&gt; f.write(&apos;Hello, world!&apos;)</span><br><span class="line">&gt;&gt;&gt; f.close()</span><br></pre></td></tr></table></figure>
+
+<p>你可以反复调用<code>write()</code>来写入文件，但是务必要调用<code>f.close()</code>来关闭文件。当我们写文件时，操作系统往往不会立刻把数据写入磁盘，而是放到内存缓存起来，空闲的时候再慢慢写入。只有调用<code>close()</code>方法时，操作系统才保证把没有写入的数据全部写入磁盘。忘记调用<code>close()</code>的后果是数据可能只写了一部分到磁盘，剩下的丢失了。所以，还是用<code>with</code>语句来得保险：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(&apos;/Users/michael/test.txt&apos;, &apos;w&apos;) as f:</span><br><span class="line">    f.write(&apos;Hello, world!&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>要写入特定编码的文本文件，请给<code>open()</code>函数传入<code>encoding</code>参数，将字符串自动转换成指定编码。</p>
+<p>细心的童鞋会发现，以<code>&#39;w&#39;</code>模式写入文件时，如果文件已存在，会直接覆盖（相当于删掉后新写入一个文件）。如果我们希望追加到文件末尾怎么办？可以传入<code>&#39;a&#39;</code>以追加（append）模式写入。</p>
+<p>所有模式的定义及含义可以参考Python的官方文档。</p>
+<h2 id="读写CSV文件"><a href="#读写CSV文件" class="headerlink" title="读写CSV文件"></a>读写CSV文件</h2><h3 id="csv文件的读取"><a href="#csv文件的读取" class="headerlink" title="csv文件的读取"></a>csv文件的读取</h3><p>前期工作：在定义的py文件里边创建一个excel文件，并另存为csv文件，放入三行数据，我这里是姓名+年龄（可以自己随意写）</p>
+<p>首先我们要在python环境里导入csv板块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import csv</span><br></pre></td></tr></table></figure>
+
+<p>然后我们定义一个csv文件的变量<code>csv_file</code>,然后通过<code>open</code>对此文件进行打开，打开模式采用<code>‘r’</code>（read：读模式）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;my.csv&quot;, &quot;r&quot;)as f:</span><br><span class="line">    print(f)</span><br><span class="line">    csv_file = csv.reader(f)</span><br><span class="line">    for stu in csv_file:</span><br><span class="line">        print(stu)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;_csv.reader object at 0x000001D3A1A1B730&gt;</span><br><span class="line">[&apos;zhangsan&apos;,&apos;32&apos;]</span><br><span class="line">[&apos;wangwu&apos;,&apos;34&apos;]</span><br><span class="line">[&apos;zhaoliu&apos;,&apos;35&apos;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="csv文件的写入"><a href="#csv文件的写入" class="headerlink" title="csv文件的写入"></a>csv文件的写入</h3><p>在开始前我们要定义两组数据，进行下面的写入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stu1 = [&apos;marry&apos;,26]</span><br><span class="line">stu2 = [&apos;bob&apos;,23]</span><br></pre></td></tr></table></figure>
+
+<p>1.写入的第一步同样也是打开文件，因为我们是要写入，所以我们用的模式就是<code>&#39;a&#39;</code>模式，追加内容，至于<code>&quot;newline=&quot;</code>就是说因为我们的csv文件的类型，如果不加这个东西，当我们写入东西的时候，就会出现空行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">out = open(&apos;Stu_csv.csv&apos;,&apos;a&apos;, newline=&apos;&apos;)</span><br></pre></td></tr></table></figure>
+
+<p> 2.下面我们定义一个变量进行写入，将刚才的文件变量传进来，dialect就是定义一下文件的类型，我们定义为excel类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csv_write = csv.writer(out,dialect=&apos;excel&apos;)</span><br></pre></td></tr></table></figure>
+
+<p> 3.然后进行数据的写入啦，写入的方法是<code>writerow</code>，通过写入模式对象，调用方法进行写入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">csv_write.writerow(stu1)</span><br><span class="line">csv_write.writerow(stu2)</span><br></pre></td></tr></table></figure>
+
+<p> 4.最后各位可以用你们最熟悉的一句语法进行漂亮的收尾.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print (&quot;write over&quot;)</span><br></pre></td></tr></table></figure>
+
+<p> 具体的代码如下：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line"></span><br><span class="line">#csv 写入</span><br><span class="line">stu1 = [&apos;marry&apos;,26]</span><br><span class="line">stu2 = [&apos;bob&apos;,23]</span><br><span class="line">#打开文件，追加a</span><br><span class="line">out = open(&apos;Stu_csv.csv&apos;,&apos;a&apos;, newline=&apos;&apos;)</span><br><span class="line">#设定写入模式</span><br><span class="line">csv_write = csv.writer(out,dialect=&apos;excel&apos;)</span><br><span class="line">#写入具体内容</span><br><span class="line">csv_write.writerow(stu1)</span><br><span class="line">csv_write.writerow(stu2)</span><br><span class="line">print (&quot;write over&quot;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="mongoDB"><a href="#mongoDB" class="headerlink" title="mongoDB"></a>mongoDB</h2><h3 id="安装MongoDB"><a href="#安装MongoDB" class="headerlink" title="安装MongoDB"></a>安装MongoDB</h3><p>首先到 <strong><a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">MongoDB官网</a></strong> 下载安装MongoDB。并且到 <strong><a href="https://studio3t.com/download/" target="_blank" rel="noopener">MongoChef</a></strong> 官网下载安装可视化管理工具MongoChef studio3t  </p>
+<p>  <strong><a href="/doc/MongoDB.pdf">参考文件</a></strong></p>
+<h3 id="安装PyMongo-驱动"><a href="#安装PyMongo-驱动" class="headerlink" title="安装PyMongo 驱动"></a>安装PyMongo 驱动</h3><p>用可视化管理工具新建<code>mydb</code>数据库并添加<code>student</code>集合<br>使用以下命令安装pymongo 驱动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install pymongo</span><br></pre></td></tr></table></figure>
+
+<p>也可以指定安装的版本:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python -m pip install pymongo==3.5.1</span><br></pre></td></tr></table></figure>
+
+<p>更新 pymongo 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python -m pip install --upgrade pymongo</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试-PyMongo"><a href="#测试-PyMongo" class="headerlink" title="测试 PyMongo"></a>测试 PyMongo</h3><p>接下来我们可以创建一个测试文件 demo_test_mongodb.py，代码如下：</p>
+<p>demo_test_mongodb.py 文件代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">import pymongo</span><br></pre></td></tr></table></figure>
+
+<p>执行以上代码文件，如果没有出现错误，表示安装成功。</p>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>创建一个数据库<br>创建数据库需要使用 MongoClient 对象，并且指定连接的 URL 地址和要创建的数据库名。</p>
+<p>如下实例中，我们创建的数据库 runoobdb :</p>
+<p><strong>实例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">import pymongo</span><br><span class="line"> </span><br><span class="line">myclient = pymongo.MongoClient(&quot;mongodb://localhost:27017/&quot;)</span><br><span class="line">mydb = myclient[&quot;runoobdb&quot;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>: 在 MongoDB 中，数据库只有在内容插入后才会创建! 就是说，数据库创建后要创建集合(数据表)并插入一个文档(记录)，数据库才会真正创建。</p>
+<h3 id="判断数据库是否已存在"><a href="#判断数据库是否已存在" class="headerlink" title="判断数据库是否已存在"></a>判断数据库是否已存在</h3><p>我们可以读取 MongoDB 中的所有数据库，并判断指定的数据库是否存在：</p>
+<p><strong>实例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">import pymongo</span><br><span class="line"> </span><br><span class="line">myclient = pymongo.MongoClient(&apos;mongodb://localhost:27017/&apos;)</span><br><span class="line"> </span><br><span class="line">dblist = myclient.list_database_names()</span><br><span class="line"># dblist = myclient.database_names() </span><br><span class="line">if &quot;runoobdb&quot; in dblist:</span><br><span class="line">  print(&quot;数据库已存在！&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：database_names 在最新版本的 Python 中已废弃，Python3.7+ 之后的版本改为了 list_database_names()。</p>
+<h3 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h3><p>MongoDB 中的集合类似 SQL 的表。</p>
+<p>创建一个集合<br>MongoDB 使用数据库对象来创建集合，实例如下：</p>
+<p><strong>实例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line">import pymongo</span><br><span class="line"> </span><br><span class="line">myclient = pymongo.MongoClient(&quot;mongodb://localhost:27017/&quot;)</span><br><span class="line">mydb = myclient[&quot;runoobdb&quot;]</span><br><span class="line"> </span><br><span class="line">mycol = mydb[&quot;sites&quot;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>: 在 MongoDB 中，集合只有在内容插入后才会创建! 就是说，创建集合(数据表)后要再插入一个文档(记录)，集合才会真正创建。</p>
+<h3 id="判断集合是否已存在"><a href="#判断集合是否已存在" class="headerlink" title="判断集合是否已存在"></a>判断集合是否已存在</h3><p>我们可以读取 MongoDB 数据库中的所有集合，并判断指定的集合是否存在：</p>
+<p><strong>实例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line">import pymongo</span><br><span class="line"></span><br><span class="line">myclient = pymongo.MongoClient(&apos;mongodb://localhost:27017/&apos;)</span><br><span class="line">mydb = myclient[&apos;runoobdb&apos;]</span><br><span class="line"></span><br><span class="line">collist = mydb. list_collection_names()</span><br><span class="line"># collist = mydb.collection_names()</span><br><span class="line">if &quot;sites&quot; in collist:   # 判断 sites 集合是否存在</span><br><span class="line">  print(&quot;集合已存在！&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加文档操作"><a href="#添加文档操作" class="headerlink" title="添加文档操作"></a>添加文档操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from pymongo import MongoClient</span><br><span class="line"></span><br><span class="line"># 连接服务器</span><br><span class="line">conn = MongoClient(&quot;localhost&quot;, 27017)</span><br><span class="line"></span><br><span class="line"># 连接数据库</span><br><span class="line">db = conn.mydb</span><br><span class="line"></span><br><span class="line"># 获取集合</span><br><span class="line">collection = db.student</span><br><span class="line"></span><br><span class="line"># 添加文档</span><br><span class="line"># collection.insert(&#123;&quot;name&quot;:&quot;abc&quot;, &quot;age&quot;:19, &quot;gender&quot;:1,&quot;address&quot;:&quot;北京&quot;, &quot;isDelete&quot;:0&#125;)</span><br><span class="line">collection.insert_many([&#123;&quot;name&quot;: &quot;abc1&quot;, &quot;age&quot;: 19, &quot;gender&quot;: 1, &quot;address&quot;: &quot;北京&quot;, &quot;isDelete&quot;: 0&#125;,</span><br><span class="line">                   &#123;&quot;name&quot;: &quot;abc2&quot;, &quot;age&quot;: 19, &quot;gender&quot;: 1, &quot;address&quot;: &quot;北京&quot;, &quot;isDelete&quot;: 0&#125;])</span><br><span class="line"></span><br><span class="line"># 断开</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询文档操作"><a href="#查询文档操作" class="headerlink" title="查询文档操作"></a>查询文档操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">import pymongo</span><br><span class="line">from pymongo import MongoClient</span><br><span class="line">from bson.objectid import ObjectId  # 用于ID查询</span><br><span class="line"></span><br><span class="line"># 连接服务器</span><br><span class="line">conn = MongoClient(&quot;localhost&quot;, 27017)</span><br><span class="line"></span><br><span class="line"># 连接数据库</span><br><span class="line">db = conn.mydb</span><br><span class="line"></span><br><span class="line"># 获取集合</span><br><span class="line">collection = db.student</span><br><span class="line"></span><br><span class="line"># 查询文档</span><br><span class="line"></span><br><span class="line"># 查询部分文档</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">res = collection.find(&#123;&quot;age&quot;:&#123;&quot;$gt&quot;:18&#125;&#125;)</span><br><span class="line">for row in res:</span><br><span class="line">    print(row)</span><br><span class="line">    print(type(row))</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 查询所有文档</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">res = collection.find()</span><br><span class="line">for row in res:</span><br><span class="line">    print(row)</span><br><span class="line">    print(type(row))</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 统计查询</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">res = collection.find(&#123;&quot;age&quot;:&#123;&quot;$gt&quot;:18&#125;&#125;).count()</span><br><span class="line">print(res)</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 根据id查询</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">res = collection.find(&#123;&quot;_id&quot;:ObjectId(&quot;5995084b019723fe2a0d8d14&quot;)&#125;)</span><br><span class="line">print(res[0])</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 排序</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"># res = collection.find().sort(&quot;age&quot;)#升序</span><br><span class="line">res = collection.find().sort(&quot;age&quot;, pymongo.DESCENDING)</span><br><span class="line">for row in res:</span><br><span class="line">    print(row)</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 分页查询</span><br><span class="line">res = collection.find().skip(3).limit(5)</span><br><span class="line">for row in res:</span><br><span class="line">    print(row)</span><br><span class="line"></span><br><span class="line"># 断开</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新文档操作"><a href="#更新文档操作" class="headerlink" title="更新文档操作"></a>更新文档操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pymongo import MongoClient</span><br><span class="line"></span><br><span class="line"># 连接服务器</span><br><span class="line">conn = MongoClient(&quot;localhost&quot;, 27017)</span><br><span class="line"># 连接数据库</span><br><span class="line">db = conn.mydb</span><br><span class="line"># 获取集合</span><br><span class="line">collection = db.student</span><br><span class="line"></span><br><span class="line">collection.update(&#123;&quot;name&quot;: &quot;lilei&quot;&#125;, &#123;&quot;$set&quot;: &#123;&quot;age&quot;: 25&#125;&#125;)</span><br><span class="line"></span><br><span class="line"># 断开</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除文档操作"><a href="#删除文档操作" class="headerlink" title="删除文档操作"></a>删除文档操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pymongo import MongoClient</span><br><span class="line"></span><br><span class="line"># 连接服务器</span><br><span class="line">conn = MongoClient(&quot;localhost&quot;, 27017)</span><br><span class="line"># 连接数据库</span><br><span class="line">db = conn.mydb</span><br><span class="line"># 获取集合</span><br><span class="line">collection = db.student</span><br><span class="line"></span><br><span class="line">collection.remove(&#123;&quot;name&quot;: &quot;lilei&quot;&#125;)</span><br><span class="line"># 全部删除</span><br><span class="line">collection.remove()</span><br><span class="line"># 断开</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/24/Python爬虫从零开始(四)/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1578,7 +1833,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX18uTDqhzSOU36SUXL+tsLeySicIASgYhBONgrKk16J++HQtxqHEBeyz6OuRN2F+622W2TIT74ed8MJLHqdFSsRVNnp0vdcw/E5YlQkhA3ypuX6H+P15+rZ6jvhdhkch7gqYhmM/vt5rapCj3sZ/Uhvwh5v+NrOVgCqs5ziGU9aqnNitazfjBTMq</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1/H9xWJsv77Ft359MywEgrbdEkbwA8uFCxL8A6xwlaGX0znp6Hx/Vh2z7px8RksDj9HyedUGTLEG7RFJBAR060xU4NgvWfKxonpBFZktJfEQO89DD1bQbjtidVe3Hn/OKxbgzr22MG2KKH0Wkh53Qp72QXkiegG6nKQXWhXkm+C8h3jXmWc+74t</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1737,7 +1992,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+7cTI1pHxMYK/3c5t0JsOEyzRt027eCpAw4+9okUE/36mc4q3O1sVnbkPqIuCP6+2VQaCejyIk17Aw7Uf2W5XuKwcozDh9u8boy24+kexMwDa8UIJ2gf6K7jr8f+CHGyQEMEBUqHlOjICdIW/G3zxR3LpfwV5u6fbycw+DfUhP8hefyOzDF41o</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1/Us0pjNmDT1WjYDSRLpmK7Sq87+ZFdPQ1a0tgiiqliMRS2SQ5XwTHaVBruFo1WXxtzgB4ZcBPlrJlPDHeO23CT1ZZULPrz/8q1GK1N3XIh0I74I8CbLpRsdCX5eXPSxBVqvacyDL9f5lOGpRN6/E95Zij8rfX8PLErjoJNnQAr6IDseWSKTj0L</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1826,7 +2081,7 @@ doDecrypt(passwd, onError);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
