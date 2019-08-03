@@ -42,7 +42,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     search: {
       root: '/',
       path: 'search.xml'
@@ -189,7 +189,34 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
     </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
 </nav>
 
 </div>
@@ -304,7 +331,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+ahRx8stYuHFvksIQ9S8EdnWOLvzfdFKKHJmRMnfetVta0tpA2pO4Qkj08pac5DdSSJUPHtttVdx1bYYDPkK5Yf3Gb6dzEj7+tEtZt8sGkld1gJqkzIj9E1JkDmmen9wPhlKHXrDDbB6XhJy53nY9veQQXnOjvFF/sSOYwPODk0TsNITlquIdC</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19cZBpVU+3I1Nzbwr98GK/59kLzX8XtI6rhBhX0W+bO69WBwiG1zGMlFUAAZIjvGrj9rLFp2yyu5GWxCsJ24VFLjKktd247bNSNRIWYl64bEo+/tdPrBrExF6UXZ0njdf/5k0BQIN2z2ir88CafvOhifsE0j/+3OdO4Gb87bMN423l+jjxKVxM9</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -568,6 +595,8 @@ doDecrypt(passwd, onError);
 
 
 
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
 
 
 
