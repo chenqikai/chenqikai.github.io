@@ -42,10 +42,10 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     search: {
       root: '/',
-      path: ''
+      path: 'search.xml'
     },
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -198,25 +198,22 @@
     </ul>
     <div class="site-search">
       
-  <div class="algolia-popup popup search-popup">
-  <div class="algolia-search">
-    <div class="algolia-search-input-icon">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
       <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
-    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-
-  <div class="algolia-results">
-    <div id="algolia-stats"></div>
-    <div id="algolia-hits"></div>
-    <div id="algolia-pagination" class="algolia-pagination"></div>
-  </div>
-
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
+  <div id="local-search-result"></div>
 </div>
-
 
 
     </div>
@@ -334,7 +331,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19ZkF0FkuT1XsnroNT47DrO91SO1b6xaRVom1ro++3rvht24txv3VXLaLFTVfMW3G3Iht2iKz5aK6gVpLCBizU1ZPpEzOdjkHl9XO2SruKBVhnh7q3yH59F+eP4ASeUX4b3ZusKZiThrUfQq/JGnwD3AaB+Znj7dNAHffAqs0HfJHA9mggp1kCj</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19K5yLPmViROcP2n3oIyjGbz5Z4ayHDpJI80L8U/Vs8LXMGvFKwtNvVV5905A4pgEE6AKAmT4p+us63P2jJilupzbc/RGCQVY7f0xB7M4Ye93jCntaf6wAP7ISirhlY6+4vmJkLAoLdhHbcsmfPHO3tughr5YWg1x8GPntQzvfVDpGOWilmcfIi</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -424,6 +421,9 @@ doDecrypt(passwd, onError);
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Eli chen">
   <p class="site-author-name" itemprop="name">Eli chen</p>
   <div class="site-description motion-element" itemprop="description"></div>
 </div>
@@ -592,13 +592,7 @@ doDecrypt(passwd, onError);
 
 
 
-  
-<link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-<script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-
-
-<script src="/js/algolia-search.js?v=7.3.0"></script>
-
+  <script src="/js/local-search.js?v=7.3.0"></script>
 
 
 
