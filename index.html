@@ -1,166 +1,123 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
-  
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
   <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Elichen blog">
-<meta property="og:url" content="http://chenqikai.github.io/index.html">
-<meta property="og:site_name" content="Elichen blog">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elichen blog">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
     algolia: {
       applicationID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
 
-
-
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Elichen blog">
+<meta property="og:url" content="http://chenqikai.github.io/index.html">
+<meta property="og:site_name" content="Elichen blog">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elichen blog">
   <link rel="canonical" href="http://chenqikai.github.io/">
 
 
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Elichen blog</title>
+  
 
 
 
-  <title> Elichen blog </title>
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-home">
     <div class="headband"></div>
-    <a href="https://github.com/chenqikai" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <a href="https://github.com/chenqikai" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+  <div class="site-meta">
 
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
@@ -169,13 +126,10 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -183,155 +137,731 @@
   </div>
 </div>
 
+
+
 <nav class="site-nav">
-  
-
-  
     <ul id="menu" class="menu">
-      
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home menu-item-active">
       
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
+    
 
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
       
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
     </ul>
-  
-
-  
 </nav>
 
-
-
- </div>
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+            
+
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/31/java集合框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/31/java集合框架/" class="post-title-link" itemprop="url">java集合框架</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-31 20:56:48" itemprop="dateCreated datePublished" datetime="2019-07-31T20:56:48+08:00">2019-07-31</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-03 15:55:10" itemprop="dateModified" datetime="2019-08-03T15:55:10+08:00">2019-08-03</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              Java集合框架集合与框架集合Java中集合就如一个容器(Container)，集合中可以存放各种对象，集合本身也是一个对象。
+集合框架那么有了集合的概念，什么是集合框架呢？集合框架是为表示和操作集合而规定的一种统一的标准的体系结构。任何集合框架都包含三大块内容：对外的接口、接口的实现和对集合运算的
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/31/java集合框架/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
     
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/26/java面向对象/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/26/java面向对象/" class="post-title-link" itemprop="url">java面向对象</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-26 22:20:59" itemprop="dateCreated datePublished" datetime="2019-07-26T22:20:59+08:00">2019-07-26</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-02 22:17:52" itemprop="dateModified" datetime="2019-08-02T22:17:52+08:00">2019-08-02</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              java 面向对象面向对象简介“面向对象” (英语：Object Oriented,简称OO)是一种以事物为中心的编程思想。面向对象程序设计（英语：Object-oriented programming，缩写：OOP），是一种程序开发的方法。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/26/java面向对象/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/16/java基本数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/16/java基本数据类型/" class="post-title-link" itemprop="url">java基本数据类型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-16 22:20:59 / 修改时间：22:00:55" itemprop="dateCreated datePublished" datetime="2019-07-16T22:20:59+08:00">2019-07-16</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              java基本数据类型整型byte：
+byte 数据类型是8位、有符号的，以二进制补码表示的整数；
+
+最小值是 -128（-2^7）；
+
+最大值是 127（2^7-1）；
+
+默认值是 0；
+
+byte 类型用在大型数组中节约空间，主要代替整数，因为 byte 变量占用的空间只有 int 类型的四分之一
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/16/java基本数据类型/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/16/java循环控制语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/16/java循环控制语句/" class="post-title-link" itemprop="url">java流程控制语句</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-16 22:20:59" itemprop="dateCreated datePublished" datetime="2019-07-16T22:20:59+08:00">2019-07-16</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-28 18:46:39" itemprop="dateModified" datetime="2019-07-28T18:46:39+08:00">2019-07-28</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              java流程控制语句条件语句if语句一个 if 语句包含一个布尔表达式和一条或多条语句。语法
+if(布尔表达式)&#123;   //如果布尔表达式为true将执行的语句&#125;
+
+如果布尔表达式的值为 true，则执行 if 语句中的代码块，否则执行 if 语句块后面的代码。
+if…else语
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/16/java循环控制语句/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/26/Python爬虫从零开始(六)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/26/Python爬虫从零开始(六)/" class="post-title-link" itemprop="url">Python爬虫从零开始(六)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-26 22:20:59" itemprop="dateCreated datePublished" datetime="2019-06-26T22:20:59+08:00">2019-06-26</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-15 21:37:01" itemprop="dateModified" datetime="2019-07-15T21:37:01+08:00">2019-07-15</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              认识HTML什么是HTMLHTML 是用来描述网页的一种语言。
+
+HTML 指的是超文本标记语言 (Hyper Text Markup Language)
+HTML 不是一种编程语言，而是一种标记语言 (markup language)
+标记语言是一套标记标签 (markup tag)
+HTML 使
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/26/Python爬虫从零开始(六)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/25/Python爬虫从零开始(五)/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Elichen blog">
     </span>
-
-    
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/06/25/Python爬虫从零开始(五)/" itemprop="url">
-                  Python爬虫从零开始(五)
-                </a>
+                
+                <a href="/2019/06/25/Python爬虫从零开始(五)/" class="post-title-link" itemprop="url">Python爬虫从零开始(五)</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-25T16:42:05+08:00">
-                2019-06-25
-              </time>
-            
 
-            
+              
+                
+              
 
-            
-          </span>
-
+              <time title="创建时间：2019-06-25 16:42:05 / 修改时间：18:35:26" itemprop="dateCreated datePublished" datetime="2019-06-25T16:42:05+08:00">2019-06-25</time>
+            </span>
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -339,11 +869,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -351,242 +877,102 @@
             </span>
           
 
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+          <br>
 
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
-            <h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><h2 id="Python-输入输出"><a href="#Python-输入输出" class="headerlink" title="Python 输入输出"></a>Python 输入输出</h2><h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><p>读写文件是最常见的IO操作。Python内置了读写文件的函数，用法和C是兼容的。<br>要以读文件的模式打开一个文件对象，使用Python内置的<code>open()</code>函数，传入文件名和标示符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/test.txt&apos;, &apos;r&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>标示符’r’表示读，这样，我们就成功地打开了一个文件。</p>
-<p>如果文件不存在，<code>open()</code>函数就会抛出一个<code>IOError</code>的错误，并且给出错误码和详细的信息告诉你文件不存在：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f=open(&apos;/Users/michael/notfound.txt&apos;, &apos;r&apos;)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">FileNotFoundError: [Errno 2] No such file or directory: &apos;/Users/michael/notfound.txt&apos;</span><br></pre></td></tr></table></figure>
-
-<p>如果文件打开成功，接下来，调用<code>read()</code>方法可以一次读取文件的全部内容，Python把内容读到内存，用一个<code>str</code>对象表示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f.read()</span><br><span class="line">&apos;Hello, world!&apos;</span><br></pre></td></tr></table></figure>
-
-<p>最后一步是调用<code>close()</code>方法关闭文件。文件使用完毕后必须关闭，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f.close()</span><br></pre></td></tr></table></figure>
-
-<p>由于文件读写时都有可能产生<code>IOError</code>，一旦出错，后面的<code>f.close()</code>就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用<code>try ... finally</code>来实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    f = open(&apos;/path/to/file&apos;, &apos;r&apos;)</span><br><span class="line">    print(f.read())</span><br><span class="line">finally:</span><br><span class="line">    if f:</span><br><span class="line">        f.close()</span><br></pre></td></tr></table></figure>
-
-<p>但是每次都这么写实在太繁琐，所以，Python引入了<code>with</code>语句来自动帮我们调用<code>close()</code>方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(&apos;/path/to/file&apos;, &apos;r&apos;) as f:</span><br><span class="line">    print(f.read())</span><br></pre></td></tr></table></figure>
-
-<p>这和前面的<code>try ... finally</code>是一样的，但是代码更佳简洁，并且不必调用<code>f.close()</code>方法。</p>
-<p>调用<code>read()</code>会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用<code>read(size)</code>方法，每次最多读取<code>size</code>个字节的内容。另外，调用<code>readline()</code>可以每次读取一行内容，调用<code>readlines()</code>一次读取所有内容并按行返回<code>list</code>。因此，要根据需要决定怎么调用。</p>
-<p>如果文件很小，<code>read()</code>一次性读取最方便；如果不能确定文件大小，反复调用<code>read(size)</code>比较保险；如果是配置文件，调用<code>readlines()</code>最方便：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for line in f.readlines():</span><br><span class="line">    print(line.strip()) # 把末尾的&apos;\n&apos;删掉</span><br><span class="line">file-like Object</span><br></pre></td></tr></table></figure>
-
-<p>像<code>open()</code>函数返回的这种有个<code>read()</code>方法的对象，在Python中统称为file-like Object。除了file外，还可以是内存的字节流，网络流，自定义流等等。file-like Object不要求从特定类继承，只要写个<code>read()</code>方法就行。</p>
-<p><code>StringIO</code>就是在内存中创建的file-like Object，常用作临时缓冲。</p>
-<h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3><p>前面讲的默认都是读取文本文件，并且是UTF-8编码的文本文件。要读取二进制文件，比如图片、视频等等，用<code>&#39;rb&#39;</code>模式打开文件即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/test.jpg&apos;, &apos;rb&apos;)</span><br><span class="line">&gt;&gt;&gt; f.read()</span><br><span class="line">b&apos;\xff\xd8\xff\xe1\x00\x18Exif\x00\x00...&apos; # 十六进制表示的字节</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><p>要读取非UTF-8编码的文本文件，需要给<code>open()</code>函数传入<code>encoding</code>参数，例如，读取GBK编码的文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;)</span><br><span class="line">&gt;&gt;&gt; f.read()</span><br><span class="line">&apos;测试&apos;</span><br></pre></td></tr></table></figure>
-
-<p>遇到有些编码不规范的文件，你可能会遇到<code>UnicodeDecodeError</code>，因为在文本文件中可能夹杂了一些非法编码的字符。遇到这种情况，<code>open()</code>函数还接收一个<code>errors</code>参数，表示如果遇到编码错误后如何处理。最简单的方式是直接忽略：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;, errors=&apos;ignore&apos;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h3><p>写文件和读文件是一样的，唯一区别是调用<code>open()</code>函数时，传入标识符<code>&#39;w&#39;</code>或者<code>&#39;wb&#39;</code>表示写文本文件或写二进制文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/test.txt&apos;, &apos;w&apos;)</span><br><span class="line">&gt;&gt;&gt; f.write(&apos;Hello, world!&apos;)</span><br><span class="line">&gt;&gt;&gt; f.close()</span><br></pre></td></tr></table></figure>
-
-<p>你可以反复调用<code>write()</code>来写入文件，但是务必要调用<code>f.close()</code>来关闭文件。当我们写文件时，操作系统往往不会立刻把数据写入磁盘，而是放到内存缓存起来，空闲的时候再慢慢写入。只有调用<code>close()</code>方法时，操作系统才保证把没有写入的数据全部写入磁盘。忘记调用<code>close()</code>的后果是数据可能只写了一部分到磁盘，剩下的丢失了。所以，还是用<code>with</code>语句来得保险：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(&apos;/Users/michael/test.txt&apos;, &apos;w&apos;) as f:</span><br><span class="line">    f.write(&apos;Hello, world!&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>要写入特定编码的文本文件，请给<code>open()</code>函数传入<code>encoding</code>参数，将字符串自动转换成指定编码。</p>
-<p>细心的童鞋会发现，以<code>&#39;w&#39;</code>模式写入文件时，如果文件已存在，会直接覆盖（相当于删掉后新写入一个文件）。如果我们希望追加到文件末尾怎么办？可以传入<code>&#39;a&#39;</code>以追加（append）模式写入。</p>
-<p>所有模式的定义及含义可以参考Python的官方文档。</p>
-<h2 id="读写CSV文件"><a href="#读写CSV文件" class="headerlink" title="读写CSV文件"></a>读写CSV文件</h2><h3 id="csv文件的读取"><a href="#csv文件的读取" class="headerlink" title="csv文件的读取"></a>csv文件的读取</h3><p>前期工作：在定义的py文件里边创建一个excel文件，并另存为csv文件，放入三行数据，我这里是姓名+年龄（可以自己随意写）</p>
-<p>首先我们要在python环境里导入csv板块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import csv</span><br></pre></td></tr></table></figure>
-
-<p>然后我们定义一个csv文件的变量<code>csv_file</code>,然后通过<code>open</code>对此文件进行打开，打开模式采用<code>‘r’</code>（read：读模式）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;my.csv&quot;, &quot;r&quot;)as f:</span><br><span class="line">    print(f)</span><br><span class="line">    csv_file = csv.reader(f)</span><br><span class="line">    for stu in csv_file:</span><br><span class="line">        print(stu)</span><br></pre></td></tr></table></figure>
-
-<p>输出结果如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;_csv.reader object at 0x000001D3A1A1B730&gt;</span><br><span class="line">[&apos;zhangsan&apos;,&apos;32&apos;]</span><br><span class="line">[&apos;wangwu&apos;,&apos;34&apos;]</span><br><span class="line">[&apos;zhaoliu&apos;,&apos;35&apos;]</span><br></pre></td></tr></table></figure>
-
-<h3 id="csv文件的写入"><a href="#csv文件的写入" class="headerlink" title="csv文件的写入"></a>csv文件的写入</h3><p>在开始前我们要定义两组数据，进行下面的写入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stu1 = [&apos;marry&apos;,26]</span><br><span class="line">stu2 = [&apos;bob&apos;,23]</span><br></pre></td></tr></table></figure>
-
-<p>1.写入的第一步同样也是打开文件，因为我们是要写入，所以我们用的模式就是<code>&#39;a&#39;</code>模式，追加内容，至于<code>&quot;newline=&quot;</code>就是说因为我们的csv文件的类型，如果不加这个东西，当我们写入东西的时候，就会出现空行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">out = open(&apos;Stu_csv.csv&apos;,&apos;a&apos;, newline=&apos;&apos;)</span><br></pre></td></tr></table></figure>
-
-<p> 2.下面我们定义一个变量进行写入，将刚才的文件变量传进来，dialect就是定义一下文件的类型，我们定义为excel类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csv_write = csv.writer(out,dialect=&apos;excel&apos;)</span><br></pre></td></tr></table></figure>
-
-<p> 3.然后进行数据的写入啦，写入的方法是<code>writerow</code>，通过写入模式对象，调用方法进行写入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">csv_write.writerow(stu1)</span><br><span class="line">csv_write.writerow(stu2)</span><br></pre></td></tr></table></figure>
-
-<p> 4.最后各位可以用你们最熟悉的一句语法进行漂亮的收尾.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print (&quot;write over&quot;)</span><br></pre></td></tr></table></figure>
-
-<p> 具体的代码如下：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line"></span><br><span class="line">#csv 写入</span><br><span class="line">stu1 = [&apos;marry&apos;,26]</span><br><span class="line">stu2 = [&apos;bob&apos;,23]</span><br><span class="line">#打开文件，追加a</span><br><span class="line">out = open(&apos;Stu_csv.csv&apos;,&apos;a&apos;, newline=&apos;&apos;)</span><br><span class="line">#设定写入模式</span><br><span class="line">csv_write = csv.writer(out,dialect=&apos;excel&apos;)</span><br><span class="line">#写入具体内容</span><br><span class="line">csv_write.writerow(stu1)</span><br><span class="line">csv_write.writerow(stu2)</span><br><span class="line">print (&quot;write over&quot;)</span><br></pre></td></tr></table></figure></p>
-<h2 id="mongoDB"><a href="#mongoDB" class="headerlink" title="mongoDB"></a>mongoDB</h2><h3 id="安装MongoDB"><a href="#安装MongoDB" class="headerlink" title="安装MongoDB"></a>安装MongoDB</h3><p>首先到 <strong><a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">MongoDB官网</a></strong> 下载安装MongoDB。并且到 <strong><a href="https://studio3t.com/download/" target="_blank" rel="noopener">MongoChef</a></strong> 官网下载安装可视化管理工具MongoChef studio3t  </p>
-<p>  <strong><a href="/doc/MongoDB.pdf">参考文件</a></strong></p>
-<h3 id="安装PyMongo-驱动"><a href="#安装PyMongo-驱动" class="headerlink" title="安装PyMongo 驱动"></a>安装PyMongo 驱动</h3><p>用可视化管理工具新建<code>mydb</code>数据库并添加<code>student</code>集合<br>使用以下命令安装pymongo 驱动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install pymongo</span><br></pre></td></tr></table></figure>
-
-<p>也可以指定安装的版本:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python -m pip install pymongo==3.5.1</span><br></pre></td></tr></table></figure>
-
-<p>更新 pymongo 命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python -m pip install --upgrade pymongo</span><br></pre></td></tr></table></figure>
-
-<h3 id="测试-PyMongo"><a href="#测试-PyMongo" class="headerlink" title="测试 PyMongo"></a>测试 PyMongo</h3><p>接下来我们可以创建一个测试文件 demo_test_mongodb.py，代码如下：</p>
-<p>demo_test_mongodb.py 文件代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">import pymongo</span><br></pre></td></tr></table></figure>
-
-<p>执行以上代码文件，如果没有出现错误，表示安装成功。</p>
-<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>创建一个数据库<br>创建数据库需要使用 MongoClient 对象，并且指定连接的 URL 地址和要创建的数据库名。</p>
-<p>如下实例中，我们创建的数据库 runoobdb :</p>
-<p><strong>实例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">import pymongo</span><br><span class="line"> </span><br><span class="line">myclient = pymongo.MongoClient(&quot;mongodb://localhost:27017/&quot;)</span><br><span class="line">mydb = myclient[&quot;runoobdb&quot;]</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>: 在 MongoDB 中，数据库只有在内容插入后才会创建! 就是说，数据库创建后要创建集合(数据表)并插入一个文档(记录)，数据库才会真正创建。</p>
-<h3 id="判断数据库是否已存在"><a href="#判断数据库是否已存在" class="headerlink" title="判断数据库是否已存在"></a>判断数据库是否已存在</h3><p>我们可以读取 MongoDB 中的所有数据库，并判断指定的数据库是否存在：</p>
-<p><strong>实例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">import pymongo</span><br><span class="line"> </span><br><span class="line">myclient = pymongo.MongoClient(&apos;mongodb://localhost:27017/&apos;)</span><br><span class="line"> </span><br><span class="line">dblist = myclient.list_database_names()</span><br><span class="line"># dblist = myclient.database_names() </span><br><span class="line">if &quot;runoobdb&quot; in dblist:</span><br><span class="line">  print(&quot;数据库已存在！&quot;)</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>：database_names 在最新版本的 Python 中已废弃，Python3.7+ 之后的版本改为了 list_database_names()。</p>
-<h3 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h3><p>MongoDB 中的集合类似 SQL 的表。</p>
-<p>创建一个集合<br>MongoDB 使用数据库对象来创建集合，实例如下：</p>
-<p><strong>实例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line">import pymongo</span><br><span class="line"> </span><br><span class="line">myclient = pymongo.MongoClient(&quot;mongodb://localhost:27017/&quot;)</span><br><span class="line">mydb = myclient[&quot;runoobdb&quot;]</span><br><span class="line"> </span><br><span class="line">mycol = mydb[&quot;sites&quot;]</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>: 在 MongoDB 中，集合只有在内容插入后才会创建! 就是说，创建集合(数据表)后要再插入一个文档(记录)，集合才会真正创建。</p>
-<h3 id="判断集合是否已存在"><a href="#判断集合是否已存在" class="headerlink" title="判断集合是否已存在"></a>判断集合是否已存在</h3><p>我们可以读取 MongoDB 数据库中的所有集合，并判断指定的集合是否存在：</p>
-<p><strong>实例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line">import pymongo</span><br><span class="line"></span><br><span class="line">myclient = pymongo.MongoClient(&apos;mongodb://localhost:27017/&apos;)</span><br><span class="line">mydb = myclient[&apos;runoobdb&apos;]</span><br><span class="line"></span><br><span class="line">collist = mydb. list_collection_names()</span><br><span class="line"># collist = mydb.collection_names()</span><br><span class="line">if &quot;sites&quot; in collist:   # 判断 sites 集合是否存在</span><br><span class="line">  print(&quot;集合已存在！&quot;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="添加文档操作"><a href="#添加文档操作" class="headerlink" title="添加文档操作"></a>添加文档操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from pymongo import MongoClient</span><br><span class="line"></span><br><span class="line"># 连接服务器</span><br><span class="line">conn = MongoClient(&quot;localhost&quot;, 27017)</span><br><span class="line"></span><br><span class="line"># 连接数据库</span><br><span class="line">db = conn.mydb</span><br><span class="line"></span><br><span class="line"># 获取集合</span><br><span class="line">collection = db.student</span><br><span class="line"></span><br><span class="line"># 添加文档</span><br><span class="line"># collection.insert(&#123;&quot;name&quot;:&quot;abc&quot;, &quot;age&quot;:19, &quot;gender&quot;:1,&quot;address&quot;:&quot;北京&quot;, &quot;isDelete&quot;:0&#125;)</span><br><span class="line">collection.insert_many([&#123;&quot;name&quot;: &quot;abc1&quot;, &quot;age&quot;: 19, &quot;gender&quot;: 1, &quot;address&quot;: &quot;北京&quot;, &quot;isDelete&quot;: 0&#125;,</span><br><span class="line">                   &#123;&quot;name&quot;: &quot;abc2&quot;, &quot;age&quot;: 19, &quot;gender&quot;: 1, &quot;address&quot;: &quot;北京&quot;, &quot;isDelete&quot;: 0&#125;])</span><br><span class="line"></span><br><span class="line"># 断开</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
-
-<h3 id="查询文档操作"><a href="#查询文档操作" class="headerlink" title="查询文档操作"></a>查询文档操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">import pymongo</span><br><span class="line">from pymongo import MongoClient</span><br><span class="line">from bson.objectid import ObjectId  # 用于ID查询</span><br><span class="line"></span><br><span class="line"># 连接服务器</span><br><span class="line">conn = MongoClient(&quot;localhost&quot;, 27017)</span><br><span class="line"></span><br><span class="line"># 连接数据库</span><br><span class="line">db = conn.mydb</span><br><span class="line"></span><br><span class="line"># 获取集合</span><br><span class="line">collection = db.student</span><br><span class="line"></span><br><span class="line"># 查询文档</span><br><span class="line"></span><br><span class="line"># 查询部分文档</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">res = collection.find(&#123;&quot;age&quot;:&#123;&quot;$gt&quot;:18&#125;&#125;)</span><br><span class="line">for row in res:</span><br><span class="line">    print(row)</span><br><span class="line">    print(type(row))</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 查询所有文档</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">res = collection.find()</span><br><span class="line">for row in res:</span><br><span class="line">    print(row)</span><br><span class="line">    print(type(row))</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 统计查询</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">res = collection.find(&#123;&quot;age&quot;:&#123;&quot;$gt&quot;:18&#125;&#125;).count()</span><br><span class="line">print(res)</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 根据id查询</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">res = collection.find(&#123;&quot;_id&quot;:ObjectId(&quot;5995084b019723fe2a0d8d14&quot;)&#125;)</span><br><span class="line">print(res[0])</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 排序</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"># res = collection.find().sort(&quot;age&quot;)#升序</span><br><span class="line">res = collection.find().sort(&quot;age&quot;, pymongo.DESCENDING)</span><br><span class="line">for row in res:</span><br><span class="line">    print(row)</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"># 分页查询</span><br><span class="line">res = collection.find().skip(3).limit(5)</span><br><span class="line">for row in res:</span><br><span class="line">    print(row)</span><br><span class="line"></span><br><span class="line"># 断开</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
-
-<h3 id="更新文档操作"><a href="#更新文档操作" class="headerlink" title="更新文档操作"></a>更新文档操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pymongo import MongoClient</span><br><span class="line"></span><br><span class="line"># 连接服务器</span><br><span class="line">conn = MongoClient(&quot;localhost&quot;, 27017)</span><br><span class="line"># 连接数据库</span><br><span class="line">db = conn.mydb</span><br><span class="line"># 获取集合</span><br><span class="line">collection = db.student</span><br><span class="line"></span><br><span class="line">collection.update(&#123;&quot;name&quot;: &quot;lilei&quot;&#125;, &#123;&quot;$set&quot;: &#123;&quot;age&quot;: 25&#125;&#125;)</span><br><span class="line"></span><br><span class="line"># 断开</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除文档操作"><a href="#删除文档操作" class="headerlink" title="删除文档操作"></a>删除文档操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pymongo import MongoClient</span><br><span class="line"></span><br><span class="line"># 连接服务器</span><br><span class="line">conn = MongoClient(&quot;localhost&quot;, 27017)</span><br><span class="line"># 连接数据库</span><br><span class="line">db = conn.mydb</span><br><span class="line"># 获取集合</span><br><span class="line">collection = db.student</span><br><span class="line"></span><br><span class="line">collection.remove(&#123;&quot;name&quot;: &quot;lilei&quot;&#125;)</span><br><span class="line"># 全部删除</span><br><span class="line">collection.remove()</span><br><span class="line"># 断开</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+            <p>
+              Python 基础Python 输入输出读文件读写文件是最常见的IO操作。Python内置了读写文件的函数，用法和C是兼容的。要以读文件的模式打开一个文件对象，使用Python内置的open()函数，传入文件名和标示符：
+&gt;&gt;&gt; f = open(&apos;/Users/mich
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/25/Python爬虫从零开始(五)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
-
 
     
       
 
-  
-
-  
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/24/Python爬虫从零开始(四)/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Elichen blog">
     </span>
-
-    
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/06/24/Python爬虫从零开始(四)/" itemprop="url">
-                  Python 爬虫从零开始(四)
-                </a>
+                
+                <a href="/2019/06/24/Python爬虫从零开始(四)/" class="post-title-link" itemprop="url">Python 爬虫从零开始(四)</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T20:48:27+08:00">
-                2019-06-24
-              </time>
-            
 
-            
+              
+                
+              
 
-            
-          </span>
-
+              <time title="创建时间：2019-06-24 20:48:27 / 修改时间：22:31:14" itemprop="dateCreated datePublished" datetime="2019-06-24T20:48:27+08:00">2019-06-24</time>
+            </span>
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -594,11 +980,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -606,362 +988,112 @@
             </span>
           
 
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+          <br>
 
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
-            <h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象（Object Oriented）的英文缩写是OO，它是一种设计思想。我们经常听说的面向对象编程（Object Oriented Programming，即OOP）就是主要针对大型软件设计而提出的，它可以使软件设计更加灵活，并且能更好地进行代码复用。</p>
-<p>面向对象中的对象（Object），通常是指客观世界中存在的对象，这个对象具有唯一性，对象之间个不相同，各有各的特点，每一个对象都有自己的运动规律和内部状态；对象和对象之间又是可以相互联系、相互作用的。</p>
-<p>对象：是一个抽象概念，英文称为Object，表示任意存在的事物。世间万物皆对象，现实世间中随处可以的一种事物就是对象，对象是事物存在的实体，如一个人。</p>
-<p>通常将对象划分为两个部分：静态部分和动态部分。静态部分被称为【属性】，任何对象都具备自身属性，这些属性不仅是客观存在的，而且是不能被忽视的。如人的性别。动态部分指的是对象的行为，即对象执行的动作，如人可以行走。</p>
-<h3 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h3><p>面向对象最重要的概念就是类（Class）和实例（Instance），必须牢记类是抽象的模板，比如Student类，而实例是根据类创建出来的一个个具体的“对象”，每个对象都拥有相同的方法，但各自的数据可能不同。</p>
-<p>代码示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line">    def __init__(self, name, score):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">    def print_score(self):</span><br><span class="line">        print(&apos;%s: %s&apos; % (self.name, self.score))</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>通过<code>class</code>关键字来定义类，类名通常要大写，后面的括号里面表示该类继承于哪个类，所有类最终继承于<code>object</code>类，这类似于Java</li>
-<li>python允许对实例变量绑定任何数据，因此同一个类的不同实例拥有的变量名称可能会不同</li>
-<li>特殊的<code>__init__</code>方法可以把必须绑定给类实例的属性填写进去，它的第一个参数永远是<code>self</code>，表示创建的实例本身，在创建实例的时候，必须传入与<strong>init</strong>方法匹配的参数，self除外</li>
-<li>实际上，Python中类中定义的函数的第一个参数都必须是<code>self</code>，调用时不用传递该参数<br>对Student类使用实例代码：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">chen = Student(&apos;chen&apos;, 13)</span><br><span class="line">bart = Student(&apos;bart&apos;, 81)</span><br><span class="line">chen.print_score()</span><br><span class="line">bart.print_score()</span><br><span class="line">chen.score = 100</span><br><span class="line">bart.name = &apos;kobe&apos;</span><br><span class="line">chen.print_score()</span><br><span class="line">bart.print_score()</span><br></pre></td></tr></table></figure>
-
-<p>输出结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chen: 13</span><br><span class="line">bart: 81</span><br><span class="line">chen: 100</span><br><span class="line">kobe: 81</span><br></pre></td></tr></table></figure>
-
-<h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h3><ul>
-<li>如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线<code>__</code>，在Python中，<br>实例的变量名如果以<code>__</code>开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self, name, score):</span><br><span class="line">        self.__name = name</span><br><span class="line">        self.__score = score</span><br><span class="line"></span><br><span class="line">    def print_score(self):</span><br><span class="line">        print(&apos;%s: %s&apos; % (self.__name, self.__score))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; bart = Student(&apos;Bart Simpson&apos;, 59)</span><br><span class="line">&gt;&gt;&gt; bart.__name</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">AttributeError: &apos;Student&apos; object has no attribute &apos;__name&apos;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>这样就确保了外部代码不能随意修改对象内部的状态，这样通过访问限制的保护，代码更加健壮。</p>
-<p>但是如果外部代码要获取<code>name</code>和<code>score</code>怎么办？可以给Student类增加<code>get_name</code>和<code>get_score</code>这样的方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    def get_name(self):</span><br><span class="line">        return self.__name</span><br><span class="line"></span><br><span class="line">    def get_score(self):</span><br><span class="line">        return self.__score</span><br></pre></td></tr></table></figure>
-
-<p>如果又要允许外部代码修改<code>score</code>怎么办？可以再给<code>Student</code>类增加<code>set_score</code>方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    def set_score(self, score):</span><br><span class="line">        self.__score = score</span><br></pre></td></tr></table></figure>
-
-<p>你也许会问，原先那种直接通过<code>bart.score = 99</code>也可以修改啊，为什么要定义一个方法大费周折？因为在方法中，可以对参数做检查，避免传入无效的参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    def set_score(self, score):</span><br><span class="line">        if 0 &lt;= score &lt;= 100:</span><br><span class="line">            self.__score = score</span><br><span class="line">        else:</span><br><span class="line">            raise ValueError(&apos;bad score&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，在Python中，变量名类似<strong>xxx</strong>的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以，不能用<strong>name</strong>、<strong>score</strong>这样的变量名。<br>以一个下划线开头的变量<code>_name</code>外部可以访问，但是最好把它视为私有变量，不要随便访问<br>python解释器对外把<code>__name</code>改成了<code>_Student__name</code>，因此可以通过<code>_Student__name</code>来访问私有的内部属性(强烈建议不要采用这种方式)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; bart._Student__name</span><br><span class="line">&apos;Bart Simpson&apos;</span><br></pre></td></tr></table></figure>
-
-<p>我们在前面发现无法输出<code>bart.__name</code>，会报错<code>Student</code>类不含有此成员，但是<code>bart.__name = &#39;New Name&#39;</code>语
-句是不会报错的，随后再输出<code>bart.__name</code>也不会再报错了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; bart = Student(&apos;Bart Simpson&apos;, 59)</span><br><span class="line">&gt;&gt;&gt; bart.get_name()</span><br><span class="line">&apos;Bart Simpson&apos;</span><br><span class="line">&gt;&gt;&gt; bart.__name = &apos;New Name&apos; # 设置__name变量！</span><br><span class="line">&gt;&gt;&gt; bart.__name</span><br><span class="line">&apos;New Name&apos;</span><br></pre></td></tr></table></figure>
-
-<p>这是一种错误的写法，这样设置的<code>__name</code>变量并不是类内部的<code>__name</code>变量，相当于给<code>bart</code>新增了一个变量</p>
-<h3 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h3><p>在OOP程序设计中，当我们定义一个class的时候，可以从某个现有的class继承，新的class称为子类（Subclass），而被继承的class称为基类、父类或超类（Base class、Super class）。</p>
-<p>比如，我们已经编写了一个名为<code>Animal</code>的class，有一个<code>run()</code>方法可以直接打印：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Animal(object):</span><br><span class="line">    def run(self):</span><br><span class="line">        print(&apos;Animal is running...&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>当我们需要编写<code>Dog</code>和<code>Cat</code>类时，就可以直接从<code>Animal</code>类继承：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Dog(Animal):</span><br><span class="line">    pass</span><br><span class="line">class Cat(Animal):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
-
-<p>对于<code>Dog</code>来说，<code>Animal</code>就是它的父类，对于<code>Animal</code>来说，<code>Dog</code>就是它的子类。<code>Cat</code>和<code>Dog</code>类似。</p>
-<p>继承有什么好处？最大的好处是子类获得了父类的全部功能。由于<code>Animial</code>实现了<code>run()</code>方法，因此，<code>Dog</code>和<code>Cat</code>作为它的子类，什么事也没干，就自动拥有了<code>run()</code>方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dog = Dog()</span><br><span class="line">dog.run()</span><br><span class="line"></span><br><span class="line">cat = Cat()</span><br><span class="line">cat.run()</span><br></pre></td></tr></table></figure>
-
-<p>运行结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Animal is running...</span><br><span class="line">Animal is running...</span><br></pre></td></tr></table></figure>
-
-<p>当然，也可以对子类增加一些方法，比如<code>Dog</code>类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Dog(Animal):</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        print(&apos;Dog is running...&apos;)</span><br><span class="line"></span><br><span class="line">    def eat(self):</span><br><span class="line">        print(&apos;Eating meat...&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>继承的第二个好处需要我们对代码做一点改进。你看到了，无论是<code>Dog</code>还是<code>Cat</code>，它们<code>run()</code>的时候，显示的都是<code>Animal is running...</code>，符合逻辑的做法是分别显示<code>Dog is running...</code>和<code>Cat is running...</code>，因此，对<code>Dog</code>和<code>Cat</code>类改进如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Dog(Animal):</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        print(&apos;Dog is running...&apos;)</span><br><span class="line"></span><br><span class="line">class Cat(Animal):</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        print(&apos;Cat is running...&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>再次运行，结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dog is running...</span><br><span class="line">Cat is running...</span><br></pre></td></tr></table></figure>
-
-<p>当子类和父类都存在相同的<code>run()</code>方法时，我们说，子类的<code>run()</code>覆盖了父类的<code>run()</code>，在代码运行的时候，总是会调用子类的<code>run()</code>。这样，我们就获得了继承的另一个好处：多态。</p>
-<p>要理解什么是多态，我们首先要对数据类型再作一点说明。当我们定义一个class的时候，我们实际上就定义了一种数据类型。我们定义的数据类型和Python自带的数据类型，比如str、list、dict没什么两样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = list() # a是list类型</span><br><span class="line">b = Animal() # b是Animal类型</span><br><span class="line">c = Dog() # c是Dog类型</span><br></pre></td></tr></table></figure>
-
-<p>判断一个变量是否是某个类型可以用<code>isinstance()</code>判断：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; isinstance(a, list)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance(b, Animal)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance(c, Dog)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-
-<p>看来<code>a</code>、<code>b</code>、<code>c</code>确实对应着<code>list</code>、<code>Animal</code>、<code>Dog</code>这3种类型。</p>
-<p>但是等等，试试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; isinstance(c, Animal)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-
-<p>看来<code>c</code>不仅仅是<code>Dog</code>，<code>c</code>还是<code>Animal</code>！</p>
-<p>不过仔细想想，这是有道理的，因为<code>Dog</code>是从<code>Animal</code>继承下来的，当我们创建了一个<code>Dog</code>的实例<code>c</code>时，我们认为<code>c</code>的数据类型是<code>Dog</code>没错，但<code>c</code>同时也是<code>Animal</code>也没错，<code>Dog</code>本来就是<code>Animal</code>的一种！</p>
-<p>所以，在继承关系中，如果一个实例的数据类型是某个子类，那它的数据类型也可以被看做是父类。但是，反过来就不行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; b = Animal()</span><br><span class="line">&gt;&gt;&gt; isinstance(b, Dog)</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
-
-<p><code>Dog</code>可以看成<code>Animal</code>，但<code>Animal</code>不可以看成<code>Dog</code>。</p>
-<p>要理解多态的好处，我们还需要再编写一个函数，这个函数接受一个<code>Animal</code>类型的变量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def run_twice(animal):</span><br><span class="line">    animal.run()</span><br><span class="line">    animal.run()</span><br></pre></td></tr></table></figure>
-
-<p>当我们传入<code>Animal</code>的实例时，<code>run_twice()</code>就打印出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; run_twice(Animal())</span><br><span class="line">Animal is running...</span><br><span class="line">Animal is running...</span><br></pre></td></tr></table></figure>
-
-<p>当我们传入<code>Dog</code>的实例时，<code>run_twice()</code>就打印出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; run_twice(Dog())</span><br><span class="line">Dog is running...</span><br><span class="line">Dog is running...</span><br></pre></td></tr></table></figure>
-
-<p>当我们传入<code>Cat</code>的实例时，<code>run_twice()</code>就打印出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; run_twice(Cat())</span><br><span class="line">Cat is running...</span><br><span class="line">Cat is running...</span><br></pre></td></tr></table></figure>
-
-<p>看上去没啥意思，但是仔细想想，现在，如果我们再定义一个<code>Tortoise</code>类型，也从<code>Animal</code>派生：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Tortoise(Animal):</span><br><span class="line">    def run(self):</span><br><span class="line">        print(&apos;Tortoise is running slowly...&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>当我们调用<code>run_twice()</code>时，传入<code>Tortoise</code>的实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; run_twice(Tortoise())</span><br><span class="line">Tortoise is running slowly...</span><br><span class="line">Tortoise is running slowly...</span><br></pre></td></tr></table></figure>
-
-<p>你会发现，新增一个<code>Animal</code>的子类，不必对<code>run_twice()</code>做任何修改，实际上，任何依赖<code>Animal</code>作为参数的函数或者方法都可以不加修改地正常运行，原因就在于多态。</p>
-<p>多态的好处就是，当我们需要传入<code>Dog</code>、<code>Cat</code>、<code>Tortoise</code>……时，我们只需要接收<code>Animal</code>类型就可以了，因为<code>Dog</code>、<code>Cat</code>、<code>Tortoise</code>……都是<code>Animal</code>类型，然后，按照<code>Animal</code>类型进行操作即可。由于<code>Animal</code>类型有<code>run()</code>方法，因此，传入的任意类型，只要是<code>Animal</code>类或者子类，就会自动调用实际类型的<code>run()</code>方法，这就是多态的意思：</p>
-<p>对于一个变量，我们只需要知道它是<code>Animal</code>类型，无需确切地知道它的子类型，就可以放心地调用<code>run()</code>方法，而具体调用的<code>run()</code>方法是作用在<code>Animal</code>、<code>Dog</code>、<code>Cat</code>还是<code>Tortoise</code>对象上，由运行时该对象的确切类型决定，这就是多态真正的威力：调用方只管调用，不管细节，而当我们新增一种<code>Animal</code>的子类时，只要确保<code>run()</code>方法编写正确，不用管原来的代码是如何调用的。这就是著名的“开闭”原则：</p>
-<p>对扩展开放：允许新增<code>Animal</code>子类；</p>
-<p>对修改封闭：不需要修改依赖<code>Animal</code>类型的<code>run_twice()</code>等函数。</p>
-<p>继承还可以一级一级地继承下来，就好比从爷爷到爸爸、再到儿子这样的关系。而任何类，最终都可以追溯到根类object，这些继承关系看上去就像一颗倒着的树。比如如下的继承树：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">                ┌───────────────┐</span><br><span class="line">                │    object     │</span><br><span class="line">                └───────────────┘</span><br><span class="line">                        │</span><br><span class="line">           ┌────────────┴────────────┐</span><br><span class="line">           │                         │</span><br><span class="line">           ▼                         ▼</span><br><span class="line">    ┌─────────────┐           ┌─────────────┐</span><br><span class="line">    │   Animal    │           │    Plant    │</span><br><span class="line">    └─────────────┘           └─────────────┘</span><br><span class="line">           │                         │</span><br><span class="line">     ┌─────┴──────┐            ┌─────┴──────┐</span><br><span class="line">     │            │            │            │</span><br><span class="line">     ▼            ▼            ▼            ▼</span><br><span class="line">┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐</span><br><span class="line">│   Dog   │  │   Cat   │  │  Tree   │  │ Flower  │</span><br><span class="line">└─────────┘  └─────────┘  └─────────┘  └─────────┘</span><br></pre></td></tr></table></figure>
-
-<h3 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h3><h4 id="使用type-来判断对象类型，它返回对应的Class类型。"><a href="#使用type-来判断对象类型，它返回对应的Class类型。" class="headerlink" title="使用type()来判断对象类型，它返回对应的Class类型。"></a>使用<code>type()</code>来判断对象类型，它返回对应的Class类型。</h4><p>基本类型可以使用<code>type()</code>来判断：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; type(123)</span><br><span class="line">&lt;class &apos;int&apos;&gt;</span><br><span class="line">&gt;&gt;&gt; type(2.0)</span><br><span class="line">&lt;class &apos;float&apos;&gt;</span><br><span class="line">&gt;&gt;&gt; type([&quot;sd&quot;,&apos;s&apos;,12])</span><br><span class="line">&lt;class &apos;list&apos;&gt;</span><br><span class="line">&gt;&gt;&gt; type(None)</span><br><span class="line">&lt;class &apos;NoneType&apos;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>函数和类也可以使用<code>type()</code>来判断：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Person:</span><br><span class="line">...     pass</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; def test():</span><br><span class="line">...     pass</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; p = Person()</span><br><span class="line">&gt;&gt;&gt; type(p)</span><br><span class="line">&lt;class &apos;__main__.Person&apos;&gt;</span><br><span class="line">&gt;&gt;&gt; type(test)</span><br><span class="line">&lt;class &apos;function&apos;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>利用<code>type</code>来作为<code>if</code>的判断条件，当类型不是<code>int</code>,<code>str</code>等基本类型时，需要使用<code>types</code>模块中定义的常量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import types</span><br><span class="line">&gt;&gt;&gt; def fn():</span><br><span class="line">...     pass</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; type(fn)==types.FunctionType</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; type(abs)==types.BuiltinFunctionType</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; type(lambda x: x)==types.LambdaType</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; type((x for x in range(10)))==types.GeneratorType</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用isinstance-来判断对象是否是某种类型"><a href="#使用isinstance-来判断对象是否是某种类型" class="headerlink" title="使用isinstance()来判断对象是否是某种类型"></a>使用<code>isinstance()</code>来判断对象是否是某种类型</h4><p><code>isinstance()</code>判断的是一个对象是否是该类型本身，或者位于该类型的父继承链上</p>
-<p>能用<code>type()</code>判断的基本类型也可以用isinstance()判断:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; isinstance(&apos;a&apos;, str)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance(123, int)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance(b&apos;a&apos;, bytes)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-
-<p><code>isinstance</code>不仅可以判断是否是某种类型，还可以判断是否是某些类型的一种：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; isinstance([1, 2, 3], (list, tuple))</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance((1, 2, 3), (list, tuple))</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用dir-来获得一个对象的所有属性和方法"><a href="#使用dir-来获得一个对象的所有属性和方法" class="headerlink" title="使用dir()来获得一个对象的所有属性和方法"></a>使用dir()来获得一个对象的所有属性和方法</h4><p>获取<code>str</code>的所有属性和方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; dir(&apos;ABC&apos;)</span><br><span class="line">[&apos;__add__&apos;, &apos;__class__&apos;,..., &apos;__subclasshook__&apos;, &apos;capitalize&apos;, &apos;casefold&apos;,..., &apos;zfill&apos;]</span><br></pre></td></tr></table></figure>
-
-<p>利用<code>getattr()</code>、<code>setattr()</code>以及<code>hasattr()</code>，我们可以直接操作一个对象,不过这几个函数是在不知道对象信息的时候使用的，在了解对象信息时没有必要使用:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class MyObject(object):</span><br><span class="line">...     def __init__(self):</span><br><span class="line">...         self.x = 9</span><br><span class="line">...     def power(self):</span><br><span class="line">...         return self.x * self.x</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; obj = MyObject()</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; hasattr(obj, &apos;x&apos;) # 有属性&apos;x&apos;吗？</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; obj.x</span><br><span class="line">9</span><br><span class="line">&gt;&gt;&gt; hasattr(obj, &apos;y&apos;) # 有属性&apos;y&apos;吗？</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; setattr(obj, &apos;y&apos;, 19) # 设置一个属性&apos;y&apos;</span><br><span class="line">&gt;&gt;&gt; hasattr(obj, &apos;y&apos;) # 有属性&apos;y&apos;吗？</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; getattr(obj, &apos;y&apos;) # 获取属性&apos;y&apos;</span><br><span class="line">19</span><br><span class="line">&gt;&gt;&gt; obj.y # 获取属性&apos;y&apos;</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
-
-<p>对于<code>getattr()</code>函数，可以在传入的属性参数后面加一个默认的参数，这样在对象不含有这个属性时就会返回默认参数，而不是抛出异常了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 获取属性&apos;z&apos;，如果不存在，返回默认值404</span><br><span class="line">&gt;&gt;&gt; getattr(obj, &apos;z&apos;, 404) </span><br><span class="line">404</span><br></pre></td></tr></table></figure>
-
-<p>getattr()函数还可以用于获取方法，把获取的方法赋值给一个变量，那个变量就指向这个方法，调用那个变量就相当于调用了这个方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; getattr(obj, &apos;power&apos;) # 获取属性&apos;power&apos;</span><br><span class="line">&lt;bound method MyObject.power of &lt;__main__.MyObject object at 0x10077a6a0&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; fn = getattr(obj, &apos;power&apos;) # 获取属性&apos;power&apos;并赋值到变量fn</span><br><span class="line">&gt;&gt;&gt; fn # fn指向obj.power</span><br><span class="line">&lt;bound method MyObject.power of &lt;__main__.MyObject object at 0x10077a6a0&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; fn() # 调用fn()与调用obj.power()是一样的</span><br><span class="line">81</span><br></pre></td></tr></table></figure>
-
-<h3 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h3><p>实例属性我们在之前就已经使用过了，我们也了解到在python中可以给一个类实例绑定任何属性，方法是在类方法中利用<code>self</code>或者直接通过实例来绑定。</p>
-<p>要给类绑定一个属性的话，可以在类中直接定义它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line">    name = &apos;Student&apos;</span><br></pre></td></tr></table></figure>
-
-<p>也可以把类属性成为类的静态成员变量，这个属性是归类所有的，所有实例可以共享它。<br>需要注意的是，虽然<code>name</code>属性归类<code>Student</code>所有，但是类的所有实例都可以访问到，并且实例属性的优先级比类属性高，所以如果实例绑定了一个与类属性同名的实例属性时，优先调用的是实例属性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Student(object):</span><br><span class="line">...     name = &apos;Student&apos;</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; s = Student() # 创建实例s</span><br><span class="line">&gt;&gt;&gt; print(s.name) # 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性</span><br><span class="line">Student</span><br><span class="line">&gt;&gt;&gt; print(Student.name) # 打印类的name属性</span><br><span class="line">Student</span><br><span class="line">&gt;&gt;&gt; s.name = &apos;Michael&apos; # 给实例绑定name属性</span><br><span class="line">&gt;&gt;&gt; print(s.name) # 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性</span><br><span class="line">Michael</span><br><span class="line">&gt;&gt;&gt; print(Student.name) # 但是类属性并未消失，用Student.name仍然可以访问</span><br><span class="line">Student</span><br><span class="line">&gt;&gt;&gt; del s.name # 如果删除实例的name属性</span><br><span class="line">&gt;&gt;&gt; print(s.name) # 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了</span><br><span class="line">Student</span><br></pre></td></tr></table></figure>
-
-<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><h3 id="异常处理-1"><a href="#异常处理-1" class="headerlink" title="异常处理"></a>异常处理</h3><p>捕捉异常可以使用<code>try/except</code>语句。</p>
-<p><code>try/except</code>语句用来检测<code>try</code>语句块中的错误，从而让<code>except</code>语句捕获异常信息并处理。</p>
-<p>如果你不想在异常发生时结束你的程序，只需在<code>try</code>里捕获它。</p>
-<p>语法：</p>
-<p>以下为简单的<code>try....except...else</code>的语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">&lt;语句&gt;        #运行别的代码</span><br><span class="line">except &lt;名字&gt;：</span><br><span class="line">&lt;语句&gt;        #如果在try部份引发了&apos;name&apos;异常</span><br><span class="line">except &lt;名字&gt;，&lt;数据&gt;:</span><br><span class="line">&lt;语句&gt;        #如果引发了&apos;name&apos;异常，获得附加的数据</span><br><span class="line">else:</span><br><span class="line">&lt;语句&gt;        #如果没有异常发生</span><br></pre></td></tr></table></figure>
-
-<p><code>try</code>的工作原理是，当开始一个<code>try</code>语句后，python就在当前程序的上下文中作标记，这样当异常出现时就可以回到这里，<code>try</code>子句先执行，接下来会发生什么依赖于执行时是否出现异常。</p>
-<ul>
-<li>如果当<code>try</code>后的语句执行时发生异常，python就跳回到<code>try</code>并执行第一个匹配该异常的<code>except</code>子句，异常处理完毕，控制流就通过整个try语句（除非在处理异常时又引发新的异常）。</li>
-<li>如果在<code>try</code>后的语句里发生了异常，却没有匹配的<code>except</code>子句，异常将被递交到上层的<code>try</code>，或者到程序的最上层（这样将结束程序，并打印缺省的出错信息）。</li>
-<li>如果在<code>try</code>子句执行时没有发生异常，python将执行<code>else</code>语句后的语句（如果有<code>else</code>的话），然后控制流通过整个<code>try</code>语句。</li>
-</ul>
-<p><strong>实例</strong></p>
-<p>下面是简单的例子，它打开一个文件，在该文件中的内容写入内容，且并未发生异常：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    fh = open(&quot;testfile&quot;, &quot;w&quot;)</span><br><span class="line">    fh.write(&quot;这是一个测试文件，用于测试异常!!&quot;)</span><br><span class="line">except IOError:</span><br><span class="line">    print &quot;Error: 没有找到文件或读取文件失败&quot;</span><br><span class="line">else:</span><br><span class="line">    print &quot;内容写入文件成功&quot;</span><br><span class="line">    fh.close()</span><br></pre></td></tr></table></figure>
-
-<p>以上程序输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ python test.py </span><br><span class="line">内容写入文件成功</span><br><span class="line">$ cat testfile       # 查看写入的内容</span><br><span class="line">这是一个测试文件，用于测试异常!!</span><br></pre></td></tr></table></figure>
-
-<p><strong>实例</strong></p>
-<p>下面是简单的例子，它打开一个文件，在该文件中的内容写入内容，但文件没有写入权限，发生了异常：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    fh = open(&quot;testfile&quot;, &quot;w&quot;)</span><br><span class="line">    fh.write(&quot;这是一个测试文件，用于测试异常!!&quot;)</span><br><span class="line">except IOError:</span><br><span class="line">    print &quot;Error: 没有找到文件或读取文件失败&quot;</span><br><span class="line">else:</span><br><span class="line">    print &quot;内容写入文件成功&quot;</span><br><span class="line">    fh.close()</span><br></pre></td></tr></table></figure>
-
-<p>在执行代码前为了测试方便，我们可以先去掉 testfile 文件的写权限，命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -w testfile</span><br></pre></td></tr></table></figure>
-
-<p>再执行以上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python test.py </span><br><span class="line">Error: 没有找到文件或读取文件失败</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用except而不带任何异常类型"><a href="#使用except而不带任何异常类型" class="headerlink" title="使用except而不带任何异常类型"></a>使用<code>except</code>而不带任何异常类型</h4><p>你可以不带任何异常类型使用<code>except</code>，如下实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    正常的操作</span><br><span class="line">   ......................</span><br><span class="line">except:</span><br><span class="line">    发生异常，执行这块代码</span><br><span class="line">   ......................</span><br><span class="line">else:</span><br><span class="line">    如果没有异常执行这块代码</span><br></pre></td></tr></table></figure>
-
-<p>以上方式<code>try-except</code>语句捕获所有发生的异常。但这不是一个很好的方式，我们不能通过该程序识别出具体的异常信息。因为它捕获所有的异常。</p>
-<h4 id="使用except而带多种异常类型"><a href="#使用except而带多种异常类型" class="headerlink" title="使用except而带多种异常类型"></a>使用<code>except</code>而带多种异常类型</h4><p>你也可以使用相同的<code>except</code>语句来处理多个异常信息，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    正常的操作</span><br><span class="line">   ......................</span><br><span class="line">except(Exception1[, Exception2[,...ExceptionN]]]):</span><br><span class="line">   发生以上多个异常中的一个，执行这块代码</span><br><span class="line">   ......................</span><br><span class="line">else:</span><br><span class="line">    如果没有异常执行这块代码</span><br></pre></td></tr></table></figure>
-
-<h4 id="try-finally-语句"><a href="#try-finally-语句" class="headerlink" title="try-finally 语句"></a>try-finally 语句</h4><p><code>try-finally</code> 语句无论是否发生异常都将执行最后的代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">&lt;语句&gt;</span><br><span class="line">finally:</span><br><span class="line">&lt;语句&gt;    #退出try时总会执行</span><br><span class="line">raise</span><br></pre></td></tr></table></figure>
-
-<p><strong>实例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    fh = open(&quot;testfile&quot;, &quot;w&quot;)</span><br><span class="line">    fh.write(&quot;这是一个测试文件，用于测试异常!!&quot;)</span><br><span class="line">finally:</span><br><span class="line">    print &quot;Error: 没有找到文件或读取文件失败&quot;</span><br></pre></td></tr></table></figure>
-
-<p>如果打开的文件没有可写权限，输出如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python test.py </span><br><span class="line">Error: 没有找到文件或读取文件失败</span><br></pre></td></tr></table></figure>
-
-<p>同样的例子也可以写成如下方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    fh = open(&quot;testfile&quot;, &quot;w&quot;)</span><br><span class="line">    try:</span><br><span class="line">        fh.write(&quot;这是一个测试文件，用于测试异常!!&quot;)</span><br><span class="line">    finally:</span><br><span class="line">        print &quot;关闭文件&quot;</span><br><span class="line">        fh.close()</span><br><span class="line">except IOError:</span><br><span class="line">    print &quot;Error: 没有找到文件或读取文件失败&quot;</span><br></pre></td></tr></table></figure>
-
-<p>当在<code>try</code>块中抛出一个异常，立即执行<code>finally</code>块代码。</p>
-<p><code>finally</code>块中的所有语句执行后，异常被再次触发，并执行<code>except</code>块代码。</p>
-<p>参数的内容不同于异常。</p>
-<h3 id="异常的参数"><a href="#异常的参数" class="headerlink" title="异常的参数"></a>异常的参数</h3><p>一个异常可以带上参数，可作为输出的异常信息参数。</p>
-<p>你可以通过except语句来捕获异常的参数，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    正常的操作</span><br><span class="line">   ......................</span><br><span class="line">except ExceptionType, Argument:</span><br><span class="line">    你可以在这输出 Argument 的值...</span><br></pre></td></tr></table></figure>
-
-<p>变量接收的异常值通常包含在异常的语句中。在元组的表单中变量可以接收一个或者多个值。</p>
-<p>元组通常包含错误字符串，错误数字，错误位置。</p>
-<p><strong>实例</strong><br>以下为单个异常的实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"></span><br><span class="line"># 定义函数</span><br><span class="line">def temp_convert(var):</span><br><span class="line">    try:</span><br><span class="line">        return int(var)</span><br><span class="line">    except ValueError, Argument:</span><br><span class="line">        print &quot;参数没有包含数字\n&quot;, Argument</span><br><span class="line"></span><br><span class="line"># 调用函数</span><br><span class="line">temp_convert(&quot;xyz&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>以上程序执行结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python test.py </span><br><span class="line">参数没有包含数字</span><br><span class="line">invalid literal for int() with base 10: &apos;xyz&apos;</span><br></pre></td></tr></table></figure>
-
-<h4 id="触发异常"><a href="#触发异常" class="headerlink" title="触发异常"></a>触发异常</h4><p>我们可以使用<code>raise</code>语句自己触发异常</p>
-<p><code>raise</code>语法格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raise [Exception [, args [, traceback]]]</span><br></pre></td></tr></table></figure>
-
-<p>语句中 <code>Exception</code> 是异常的类型（例如，<code>NameError</code>）参数标准异常中任一种，<code>args</code> 是自已提供的异常参数。</p>
-<p>最后一个参数是可选的（在实践中很少使用），如果存在，是跟踪异常对象。</p>
-<p><strong>实例</strong><br>一个异常可以是一个字符串，类或对象。 Python的内核提供的异常，大多数都是实例化的类，这是一个类的实例的参数。</p>
-<p>定义一个异常非常简单，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def functionName( level ):</span><br><span class="line">    if level &lt; 1:</span><br><span class="line">        raise Exception(&quot;Invalid level!&quot;, level)</span><br><span class="line">        # 触发异常后，后面的代码就不会再执行</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>：为了能够捕获异常，”<code>except</code>“语句必须有用相同的异常来抛出类对象或者字符串。</p>
-<p>例如我们捕获以上异常，”<code>except</code>“语句如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    正常逻辑</span><br><span class="line">except Exception,err:</span><br><span class="line">    触发自定义异常    </span><br><span class="line">else:</span><br><span class="line">    其余代码</span><br></pre></td></tr></table></figure>
-
-<p><strong>实例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"></span><br><span class="line"># 定义函数</span><br><span class="line">def mye( level ):</span><br><span class="line">    if level &lt; 1:</span><br><span class="line">        raise Exception,&quot;Invalid level!&quot;</span><br><span class="line">        # 触发异常后，后面的代码就不会再执行</span><br><span class="line">try:</span><br><span class="line">    mye(0)            # 触发异常</span><br><span class="line">except Exception,err:</span><br><span class="line">    print 1,err</span><br><span class="line">else:</span><br><span class="line">    print 2</span><br></pre></td></tr></table></figure>
-
-<p>执行以上代码，输出结果为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python test.py </span><br><span class="line">1 Invalid level!</span><br></pre></td></tr></table></figure>
-
-<h3 id="用户自定义异常"><a href="#用户自定义异常" class="headerlink" title="用户自定义异常"></a>用户自定义异常</h3><p>通过创建一个新的异常类，程序可以命名它们自己的异常。异常应该是典型的继承自<code>Exception</code>类，通过直接或间接的方式。</p>
-<p>以下为与<code>RuntimeError</code>相关的实例,实例中创建了一个类，基类为<code>RuntimeError</code>，用于在异常触发时输出更多的信息。</p>
-<p>在<code>try</code>语句块中，用户自定义的异常后执行<code>except</code>块语句，变量 <code>e</code> 是用于创建<code>Networkerror</code>类的实例。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Networkerror(RuntimeError):</span><br><span class="line">    def __init__(self, arg):</span><br><span class="line">        self.args = arg</span><br></pre></td></tr></table></figure>
-
-<p>在你定义以上类后，你可以触发该异常，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    raise Networkerror(&quot;Bad hostname&quot;)</span><br><span class="line">except Networkerror,e:</span><br><span class="line">    print e.args</span><br></pre></td></tr></table></figure>
+            <p>
+              Python 基础面向对象面向对象（Object Oriented）的英文缩写是OO，它是一种设计思想。我们经常听说的面向对象编程（Object Oriented Programming，即OOP）就是主要针对大型软件设计而提出的，它可以使软件设计更加灵活，并且能更好地进行代码复用。
+面向对象中的对
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/24/Python爬虫从零开始(四)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
-
 
     
       
 
-  
-
-  
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/23/Python爬虫从零开始(三)/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Elichen blog">
     </span>
-
-    
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/06/23/Python爬虫从零开始(三)/" itemprop="url">
-                  Python 爬虫从零开始(三)
-                </a>
+                
+                <a href="/2019/06/23/Python爬虫从零开始(三)/" class="post-title-link" itemprop="url">Python 爬虫从零开始(三)</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-23T10:03:36+08:00">
-                2019-06-23
-              </time>
-            
 
-            
+              
+                
+              
 
-            
-          </span>
-
+              <time title="创建时间：2019-06-23 10:03:36" itemprop="dateCreated datePublished" datetime="2019-06-23T10:03:36+08:00">2019-06-23</time>
+            </span>
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-24 20:50:15" itemprop="dateModified" datetime="2019-06-24T20:50:15+08:00">2019-06-24</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -969,11 +1101,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -981,258 +1109,112 @@
             </span>
           
 
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+          <br>
 
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
-            <h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><p>在Python中定义函数需要使用<code>def</code>语句，接着是函数名、左括号、参数、右括号、冒号<code>：</code>，在缩进块中编写函数体，返回值使用<code>return</code>语句返回。<br>例子：定义<code>my_fun</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def my_fun():</span><br><span class="line">    print(&quot;Hello World!&quot;)</span><br><span class="line"></span><br><span class="line">my_fun()</span><br><span class="line"></span><br><span class="line">#结果 输出</span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
-
-<h3 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h3><p>定义一个函数：给了函数一个名称，指定了函数里包含的参数，和代码块结构。</p>
-<p>这个函数的基本结构完成以后，你可以通过另一个函数调用执行，也可以直接从 Python 命令提示符执行。</p>
-<p>如下实例调用了 printme() 函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 定义函数</span><br><span class="line">def printme( str ):</span><br><span class="line">   # 打印任何传入的字符串</span><br><span class="line">   print (str)</span><br><span class="line">   return</span><br><span class="line"> </span><br><span class="line"># 调用函数</span><br><span class="line">printme(&quot;我要调用用户自定义函数!&quot;)</span><br><span class="line">printme(&quot;再次调用同一函数&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">我要调用用户自定义函数!</span><br><span class="line">再次调用同一函数</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h3><p>在 python 中，类型属于对象，变量是没有类型的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[1,2,3]</span><br><span class="line">a=&quot;Runoob&quot;</span><br></pre></td></tr></table></figure>
-
-<p>以上代码中，[1,2,3] 是 List 类型，”Runoob” 是 String 类型，而变量 a 是没有类型，她仅仅是一个对象的引用（一个指针），可以是指向 List 类型对象，也可以是指向 String 类型对象。</p>
-<h4 id="可更改-mutable-与不可更改-immutable-对象"><a href="#可更改-mutable-与不可更改-immutable-对象" class="headerlink" title="可更改(mutable)与不可更改(immutable)对象"></a>可更改(mutable)与不可更改(immutable)对象</h4><p>在 python 中，strings, tuples, 和 numbers 是不可更改的对象，而 list,dict 等则是可以修改的对象。</p>
-<ul>
-<li><p>不可变类型：变量赋值 a=5 后再赋值 a=10，这里实际是新生成一个 int 值对象 10，再让 a 指向它，而 5 被丢弃，不是改变a的值，相当于新生成了a。</p>
-</li>
-<li><p>可变类型：变量赋值 la=[1,2,3,4] 后再赋值 la[2]=5 则是将 list la 的第三个元素值更改，本身la没有动，只是其内部的一部分值被修改了。</p>
-</li>
-</ul>
-<p>python 函数的参数传递：</p>
-<ul>
-<li><p>不可变类型：类似 c++ 的值传递，如 整数、字符串、元组。如fun（a），传递的只是a的值，没有影响a对象本身。比如在 fun（a）内部修改 a 的值，只是修改另一个复制的对象，不会影响 a 本身。</p>
-</li>
-<li><p>可变类型：类似 c++ 的引用传递，如 列表，字典。如 fun（la），则是将 la 真正的传过去，修改后fun外部的la也会受影响</p>
-</li>
-</ul>
-<p>python 中一切都是对象，严格意义我们不能说值传递还是引用传递，我们应该说传不可变对象和传可变对象。</p>
-<h4 id="python-传不可变对象实例"><a href="#python-传不可变对象实例" class="headerlink" title="python 传不可变对象实例"></a>python 传不可变对象实例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def ChangeInt( a ):</span><br><span class="line">    a = 10</span><br><span class="line"> </span><br><span class="line">b = 2</span><br><span class="line">ChangeInt(b)</span><br><span class="line">print( b ) # 结果是 2</span><br></pre></td></tr></table></figure>
-
-<p>实例中有 int 对象 2，指向它的变量是 b，在传递给 ChangeInt 函数时，按传值的方式复制了变量 b，a 和 b 都指向了同一个 Int 对象，在 a=10 时，则新生成一个 int 值对象 10，并让 a 指向它。</p>
-<h4 id="传递可变对象实例"><a href="#传递可变对象实例" class="headerlink" title="传递可变对象实例"></a>传递可变对象实例</h4><p>可变对象在函数里修改了参数，那么在调用这个函数的函数里，原始的参数也被改变了。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 可写函数说明</span><br><span class="line">def changeme( mylist ):</span><br><span class="line">   &quot;修改传入的列表&quot;</span><br><span class="line">   mylist.append([1,2,3,4])</span><br><span class="line">   print (&quot;函数内取值: &quot;, mylist)</span><br><span class="line">   return</span><br><span class="line"> </span><br><span class="line"># 调用changeme函数</span><br><span class="line">mylist = [10,20,30]</span><br><span class="line">changeme( mylist )</span><br><span class="line">print (&quot;函数外取值: &quot;, mylist)</span><br></pre></td></tr></table></figure>
-
-<p>传入函数的和在末尾添加新内容的对象用的是同一个引用。故输出结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数内取值:  [10, 20, 30, [1, 2, 3, 4]]</span><br><span class="line">函数外取值:  [10, 20, 30, [1, 2, 3, 4]]</span><br></pre></td></tr></table></figure>
-
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>以下是调用函数时可使用的正式参数类型：</p>
-<ul>
-<li>必需参数</li>
-<li>关键字参数</li>
-<li>默认参数</li>
-<li>不定长参数</li>
-</ul>
-<h3 id="必需参数"><a href="#必需参数" class="headerlink" title="必需参数"></a>必需参数</h3><p>必需参数须以正确的顺序传入函数。<br>调用时的数量必须和声明时的一样。</p>
-<p>调用 printme() 函数，你必须传入一个参数，不然会出现语法错误：</p>
-<p>实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#可写函数说明</span><br><span class="line">def printme( str ):</span><br><span class="line">   &quot;打印任何传入的字符串&quot;</span><br><span class="line">   print (str)</span><br><span class="line">   return</span><br><span class="line"> </span><br><span class="line"># 调用 printme 函数，不加参数会报错</span><br><span class="line">printme()</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;test.py&quot;, line 10, in &lt;module&gt;</span><br><span class="line">    printme()</span><br><span class="line">TypeError: printme() missing 1 required positional argument: &apos;str&apos;</span><br></pre></td></tr></table></figure>
-
-<h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>关键字参数和函数调用关系紧密，函数调用使用关键字参数来确定传入的参数值。</p>
-<p>使用关键字参数允许函数调用时参数的顺序与声明时不一致，因为 Python 解释器能够用参数名匹配参数值。</p>
-<p>以下实例在函数 printme() 调用时使用参数名：</p>
-<p>实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#可写函数说明</span><br><span class="line">def printme( str ):</span><br><span class="line">   &quot;打印任何传入的字符串&quot;</span><br><span class="line">   print (str)</span><br><span class="line">   return</span><br><span class="line"> </span><br><span class="line">#调用printme函数</span><br><span class="line">printme( str = &quot;elichen&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elichen</span><br></pre></td></tr></table></figure>
-
-<p>以下实例中演示了函数参数的使用不需要使用指定顺序：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#可写函数说明</span><br><span class="line">def printinfo( name, age ):</span><br><span class="line">   &quot;打印任何传入的字符串&quot;</span><br><span class="line">   print (&quot;名字: &quot;, name)</span><br><span class="line">   print (&quot;年龄: &quot;, age)</span><br><span class="line">   return</span><br><span class="line"> </span><br><span class="line">#调用printinfo函数</span><br><span class="line">printinfo( age=50, name=&quot;runoob&quot; )</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">名字:  runoob</span><br><span class="line">年龄:  50</span><br></pre></td></tr></table></figure>
-
-<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入 age 参数，则使用默认值：</p>
-<p>实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#可写函数说明</span><br><span class="line">def printinfo( name, age = 35 ):</span><br><span class="line">   &quot;打印任何传入的字符串&quot;</span><br><span class="line">   print (&quot;名字: &quot;, name)</span><br><span class="line">   print (&quot;年龄: &quot;, age)</span><br><span class="line">   return</span><br><span class="line"> </span><br><span class="line">#调用printinfo函数</span><br><span class="line">printinfo( age=50, name=&quot;runoob&quot; )</span><br><span class="line">print (&quot;------------------------&quot;)</span><br><span class="line">printinfo( name=&quot;runoob&quot; )</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">名字:  runoob</span><br><span class="line">年龄:  50</span><br><span class="line">------------------------</span><br><span class="line">名字:  runoob</span><br><span class="line">年龄:  35</span><br></pre></td></tr></table></figure>
-
-<h3 id="不定长参数"><a href="#不定长参数" class="headerlink" title="不定长参数"></a>不定长参数</h3><p>你可能需要一个函数能处理比当初声明时更多的参数。这些参数叫做不定长参数，和上述 2 种参数不同，声明时不会命名。基本语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def functionname([formal_args,] *var_args_tuple ):</span><br><span class="line">   &quot;函数_文档字符串&quot;</span><br><span class="line">   function_suite</span><br><span class="line">   return [expression]</span><br></pre></td></tr></table></figure>
-
-<p>加了星号 * 的参数会以元组(tuple)的形式导入，存放所有未命名的变量参数。</p>
-<p>实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 可写函数说明</span><br><span class="line">def printinfo( arg1, *vartuple ):</span><br><span class="line">   &quot;打印任何传入的参数&quot;</span><br><span class="line">   print (&quot;输出: &quot;)</span><br><span class="line">   print (arg1)</span><br><span class="line">   print (vartuple)</span><br><span class="line"> </span><br><span class="line"># 调用printinfo 函数</span><br><span class="line">printinfo( 70, 60, 50 )</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输出: </span><br><span class="line">70</span><br><span class="line">(60, 50)</span><br></pre></td></tr></table></figure>
-
-<p>如果在函数调用时没有指定参数，它就是一个空元组。我们也可以不向函数传递未命名的变量。如下实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 可写函数说明</span><br><span class="line">def printinfo( arg1, *vartuple ):</span><br><span class="line">   &quot;打印任何传入的参数&quot;</span><br><span class="line">   print (&quot;输出: &quot;)</span><br><span class="line">   print (arg1)</span><br><span class="line">   for var in vartuple:</span><br><span class="line">      print (var)</span><br><span class="line">   return</span><br><span class="line"> </span><br><span class="line"># 调用printinfo 函数</span><br><span class="line">printinfo( 10 )</span><br><span class="line">printinfo( 70, 60, 50 )</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输出:</span><br><span class="line">10</span><br><span class="line">输出:</span><br><span class="line">70</span><br><span class="line">60</span><br><span class="line">50</span><br></pre></td></tr></table></figure>
-
-<p>还有一种就是参数带两个星号 **基本语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def functionname([formal_args,] **var_args_dict ):</span><br><span class="line">   &quot;函数_文档字符串&quot;</span><br><span class="line">   function_suite</span><br><span class="line">   return [expression]</span><br></pre></td></tr></table></figure>
-
-<p>加了两个星号 ** 的参数会以字典的形式导入。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 可写函数说明</span><br><span class="line">def printinfo( arg1, **vardict ):</span><br><span class="line">   &quot;打印任何传入的参数&quot;</span><br><span class="line">   print (&quot;输出: &quot;)</span><br><span class="line">   print (arg1)</span><br><span class="line">   print (vardict)</span><br><span class="line"> </span><br><span class="line"># 调用printinfo 函数</span><br><span class="line">printinfo(1, a=2,b=3)</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输出: </span><br><span class="line">1</span><br><span class="line">&#123;&apos;a&apos;: 2, &apos;b&apos;: 3&#125;</span><br></pre></td></tr></table></figure>
-
-<p>声明函数时，参数中星号 * 可以单独出现，例如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def f(a,b,*,c):</span><br><span class="line">    return a+b+c</span><br></pre></td></tr></table></figure>
-
-<p>如果单独出现星号 * 后的参数必须用关键字传入。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def f(a,b,*,c):</span><br><span class="line">...     return a+b+c</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; f(1,2,3)   # 报错</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: f() takes 2 positional arguments but 3 were given</span><br><span class="line">&gt;&gt;&gt; f(1,2,c=3) # 正常</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><h3 id="Python3模块"><a href="#Python3模块" class="headerlink" title="Python3模块"></a>Python3模块</h3><p>在前面的几个章节中我们脚本上是用 python 解释器来编程，如果你从 Python 解释器退出再进入，那么你定义的所有的方法和变量就都消失了。</p>
-<p>为此 Python 提供了一个办法，把这些定义存放在文件中，为一些脚本或者交互式的解释器实例使用，这个文件被称为模块。</p>
-<p>模块是一个包含所有你定义的函数和变量的文件，其后缀名是 .py。模块可以被别的程序引入，以使用该模块中的函数等功能。这也是使用 python 标准库的方法。</p>
-<p>下面是一个使用 python 标准库中模块的例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"> </span><br><span class="line">print(&apos;命令行参数如下:&apos;)</span><br><span class="line">for i in sys.argv:</span><br><span class="line">   print(i)</span><br><span class="line"> </span><br><span class="line">print(&apos;\n\nPython 路径为：&apos;, sys.path, &apos;\n&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>执行结果如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python using_sys.py 参数1 参数2</span><br><span class="line">命令行参数如下:</span><br><span class="line">using_sys.py</span><br><span class="line">参数1</span><br><span class="line">参数2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Python 路径为： [&apos;/root&apos;, &apos;/usr/lib/python3.4&apos;, &apos;/usr/lib/python3.4/plat-x86_64-linux-gnu&apos;, &apos;/usr/lib/python3.4/lib-dynload&apos;, &apos;/usr/local/lib/python3.4/dist-packages&apos;, &apos;/usr/lib/python3/dist-packages&apos;]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>1、import sys 引入 python 标准库中的 sys.py 模块；这是引入某一模块的方法。</li>
-<li>2、sys.argv 是一个包含命令行参数的列表。</li>
-<li>3、sys.path 包含了一个 Python 解释器自动查找所需模块的路径的列表。<h3 id="导入模块语句"><a href="#导入模块语句" class="headerlink" title="导入模块语句"></a>导入模块语句</h3>想使用 Python 源文件，只需在另一个源文件里执行 import 语句，语法如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import module1[, module2[,... moduleN]</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>Python 的 from 语句让你从模块中导入一个指定的部分到当前命名空间中，语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from modname import name1[, name2[, ... nameN]]</span><br></pre></td></tr></table></figure>
-
-<p>把一个模块的所有内容全都导入到当前的命名空间也是可行的，只需使用如下声明：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from modname import *</span><br></pre></td></tr></table></figure>
-
-
+            <p>
+              Python 基础函数定义函数在Python中定义函数需要使用def语句，接着是函数名、左括号、参数、右括号、冒号：，在缩进块中编写函数体，返回值使用return语句返回。例子：定义my_fun
+def my_fun():    print(&quot;Hello World!&quot;)my_f
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/23/Python爬虫从零开始(三)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
-
 
     
       
 
-  
-
-  
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/22/Python爬虫从零开始(二)/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Elichen blog">
     </span>
-
-    
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/06/22/Python爬虫从零开始(二)/" itemprop="url">
-                  Python 爬虫从零开始(二)
-                </a>
+                
+                <a href="/2019/06/22/Python爬虫从零开始(二)/" class="post-title-link" itemprop="url">Python 爬虫从零开始(二)</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-22T17:36:21+08:00">
-                2019-06-22
-              </time>
-            
 
-            
+              
+                
+              
 
-            
-          </span>
-
+              <time title="创建时间：2019-06-22 17:36:21" itemprop="dateCreated datePublished" datetime="2019-06-22T17:36:21+08:00">2019-06-22</time>
+            </span>
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-24 20:50:02" itemprop="dateModified" datetime="2019-06-24T20:50:02+08:00">2019-06-24</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -1240,11 +1222,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -1252,336 +1230,112 @@
             </span>
           
 
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+          <br>
 
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
-            <h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。<br>在 Python 中，变量就是变量，它没有类型，我们所说的”类型”是变量所指的内存中对象的类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = 100       #整型变量</span><br><span class="line">b = 100.1     #浮点型变量</span><br><span class="line">c = &quot;elichen&quot; #字符型</span><br></pre></td></tr></table></figure>
-
-<p>Python允许多个变量同时赋值例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = b = c = 1</span><br></pre></td></tr></table></figure>
-
-<p>你也可以为多个对象指定多个变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = 1, 2, &quot;elichen&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h2><p>Python3 中有六个标准数据类型：</p>
-<ul>
-<li><p>Number    （数字）</p>
-</li>
-<li><p>String    （字符串）</p>
-</li>
-<li><p>List      （列表）</p>
-</li>
-<li><p>Tuple     （元组）</p>
-</li>
-<li><p>Set       （集合） </p>
-</li>
-<li><p>Dictionary（字典）</p>
-<p>Python3 的六个标准数据类型中：</p>
-</li>
-<li><p>不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；</p>
-</li>
-<li><p>可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。</p>
-</li>
-</ul>
-<h3 id="1、Number（数字）"><a href="#1、Number（数字）" class="headerlink" title="1、Number（数字）"></a>1、Number（数字）</h3><p>Python3 支持 int、float、bool、complex（复数）</p>
-<p>关于布尔类型：</p>
-<p>Python3中，把True和False定义成关键字，他们的值是1和0，它们可以和数字相加。</p>
-<p>在Python 3里，只有一种整数类型 int，表示为长整型，没有 python2 中的 Long。</p>
-<p>像大多数语言一样，数值类型的赋值和计算都是很直观的。</p>
-<p>内置的 type() 函数可以用来查询变量所指的对象类型。</p>
-<p>此外还可以用 isinstance 来判断：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = 1</span><br><span class="line">isinstance(a, int)</span><br><span class="line"># 结果为True</span><br></pre></td></tr></table></figure>
-
-<p>isinstance 和 type 的区别在于：</p>
-<ul>
-<li><p>type()不会认为子类是一种父类类型。</p>
-</li>
-<li><p>isinstance()会认为子类是一种父类类型。</p>
-</li>
-</ul>
-<p>当你指定一个值时，Number 对象就会被创建：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var1 = 1</span><br><span class="line">var2 = 10</span><br></pre></td></tr></table></figure>
-
-<p>你也可以使用del语句删除一些对象引用。</p>
-<p>del语句的语法是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del var1[,var2[,var3[....,varN]]]</span><br></pre></td></tr></table></figure>
-
-<p>您可以通过使用del语句删除单个或多个对象。例如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">del var</span><br><span class="line">del var_a, var_b</span><br></pre></td></tr></table></figure>
-
-<p>数值运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;5 + 4  # 加法</span><br><span class="line">9</span><br><span class="line">&gt;&gt;&gt; 4.3 - 2 # 减法</span><br><span class="line">2.3</span><br><span class="line">&gt;&gt;&gt; 3 * 7  # 乘法</span><br><span class="line">21</span><br><span class="line">&gt;&gt;&gt; 2 / 4  # 除法，得到一个浮点数</span><br><span class="line">0.5</span><br><span class="line">&gt;&gt;&gt; 2 // 4 # 除法，得到一个整数</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; 17 % 3 # 取余 </span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; 2 ** 5 # 乘方</span><br><span class="line">32</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、String（字符串）"><a href="#2、String（字符串）" class="headerlink" title="2、String（字符串）"></a>2、String（字符串）</h3><p>Python中的字符串用单引号(‘)或双引号(“)括起来，同时使用反斜杠()转义特殊字符。</p>
-<p>字符串的截取的语法格式如下：</p>
-<p>变量[头下标:尾下标]</p>
-<p>加号 + 是字符串的连接符， 星号 * 表示复制当前字符串，紧跟的数字为复制的次数。实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">str = &apos;Elichen&apos;</span><br><span class="line"> </span><br><span class="line">print (str)          # 输出字符串</span><br><span class="line">print (str[0:-1])    # 输出第一个到倒数第二个的所有字符</span><br><span class="line">print (str[0])       # 输出字符串第一个字符</span><br><span class="line">print (str[2:5])     # 输出从第三个开始到第五个的字符</span><br><span class="line">print (str[2:])      # 输出从第三个开始的后的所有字符</span><br><span class="line">print (str * 2)      # 输出字符串两次</span><br><span class="line">print (str + &quot;TEST&quot;) # 连接字符串</span><br></pre></td></tr></table></figure>
-
-<p>执行以上程序会输出如下结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Elichen</span><br><span class="line">Eliche</span><br><span class="line">E</span><br><span class="line">ich</span><br><span class="line">ichen</span><br><span class="line">ElichenElichen</span><br><span class="line">ElichenTEST</span><br></pre></td></tr></table></figure>
-
-<p>Python 使用反斜杠()转义特殊字符，如果你不想让反斜杠发生转义，可以在字符串前面添加一个 r，表示原始字符串：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(&apos;Ru\noob&apos;)</span><br><span class="line">Ru</span><br><span class="line">oob</span><br><span class="line">&gt;&gt;&gt; print(r&apos;Ru\noob&apos;)</span><br><span class="line">Ru\noob</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、List（列表）"><a href="#3、List（列表）" class="headerlink" title="3、List（列表）"></a>3、List（列表）</h3><p>List（列表） 是 Python 中使用最频繁的数据类型。</p>
-<p>列表可以完成大多数集合类的数据结构实现。列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表（所谓嵌套）。</p>
-<p>列表是写在方括号 [] 之间、用逗号分隔开的元素列表。</p>
-<p>和字符串一样，列表同样可以被索引和截取，列表被截取后返回一个包含所需元素的新列表。</p>
-<p>列表截取的语法格式如下：</p>
-<p>变量[头下标:尾下标]</p>
-<p>加号 + 是列表连接运算符，星号 * 是重复操作。如下实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list = [&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2]</span><br><span class="line">tinylist = [123, &apos;elichen&apos;]</span><br><span class="line"></span><br><span class="line">print(list)  # 输出完整列表</span><br><span class="line">print(list[0])  # 输出列表第一个元素</span><br><span class="line">print(list[1:3])  # 从第二个开始输出到第三个元素</span><br><span class="line">print(list[2:])  # 输出从第三个元素开始的所有元素</span><br><span class="line">print(tinylist * 2)  # 输出两次列表</span><br><span class="line">print(list + tinylist)  # 连接列表</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2]</span><br><span class="line">abcd</span><br><span class="line">[786, 2.23]</span><br><span class="line">[2.23, &apos;elichen&apos;, 70.2]</span><br><span class="line">[123, &apos;elichen&apos;, 123, &apos;elichen&apos;]</span><br><span class="line">[&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2, 123, &apos;elichen&apos;]</span><br></pre></td></tr></table></figure>
-
-<p> 与Python字符串不一样的是，列表中的元素是可以改变的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = [1, 2, 3, 4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; a[0] = 9</span><br><span class="line">&gt;&gt;&gt; a[2:5] = [13, 14, 15]</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[9, 2, 13, 14, 15, 6]</span><br><span class="line">&gt;&gt;&gt; a[2:5] = []   # 将对应的元素值设置为 [] </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[9, 2, 6]</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>List写在方括号之间，元素用逗号隔开。</li>
-<li>和字符串一样，list可以被索引和切片。</li>
-<li>List可以使用+操作符进行拼接。</li>
-<li>List中的元素是可以改变的。</li>
-</ol>
-<p>Python 列表截取可以接收第三个参数，参数作用是截取的步长，以下实例在索引 1 到索引 4 的位置并设置为步长为 2（间隔一个位置）来截取字符串：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1 = [&apos;e&apos;, &apos;l&apos;, &apos;i&apos;, &apos;c&apos;, &apos;h&apos;, &apos;e&apos;, &apos;n&apos;]</span><br><span class="line">print(list1[1:4:2])</span><br><span class="line"># 结果为 [&apos;l&apos;, &apos;c&apos;]</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、Tuple（元组）"><a href="#4、Tuple（元组）" class="headerlink" title="4、Tuple（元组）"></a>4、Tuple（元组）</h3><p>语法：(,,,)。使用()标识，元素之间用逗号分隔。</p>
-<p>元组（tuple）与列表类似，不同之处在于元组的元素不能修改。</p>
-<p>元组中的元素类型也可以不相同；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tuple = (&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2)</span><br><span class="line">tinytuple = (123, &apos;elichen&apos;)</span><br><span class="line"></span><br><span class="line">print(tuple)  # 输出完整元组</span><br><span class="line">print(tuple[0])  # 输出元组的第一个元素</span><br><span class="line">print(tuple[1:3])  # 输出从第二个元素开始到第三个元素</span><br><span class="line">print(tuple[2:])  # 输出从第三个元素开始的所有元素</span><br><span class="line">print(tinytuple * 2)  # 输出两次元组</span><br><span class="line">print(tuple + tinytuple)  # 连接元组</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2)</span><br><span class="line">abcd</span><br><span class="line">(786, 2.23)</span><br><span class="line">(2.23, &apos;elichen&apos;, 70.2)</span><br><span class="line">(123, &apos;elichen&apos;, 123, &apos;elichen&apos;)</span><br><span class="line">(&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2, 123, &apos;elichen&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>虽然tuple的元素不可改变，但它可以包含可变的对象，比如list列表。</p>
-<p>构造包含 0 个或 1 个元素的元组比较特殊，所以有一些额外的语法规则：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tup1 = ()    # 空元组</span><br><span class="line">tup2 = (20,) # 一个元素，需要在元素后添加逗号</span><br></pre></td></tr></table></figure>
-
-<p>string、list 和 tuple 都属于 sequence（序列）。</p>
-<p>注意：</p>
-<ul>
-<li>1、与字符串一样，元组的元素不能修改。</li>
-<li>2、元组也可以被索引和切片，方法一样。</li>
-<li>3、注意构造包含 0 或 1 个元素的元组的特殊语法规则。</li>
-<li>4、元组也可以使用+操作符进行拼接。</li>
-</ul>
-<h3 id="5、Set（集合）"><a href="#5、Set（集合）" class="headerlink" title="5、Set（集合）"></a>5、Set（集合）</h3><p>集合（set）是一个无序不重复元素的序列。创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。</p>
-<p> 创建格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parame = &#123;value01,value02,...&#125;</span><br><span class="line">或者</span><br><span class="line">set(value)</span><br></pre></td></tr></table></figure>
-
-<p>实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">student = &#123;&apos;Tom&apos;, &apos;Jim&apos;, &apos;Mary&apos;, &apos;Tom&apos;, &apos;Jack&apos;, &apos;Rose&apos;&#125;</span><br><span class="line"> </span><br><span class="line">print(student)   # 输出集合，重复的元素被自动去掉</span><br><span class="line"> </span><br><span class="line"># 成员测试</span><br><span class="line">if &apos;Rose&apos; in student :</span><br><span class="line">    print(&apos;Rose 在集合中&apos;)</span><br><span class="line">else :</span><br><span class="line">    print(&apos;Rose 不在集合中&apos;)</span><br><span class="line"></span><br><span class="line"># set可以进行集合运算</span><br><span class="line">a = set(&apos;abracadabra&apos;)</span><br><span class="line">b = set(&apos;alacazam&apos;)</span><br><span class="line"> </span><br><span class="line">print(a)</span><br><span class="line">print(a - b)     # a 和 b 的差集</span><br><span class="line">print(a | b)     # a 和 b 的并集</span><br><span class="line">print(a &amp; b)     # a 和 b 的交集</span><br><span class="line">print(a ^ b)     # a 和 b 中不同时存在的元素</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;Mary&apos;, &apos;Jim&apos;, &apos;Rose&apos;, &apos;Jack&apos;, &apos;Tom&apos;&#125;</span><br><span class="line">Rose 在集合中</span><br><span class="line">&#123;&apos;b&apos;, &apos;a&apos;, &apos;c&apos;, &apos;r&apos;, &apos;d&apos;&#125;</span><br><span class="line">&#123;&apos;b&apos;, &apos;d&apos;, &apos;r&apos;&#125;</span><br><span class="line">&#123;&apos;l&apos;, &apos;r&apos;, &apos;a&apos;, &apos;c&apos;, &apos;z&apos;, &apos;m&apos;, &apos;b&apos;, &apos;d&apos;&#125;</span><br><span class="line">&#123;&apos;a&apos;, &apos;c&apos;&#125;</span><br><span class="line">&#123;&apos;l&apos;, &apos;r&apos;, &apos;z&apos;, &apos;m&apos;, &apos;b&apos;, &apos;d&apos;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、Dictionary（字典）"><a href="#6、Dictionary（字典）" class="headerlink" title="6、Dictionary（字典）"></a>6、Dictionary（字典）</h3><p>字典是一种映射类型，字典用{ }标识，它是一个无序的键(key) : 值(value)对集合。</p>
-<p>字典（dictionary）是Python中另一个非常有用的内置数据类型，键(key)必须使用不可变类型，键(key)必须是唯一的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;&#125;</span><br><span class="line">dict[&apos;one&apos;] = &quot;1&quot;</span><br><span class="line">dict[2]     = &quot;2&quot;</span><br><span class="line"> </span><br><span class="line">tinydict = &#123;&apos;name&apos;: &apos;elichen&apos;,&apos;code&apos;:1, &apos;site&apos;: &apos;www.elichen.club&apos;&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">print (dict[&apos;one&apos;])       # 输出键为 &apos;one&apos; 的值</span><br><span class="line">print (dict[2])           # 输出键为 2 的值</span><br><span class="line">print (tinydict)          # 输出完整的字典</span><br><span class="line">print (tinydict.keys())   # 输出所有键</span><br><span class="line">print (tinydict.values()) # 输出所有值</span><br></pre></td></tr></table></figure>
-
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#123;&apos;name&apos;: &apos;elichen&apos;, &apos;code&apos;: 1, &apos;site&apos;: &apos;www.elichen.club&apos;&#125;</span><br><span class="line">dict_keys([&apos;name&apos;, &apos;code&apos;, &apos;site&apos;])</span><br><span class="line">dict_values([&apos;elichen&apos;, 1, &apos;www.elichen.club&apos;])</span><br></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<ul>
-<li>1、字典是一种映射类型，它的元素是键值对。</li>
-<li>2、字典的关键字必须为不可变类型，且不能重复。</li>
-<li>3、创建空字典使用 { }。</li>
-</ul>
-<h2 id="Python数据类型转换"><a href="#Python数据类型转换" class="headerlink" title="Python数据类型转换"></a>Python数据类型转换</h2><p>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
-<p>以下几个内置的函数可以执行数据类型之间的转换。这些函数返回一个新的对象，表示转换的值。</p>
-<table>
-<thead>
-<tr>
-<th align="center">函数</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">int(x [,base])</td>
-<td align="center">将x转换为一个整数</td>
-</tr>
-<tr>
-<td align="center">float(x)</td>
-<td align="center">将x转换到一个浮点数</td>
-</tr>
-<tr>
-<td align="center">complex(real [,imag])</td>
-<td align="center">创建一个复数</td>
-</tr>
-<tr>
-<td align="center">str(x)</td>
-<td align="center">将对象 x 转换为字符串</td>
-</tr>
-<tr>
-<td align="center">repr(x)</td>
-<td align="center">将对象 x 转换为表达式字符串</td>
-</tr>
-<tr>
-<td align="center">eval(str)</td>
-<td align="center">用来计算在字符串中的有效Python表达式,并返回一个对象</td>
-</tr>
-<tr>
-<td align="center">tuple(s)</td>
-<td align="center">将序列 s 转换为一个元组</td>
-</tr>
-<tr>
-<td align="center">list(s)</td>
-<td align="center">将序列 s 转换为一个列表</td>
-</tr>
-<tr>
-<td align="center">set(s)</td>
-<td align="center">转换为可变集合</td>
-</tr>
-<tr>
-<td align="center">dict(d)</td>
-<td align="center">创建一个字典。d 必须是一个序列 (key,value)元组。</td>
-</tr>
-<tr>
-<td align="center">frozenset(s)</td>
-<td align="center">转换为不可变集合</td>
-</tr>
-<tr>
-<td align="center">chr(x)</td>
-<td align="center">将一个整数转换为一个字符</td>
-</tr>
-<tr>
-<td align="center">ord(x)</td>
-<td align="center">将一个字符转换为它的整数值</td>
-</tr>
-<tr>
-<td align="center">hex(x)</td>
-<td align="center">将一个整数转换为一个十六进制字符串</td>
-</tr>
-<tr>
-<td align="center">oct(x)</td>
-<td align="center">将一个整数转换为一个八进制字符串</td>
-</tr>
-</tbody></table>
-
+            <p>
+              Python 基础基本数据类型Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。在 Python 中，变量就是变量，它没有类型，我们所说的”类型”是变量所指的内存中对象的类型。
+a = 100       #整型变量b = 100.1     #浮点型变量c
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/22/Python爬虫从零开始(二)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
-
 
     
       
 
-  
-
-  
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/21/Python爬虫从零开始(一)/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Elichen blog">
     </span>
-
-    
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/06/21/Python爬虫从零开始(一)/" itemprop="url">
-                  Python 爬虫从零开始(一)
-                </a>
+                
+                <a href="/2019/06/21/Python爬虫从零开始(一)/" class="post-title-link" itemprop="url">Python 爬虫从零开始(一)</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-21T10:15:20+08:00">
-                2019-06-21
-              </time>
-            
 
-            
+              
+                
+              
 
-            
-          </span>
-
+              <time title="创建时间：2019-06-21 10:15:20" itemprop="dateCreated datePublished" datetime="2019-06-21T10:15:20+08:00">2019-06-21</time>
+            </span>
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-22 14:55:46" itemprop="dateModified" datetime="2019-06-22T14:55:46+08:00">2019-06-22</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -1589,11 +1343,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -1601,456 +1351,65 @@
             </span>
           
 
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+          <br>
 
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
-            <h1 id="（一）-Python环境搭建"><a href="#（一）-Python环境搭建" class="headerlink" title="（一） Python环境搭建"></a>（一） Python环境搭建</h1><h2 id="第一步-Python安装包下载"><a href="#第一步-Python安装包下载" class="headerlink" title="第一步:Python安装包下载"></a>第一步:Python安装包下载</h2><p>首先从 <strong><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Python官网</a></strong> 下载Python安装程序，注意32位和64位的区别，如果你的电脑是32位的请选择32位的安装包，如果你的电脑是64位的请选择64位的安装包。</p>
-<h2 id="第二步-安装"><a href="#第二步-安装" class="headerlink" title="第二步:安装"></a>第二步:安装</h2><p>双击下载好的Python安装包。</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/1.png" alt="1"></p>
-<p>勾选添加Python到环境变量，选择默认安装或者自定义安装，如果忘记打勾，则需要手工加到环境变量中；在这里我选择的是自定义安装，点击“自定义安装”进行下一步操作；</p>
-<p>进入到下一步后，选择需要安装的组件，然后点击下一步:</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/2.png" alt="2"></p>
-<p>在这里可以自定义路径选择安装：</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/3.png" alt="3"></p>
-<p>点击下一步后，就开始真正安装了，安装完成后点击关闭即可。</p>
-<h2 id="第三步-测试"><a href="#第三步-测试" class="headerlink" title="第三步: 测试"></a>第三步: 测试</h2><p>python安装好之后，我们要检测一下是否安装成功，用系统管理员打开命令行工具cmd，输入“python”,然后敲回车，如果出现如下界面，则表示我们安装成功了；</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/4.png" alt="4"></p>
-<p>如果不显示版本号，提示‘python’ 不是内部或外部命令，也不是可运行的程序或批处理文件，则需要手动将python.exe所在的目录添加到环境变量PATH中。</p>
-<h1 id="（二）pycharm的安装与配置"><a href="#（二）pycharm的安装与配置" class="headerlink" title="（二）pycharm的安装与配置"></a>（二）pycharm的安装与配置</h1><h2 id="第一步-下载pycharm"><a href="#第一步-下载pycharm" class="headerlink" title="第一步:下载pycharm"></a>第一步:下载pycharm</h2><p>点击 <strong><a href="http://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener">pycharm官网</a></strong> 进入pycharm 官网下载免费的Community版本</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/5.png" alt="5"></p>
-<h2 id="第二步-安装pycharm"><a href="#第二步-安装pycharm" class="headerlink" title="第二步:安装pycharm"></a>第二步:安装pycharm</h2><p>双击下载的安装包,出现如下界面点击next</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/6.png" alt="6"></p>
-<p>可以选择安装位置，继续点击next</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/7.png" alt="7"></p>
-<p>勾选以下选项，点击next</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/8.png" alt="8"></p>
-<p>点击install</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/9.png" alt="9"></p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/10.png" alt="10"></p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/11.png" alt="11"></p>
-<h2 id="第三步-pycharm的入门基础配置"><a href="#第三步-pycharm的入门基础配置" class="headerlink" title="第三步:pycharm的入门基础配置"></a>第三步:pycharm的入门基础配置</h2><p>安装完成打开pycharm显示如下，因为之前安装过所以会让我当如配置文件，没安装过的选择不导入设置，点击OK。</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/12.png" alt="12"></p>
-<p>同意协议点击继续</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/13.png" alt="13"></p>
-<p>选择喜欢的主题</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/14.png" alt="14"></p>
-<p>选择你要安装的插件继续</p>
-<p>打开设置</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/15.png" alt="15"></p>
-<p>展开editor 双击Font 设置你喜欢的字体样式和大小</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/16.png" alt="16"></p>
-<h2 id="第四步-pycharm的Python解释器的搭建"><a href="#第四步-pycharm的Python解释器的搭建" class="headerlink" title="第四步:pycharm的Python解释器的搭建"></a>第四步:pycharm的Python解释器的搭建</h2><p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/17.png" alt="17"></p>
-<p>完成如下操作点击OK。</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/19.png" alt="19"></p>
-<p>点击OK完成设置</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/20.png" alt="20"></p>
-<p>更新Python解释器</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/21.png" alt="21"></p>
-<p>完成后就可以新建工程愉快的写代码了。</p>
-<h2 id="第五步-pycharm的建立一个新项目"><a href="#第五步-pycharm的建立一个新项目" class="headerlink" title="第五步:pycharm的建立一个新项目"></a>第五步:pycharm的建立一个新项目</h2><p>点击create New Project</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/22.png" alt="22"></p>
-<p>选择项目路径</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/23.png" alt="23"></p>
-<p>选择项目解释器，选择刚刚设置的Python解释器</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/24.png" alt="24"></p>
-<p>点击create</p>
-<p>项目目录右键点击选择new  选择 Python File</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/25.png" alt="25"></p>
-<p>给文件起个名字点击OK</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/26.png" alt="26"></p>
-<p>写入代码右键单击编辑区选择Run</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/27.png" alt="27"></p>
-<p>输出结果</p>
-<p><img src="/img/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/28.png" alt="28"></p>
-<p><strong>大功告成!</strong> 至此，pycharm已经全部安装完成。</p>
+            <p>
+              （一） Python环境搭建第一步:Python安装包下载首先从 Python官网 下载Python安装程序，注意32位和64位的区别，如果你的电脑是32位的请选择32位的安装包，如果你的电脑是64位的请选择64位的安装包。
+第二步:安装双击下载好的Python安装包。
 
+勾选添加Python到环境
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/21/Python爬虫从零开始(一)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/04/18/生日快乐/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eli chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Elichen blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/04/18/生日快乐/" itemprop="url">
-                  happybirthday
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-18T00:00:00+08:00">
-                2019-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX1/H9xWJsv77Ft359MywEgrbdEkbwA8uFCxL8A6xwlaGX0znp6Hx/Vh2z7px8RksDj9HyedUGTLEG7RFJBAR060xU4NgvWfKxonpBFZktJfEQO89DD1bQbjtidVe3Hn/OKxbgzr22MG2KKH0Wkh53Qp72QXkiegG6nKQXWhXkm+C8h3jXmWc+74t</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/03/30/一周年快乐/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eli chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Elichen blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/03/30/一周年快乐/" itemprop="url">
-                  给🐖的信
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T21:18:02+08:00">
-                2019-03-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX1/Us0pjNmDT1WjYDSRLpmK7Sq87+ZFdPQ1a0tgiiqliMRS2SQ5XwTHaVBruFo1WXxtzgB4ZcBPlrJlPDHeO23CT1ZZULPrz/8q1GK1N3XIh0I74I8CbLpRsdCX5eXPSxBVqvacyDL9f5lOGpRN6/E95Zij8rfX8PLErjoJNnQAr6IDseWSKTj0L</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
 
     
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
           </div>
           
 
-
-          
-
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -2064,207 +1423,145 @@ doDecrypt(passwd, onError);
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
 
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Eli chen</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
       
-
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Eli chen">
-          <p class="site-author-name" itemprop="name">Eli chen</p>
-           
-              <p class="site-description motion-element" itemprop="description"></p>
+      
+      <div class="site-state-item site-state-categories">
+        
           
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/chenqikai" title="GitHub &rarr; https://github.com/chenqikai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/chenqikai || github" target="_blank" title="github">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  github
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Eli chen</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
-
-    
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
       </div>
+
     
 
   </div>
 
   
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
 
-
-
-
-
-
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
 
 
 
   
 
-
-  
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
+  <script src="/js/next-boot.js?v=7.3.0"></script>
 
   
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
 
   
 
@@ -2274,44 +1571,35 @@ doDecrypt(passwd, onError);
 
 
 
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
 
 
 
 
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
