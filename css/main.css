@@ -1710,7 +1710,6 @@ pre .javascript .function {
   margin: 0 auto;
   max-width: 120px;
   padding: 2px;
-  border-radius: 50%;
 }
 .site-author-image {
   transition: transform 1s ease-out;
@@ -1744,7 +1743,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #47a3ff;
+  background: #90ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
