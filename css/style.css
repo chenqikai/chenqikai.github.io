@@ -1,0 +1,298 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300italic);
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #ee9ca7;
+}
+
+#cake {
+  display: block;
+  position: relative;
+  margin: -10em auto 0 auto;
+}
+
+/* ============================================== Candle
+*/
+.velas {
+  background: #ffffff;
+  border-radius: 10px;
+  position: absolute;
+  top: 228px;
+  left: 50%;
+  margin-left: -2.5px;
+  margin-top: -8.33333333px;
+  width: 5px;
+  height: 35px;
+  -webkit-transform: translateY(-300px);
+  -ms-transform: translateY(-300px);
+  transform: translateY(-300px);
+  -webkit-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-animation: in 500ms 6s ease-out forwards;
+  animation: in 500ms 6s ease-out forwards;
+}
+
+.velas:after,
+.velas:before {
+  background: rgba(255, 0, 0, 0.4);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.22222222px;
+}
+
+.velas:after {
+  top: 25%;
+  left: 0;
+}
+
+.velas:before {
+  top: 45%;
+  left: 0;
+}
+
+/* ============================================== Fire
+*/
+.fuego {
+  border-radius: 100%;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  margin-left: -2.2px;
+  width: 6.66666667px;
+  height: 18px;
+}
+
+.fuego:nth-child(1) {
+  -webkit-animation: fuego 2s 6.5s infinite;
+  animation: fuego 2s 6.5s infinite;
+}
+
+.fuego:nth-child(2) {
+  -webkit-animation: fuego 1.5s 6.5s infinite;
+  animation: fuego 1.5s 6.5s infinite;
+}
+
+.fuego:nth-child(3) {
+  -webkit-animation: fuego 1s 6.5s infinite;
+  animation: fuego 1s 6.5s infinite;
+}
+
+.fuego:nth-child(4) {
+  -webkit-animation: fuego 0.5s 6.5s infinite;
+  animation: fuego 0.5s 6.5s infinite;
+}
+
+.fuego:nth-child(5) {
+  -webkit-animation: fuego 0.2s 6.5s infinite;
+  animation: fuego 0.2s 6.5s infinite;
+}
+
+/* ============================================== Animation Fire
+*/
+@-webkit-keyframes fuego {
+  0%, 100% {
+    background: rgba(254, 248, 97, 0.5);
+    -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    -webkit-transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+    box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+    -webkit-transform: translateY(-20px) scale(0);
+    transform: translateY(-20px) scale(0);
+  }
+}
+@keyframes fuego {
+  0%, 100% {
+    background: rgba(254, 248, 97, 0.5);
+    -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    -webkit-transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+    box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+    -webkit-transform: translateY(-20px) scale(0);
+    transform: translateY(-20px) scale(0);
+  }
+}
+@-webkit-keyframes in {
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes in {
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.text {
+  color: #8b6a60;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+}
+.text h1 {
+  font-size: 1.4em;
+}
+
+#code .string {
+	color: #2a36ff
+}
+
+#code .keyword {
+	color: #7f0055;
+	font-weight: bold
+}
+
+#code .space {
+	margin-left: 7px
+}
+
+#code{
+		width: 100%;
+	height: 100%
+}
+body,
+button,
+input,
+textarea {
+	font-family: "微软雅黑", sans-serif
+}
+
+a {
+	text-decoration: none;
+}
+
+
+#mainDiv {
+	width: 100%;
+	height: 100%
+}
+
+
+#elapseClock {
+	text-align: right;
+	font-size: 18px;
+	margin-top: 10px;
+	margin-bottom: 10px
+}
+
+#words {
+	font-family: "微软雅黑";
+	width: 500px;
+	font-size: 24px;
+	color: #666
+}
+
+#messages {
+	margin-top: 80px;
+	margin-left: 80px;
+	display: none
+}
+
+#elapseClock .digit {
+	font-family: "digit";
+	font-size: 36px
+}
+
+#loveu {
+	padding: 5px;
+	font-size: 22px;
+	margin-top: 55px;
+	margin-left: 80px;
+	text-align: text;
+	display: none
+}
+
+#loveu .signature {
+	margin-top: 10px;
+	font-size: 20px;
+	font-style: italic
+}
+
+#clickSound {
+	display: none
+}
+
+#code {
+	float: left;
+	width: 100%;
+	height: 100%;
+	color: #333;
+	font-family: "微软雅黑";
+	font-size: 18px;
+	line-height: 26px;
+}
+
+#code .string {
+	color: #2a36ff
+}
+
+#code .keyword {
+	color: #7f0055;
+	font-weight: bold
+}
+
+#code .space {
+	margin-left: 7px
+}
+
+#code .comments {
+	color: #7F0055
+}
+
+#copyright {
+	margin-top: 10px;
+	text-align: center;
+	width: 100%;
+	color: #F180C5
+}
+
+#errorMsg {
+	width: 100%;
+	text-align: center;
+	font-size: 24px;
+	position: absolute;
+	top: 100px;
+	left: 0
+}
+
+#copyright a {
+	color: #F180C5
+}
+
+.bb {
+	display: block;
+	text-align: center;
+	padding-lef: 100px;
+	font-size: 400px;
+	color: ##7F0055
+}
+
+#yyxz {
+	position: fixed;
+	bottom: 6.8em;
+	left: 8%;
+	z-index: 9999;
+}
+
+#code{
+	text-align: center;
+}

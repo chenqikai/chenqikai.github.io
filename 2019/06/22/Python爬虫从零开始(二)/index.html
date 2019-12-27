@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-corner-indicator.min.css?v=1.0.2">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="Python 基础基本数据类型Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。在 Python 中，变量就是变量，它没有类型，我们所说的”类型”是变量所指的内存中对象的类型。 123a = 100       #整型变量b = 100.1     #浮点型变量c = &amp;quot;elichen&amp;quot; #字符型  Python允许多个变量同时赋值例如">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 爬虫从零开始(二)">
+<meta property="og:url" content="http://chenqikai.github.io/2019/06/22/Python爬虫从零开始(二)/index.html">
+<meta property="og:site_name" content="Elichen blog">
+<meta property="og:description" content="Python 基础基本数据类型Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。在 Python 中，变量就是变量，它没有类型，我们所说的”类型”是变量所指的内存中对象的类型。 123a = 100       #整型变量b = 100.1     #浮点型变量c = &amp;quot;elichen&amp;quot; #字符型  Python允许多个变量同时赋值例如">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-09T12:21:29.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 爬虫从零开始(二)">
+<meta name="twitter:description" content="Python 基础基本数据类型Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。在 Python 中，变量就是变量，它没有类型，我们所说的”类型”是变量所指的内存中对象的类型。 123a = 100       #整型变量b = 100.1     #浮点型变量c = &amp;quot;elichen&amp;quot; #字符型  Python允许多个变量同时赋值例如">
+  <link rel="canonical" href="http://chenqikai.github.io/2019/06/22/Python爬虫从零开始(二)/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python 爬虫从零开始(二) | Elichen blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?00dc780f8ffe07194bbae3a2dcd66e8c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/chenqikai" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Elichen blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/22/Python爬虫从零开始(二)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">Python 爬虫从零开始(二)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-22 17:36:21" itemprop="dateCreated datePublished" datetime="2019-06-22T17:36:21+08:00">2019-06-22</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-09 20:21:29" itemprop="dateModified" datetime="2019-08-09T20:21:29+08:00">2019-08-09</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">6.6k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">6 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。<br>在 Python 中，变量就是变量，它没有类型，我们所说的”类型”是变量所指的内存中对象的类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = 100       #整型变量</span><br><span class="line">b = 100.1     #浮点型变量</span><br><span class="line">c = &quot;elichen&quot; #字符型</span><br></pre></td></tr></table></figure>
+
+<p>Python允许多个变量同时赋值例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = b = c = 1</span><br></pre></td></tr></table></figure>
+
+<p>你也可以为多个对象指定多个变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = 1, 2, &quot;elichen&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h2><p>Python3 中有六个标准数据类型：</p>
+<ul>
+<li><p>Number    （数字）</p>
+</li>
+<li><p>String    （字符串）</p>
+</li>
+<li><p>List      （列表）</p>
+</li>
+<li><p>Tuple     （元组）</p>
+</li>
+<li><p>Set       （集合） </p>
+</li>
+<li><p>Dictionary（字典）</p>
+<p>Python3 的六个标准数据类型中：</p>
+</li>
+<li><p>不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；</p>
+</li>
+<li><p>可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。</p>
+</li>
+</ul>
+<h3 id="1、Number（数字）"><a href="#1、Number（数字）" class="headerlink" title="1、Number（数字）"></a>1、Number（数字）</h3><p>Python3 支持 int、float、bool、complex（复数）</p>
+<p>关于布尔类型：</p>
+<p>Python3中，把True和False定义成关键字，他们的值是1和0，它们可以和数字相加。</p>
+<p>在Python 3里，只有一种整数类型 int，表示为长整型，没有 python2 中的 Long。</p>
+<p>像大多数语言一样，数值类型的赋值和计算都是很直观的。</p>
+<p>内置的 type() 函数可以用来查询变量所指的对象类型。</p>
+<p>此外还可以用 isinstance 来判断：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = 1</span><br><span class="line">isinstance(a, int)</span><br><span class="line"># 结果为True</span><br></pre></td></tr></table></figure>
+
+<p>isinstance 和 type 的区别在于：</p>
+<ul>
+<li><p>type()不会认为子类是一种父类类型。</p>
+</li>
+<li><p>isinstance()会认为子类是一种父类类型。</p>
+</li>
+</ul>
+<p>当你指定一个值时，Number 对象就会被创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var1 = 1</span><br><span class="line">var2 = 10</span><br></pre></td></tr></table></figure>
+
+<p>你也可以使用del语句删除一些对象引用。</p>
+<p>del语句的语法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del var1[,var2[,var3[....,varN]]]</span><br></pre></td></tr></table></figure>
+
+<p>您可以通过使用del语句删除单个或多个对象。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">del var</span><br><span class="line">del var_a, var_b</span><br></pre></td></tr></table></figure>
+
+<p>数值运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;5 + 4  # 加法</span><br><span class="line">9</span><br><span class="line">&gt;&gt;&gt; 4.3 - 2 # 减法</span><br><span class="line">2.3</span><br><span class="line">&gt;&gt;&gt; 3 * 7  # 乘法</span><br><span class="line">21</span><br><span class="line">&gt;&gt;&gt; 2 / 4  # 除法，得到一个浮点数</span><br><span class="line">0.5</span><br><span class="line">&gt;&gt;&gt; 2 // 4 # 除法，得到一个整数</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; 17 % 3 # 取余 </span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; 2 ** 5 # 乘方</span><br><span class="line">32</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、String（字符串）"><a href="#2、String（字符串）" class="headerlink" title="2、String（字符串）"></a>2、String（字符串）</h3><p>Python中的字符串用单引号(‘)或双引号(“)括起来，同时使用反斜杠()转义特殊字符。</p>
+<p>字符串的截取的语法格式如下：</p>
+<p>变量[头下标:尾下标]</p>
+<p>加号 + 是字符串的连接符， 星号 * 表示复制当前字符串，紧跟的数字为复制的次数。实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">str = &apos;Elichen&apos;</span><br><span class="line"> </span><br><span class="line">print (str)          # 输出字符串</span><br><span class="line">print (str[0:-1])    # 输出第一个到倒数第二个的所有字符</span><br><span class="line">print (str[0])       # 输出字符串第一个字符</span><br><span class="line">print (str[2:5])     # 输出从第三个开始到第五个的字符</span><br><span class="line">print (str[2:])      # 输出从第三个开始的后的所有字符</span><br><span class="line">print (str * 2)      # 输出字符串两次</span><br><span class="line">print (str + &quot;TEST&quot;) # 连接字符串</span><br></pre></td></tr></table></figure>
+
+<p>执行以上程序会输出如下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Elichen</span><br><span class="line">Eliche</span><br><span class="line">E</span><br><span class="line">ich</span><br><span class="line">ichen</span><br><span class="line">ElichenElichen</span><br><span class="line">ElichenTEST</span><br></pre></td></tr></table></figure>
+
+<p>Python 使用反斜杠()转义特殊字符，如果你不想让反斜杠发生转义，可以在字符串前面添加一个 r，表示原始字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(&apos;Ru\noob&apos;)</span><br><span class="line">Ru</span><br><span class="line">oob</span><br><span class="line">&gt;&gt;&gt; print(r&apos;Ru\noob&apos;)</span><br><span class="line">Ru\noob</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、List（列表）"><a href="#3、List（列表）" class="headerlink" title="3、List（列表）"></a>3、List（列表）</h3><p>List（列表） 是 Python 中使用最频繁的数据类型。</p>
+<p>列表可以完成大多数集合类的数据结构实现。列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表（所谓嵌套）。</p>
+<p>列表是写在方括号 [] 之间、用逗号分隔开的元素列表。</p>
+<p>和字符串一样，列表同样可以被索引和截取，列表被截取后返回一个包含所需元素的新列表。</p>
+<p>列表截取的语法格式如下：</p>
+<p>变量[头下标:尾下标]</p>
+<p>加号 + 是列表连接运算符，星号 * 是重复操作。如下实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list = [&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2]</span><br><span class="line">tinylist = [123, &apos;elichen&apos;]</span><br><span class="line"></span><br><span class="line">print(list)  # 输出完整列表</span><br><span class="line">print(list[0])  # 输出列表第一个元素</span><br><span class="line">print(list[1:3])  # 从第二个开始输出到第三个元素</span><br><span class="line">print(list[2:])  # 输出从第三个元素开始的所有元素</span><br><span class="line">print(tinylist * 2)  # 输出两次列表</span><br><span class="line">print(list + tinylist)  # 连接列表</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2]</span><br><span class="line">abcd</span><br><span class="line">[786, 2.23]</span><br><span class="line">[2.23, &apos;elichen&apos;, 70.2]</span><br><span class="line">[123, &apos;elichen&apos;, 123, &apos;elichen&apos;]</span><br><span class="line">[&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2, 123, &apos;elichen&apos;]</span><br></pre></td></tr></table></figure>
+
+<p> 与Python字符串不一样的是，列表中的元素是可以改变的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = [1, 2, 3, 4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; a[0] = 9</span><br><span class="line">&gt;&gt;&gt; a[2:5] = [13, 14, 15]</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[9, 2, 13, 14, 15, 6]</span><br><span class="line">&gt;&gt;&gt; a[2:5] = []   # 将对应的元素值设置为 [] </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[9, 2, 6]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>List写在方括号之间，元素用逗号隔开。</li>
+<li>和字符串一样，list可以被索引和切片。</li>
+<li>List可以使用+操作符进行拼接。</li>
+<li>List中的元素是可以改变的。</li>
+</ol>
+<p>Python 列表截取可以接收第三个参数，参数作用是截取的步长，以下实例在索引 1 到索引 4 的位置并设置为步长为 2（间隔一个位置）来截取字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1 = [&apos;e&apos;, &apos;l&apos;, &apos;i&apos;, &apos;c&apos;, &apos;h&apos;, &apos;e&apos;, &apos;n&apos;]</span><br><span class="line">print(list1[1:4:2])</span><br><span class="line"># 结果为 [&apos;l&apos;, &apos;c&apos;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、Tuple（元组）"><a href="#4、Tuple（元组）" class="headerlink" title="4、Tuple（元组）"></a>4、Tuple（元组）</h3><p>语法：(,,,)。使用()标识，元素之间用逗号分隔。</p>
+<p>元组（tuple）与列表类似，不同之处在于元组的元素不能修改。</p>
+<p>元组中的元素类型也可以不相同；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tuple = (&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2)</span><br><span class="line">tinytuple = (123, &apos;elichen&apos;)</span><br><span class="line"></span><br><span class="line">print(tuple)  # 输出完整元组</span><br><span class="line">print(tuple[0])  # 输出元组的第一个元素</span><br><span class="line">print(tuple[1:3])  # 输出从第二个元素开始到第三个元素</span><br><span class="line">print(tuple[2:])  # 输出从第三个元素开始的所有元素</span><br><span class="line">print(tinytuple * 2)  # 输出两次元组</span><br><span class="line">print(tuple + tinytuple)  # 连接元组</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2)</span><br><span class="line">abcd</span><br><span class="line">(786, 2.23)</span><br><span class="line">(2.23, &apos;elichen&apos;, 70.2)</span><br><span class="line">(123, &apos;elichen&apos;, 123, &apos;elichen&apos;)</span><br><span class="line">(&apos;abcd&apos;, 786, 2.23, &apos;elichen&apos;, 70.2, 123, &apos;elichen&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>虽然tuple的元素不可改变，但它可以包含可变的对象，比如list列表。</p>
+<p>构造包含 0 个或 1 个元素的元组比较特殊，所以有一些额外的语法规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tup1 = ()    # 空元组</span><br><span class="line">tup2 = (20,) # 一个元素，需要在元素后添加逗号</span><br></pre></td></tr></table></figure>
+
+<p>string、list 和 tuple 都属于 sequence（序列）。</p>
+<p>注意：</p>
+<ul>
+<li>1、与字符串一样，元组的元素不能修改。</li>
+<li>2、元组也可以被索引和切片，方法一样。</li>
+<li>3、注意构造包含 0 或 1 个元素的元组的特殊语法规则。</li>
+<li>4、元组也可以使用+操作符进行拼接。</li>
+</ul>
+<h3 id="5、Set（集合）"><a href="#5、Set（集合）" class="headerlink" title="5、Set（集合）"></a>5、Set（集合）</h3><p>集合（set）是一个无序不重复元素的序列。创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。</p>
+<p> 创建格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parame = &#123;value01,value02,...&#125;</span><br><span class="line">或者</span><br><span class="line">set(value)</span><br></pre></td></tr></table></figure>
+
+<p>实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">student = &#123;&apos;Tom&apos;, &apos;Jim&apos;, &apos;Mary&apos;, &apos;Tom&apos;, &apos;Jack&apos;, &apos;Rose&apos;&#125;</span><br><span class="line"> </span><br><span class="line">print(student)   # 输出集合，重复的元素被自动去掉</span><br><span class="line"> </span><br><span class="line"># 成员测试</span><br><span class="line">if &apos;Rose&apos; in student :</span><br><span class="line">    print(&apos;Rose 在集合中&apos;)</span><br><span class="line">else :</span><br><span class="line">    print(&apos;Rose 不在集合中&apos;)</span><br><span class="line"></span><br><span class="line"># set可以进行集合运算</span><br><span class="line">a = set(&apos;abracadabra&apos;)</span><br><span class="line">b = set(&apos;alacazam&apos;)</span><br><span class="line"> </span><br><span class="line">print(a)</span><br><span class="line">print(a - b)     # a 和 b 的差集</span><br><span class="line">print(a | b)     # a 和 b 的并集</span><br><span class="line">print(a &amp; b)     # a 和 b 的交集</span><br><span class="line">print(a ^ b)     # a 和 b 中不同时存在的元素</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;Mary&apos;, &apos;Jim&apos;, &apos;Rose&apos;, &apos;Jack&apos;, &apos;Tom&apos;&#125;</span><br><span class="line">Rose 在集合中</span><br><span class="line">&#123;&apos;b&apos;, &apos;a&apos;, &apos;c&apos;, &apos;r&apos;, &apos;d&apos;&#125;</span><br><span class="line">&#123;&apos;b&apos;, &apos;d&apos;, &apos;r&apos;&#125;</span><br><span class="line">&#123;&apos;l&apos;, &apos;r&apos;, &apos;a&apos;, &apos;c&apos;, &apos;z&apos;, &apos;m&apos;, &apos;b&apos;, &apos;d&apos;&#125;</span><br><span class="line">&#123;&apos;a&apos;, &apos;c&apos;&#125;</span><br><span class="line">&#123;&apos;l&apos;, &apos;r&apos;, &apos;z&apos;, &apos;m&apos;, &apos;b&apos;, &apos;d&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、Dictionary（字典）"><a href="#6、Dictionary（字典）" class="headerlink" title="6、Dictionary（字典）"></a>6、Dictionary（字典）</h3><p>字典是一种映射类型，字典用{ }标识，它是一个无序的键(key) : 值(value)对集合。</p>
+<p>字典（dictionary）是Python中另一个非常有用的内置数据类型，键(key)必须使用不可变类型，键(key)必须是唯一的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;&#125;</span><br><span class="line">dict[&apos;one&apos;] = &quot;1&quot;</span><br><span class="line">dict[2]     = &quot;2&quot;</span><br><span class="line"> </span><br><span class="line">tinydict = &#123;&apos;name&apos;: &apos;elichen&apos;,&apos;code&apos;:1, &apos;site&apos;: &apos;www.elichen.club&apos;&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">print (dict[&apos;one&apos;])       # 输出键为 &apos;one&apos; 的值</span><br><span class="line">print (dict[2])           # 输出键为 2 的值</span><br><span class="line">print (tinydict)          # 输出完整的字典</span><br><span class="line">print (tinydict.keys())   # 输出所有键</span><br><span class="line">print (tinydict.values()) # 输出所有值</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#123;&apos;name&apos;: &apos;elichen&apos;, &apos;code&apos;: 1, &apos;site&apos;: &apos;www.elichen.club&apos;&#125;</span><br><span class="line">dict_keys([&apos;name&apos;, &apos;code&apos;, &apos;site&apos;])</span><br><span class="line">dict_values([&apos;elichen&apos;, 1, &apos;www.elichen.club&apos;])</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li>1、字典是一种映射类型，它的元素是键值对。</li>
+<li>2、字典的关键字必须为不可变类型，且不能重复。</li>
+<li>3、创建空字典使用 { }。</li>
+</ul>
+<h2 id="Python数据类型转换"><a href="#Python数据类型转换" class="headerlink" title="Python数据类型转换"></a>Python数据类型转换</h2><p>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
+<p>以下几个内置的函数可以执行数据类型之间的转换。这些函数返回一个新的对象，表示转换的值。</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">int(x [,base])</td>
+<td align="center">将x转换为一个整数</td>
+</tr>
+<tr>
+<td align="center">float(x)</td>
+<td align="center">将x转换到一个浮点数</td>
+</tr>
+<tr>
+<td align="center">complex(real [,imag])</td>
+<td align="center">创建一个复数</td>
+</tr>
+<tr>
+<td align="center">str(x)</td>
+<td align="center">将对象 x 转换为字符串</td>
+</tr>
+<tr>
+<td align="center">repr(x)</td>
+<td align="center">将对象 x 转换为表达式字符串</td>
+</tr>
+<tr>
+<td align="center">eval(str)</td>
+<td align="center">用来计算在字符串中的有效Python表达式,并返回一个对象</td>
+</tr>
+<tr>
+<td align="center">tuple(s)</td>
+<td align="center">将序列 s 转换为一个元组</td>
+</tr>
+<tr>
+<td align="center">list(s)</td>
+<td align="center">将序列 s 转换为一个列表</td>
+</tr>
+<tr>
+<td align="center">set(s)</td>
+<td align="center">转换为可变集合</td>
+</tr>
+<tr>
+<td align="center">dict(d)</td>
+<td align="center">创建一个字典。d 必须是一个序列 (key,value)元组。</td>
+</tr>
+<tr>
+<td align="center">frozenset(s)</td>
+<td align="center">转换为不可变集合</td>
+</tr>
+<tr>
+<td align="center">chr(x)</td>
+<td align="center">将一个整数转换为一个字符</td>
+</tr>
+<tr>
+<td align="center">ord(x)</td>
+<td align="center">将一个字符转换为它的整数值</td>
+</tr>
+<tr>
+<td align="center">hex(x)</td>
+<td align="center">将一个整数转换为一个十六进制字符串</td>
+</tr>
+<tr>
+<td align="center">oct(x)</td>
+<td align="center">将一个整数转换为一个八进制字符串</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Eli chen 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Eli chen 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      </div>
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Eli chen</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chenqikai.github.io/2019/06/22/Python爬虫从零开始(二)/" title="Python 爬虫从零开始(二)">http://chenqikai.github.io/2019/06/22/Python爬虫从零开始(二)/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/06/21/Python爬虫从零开始(一)/" rel="next" title="Python 爬虫从零开始(一)">
+                <i class="fa fa-chevron-left"></i> Python 爬虫从零开始(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/06/23/Python爬虫从零开始(三)/" rel="prev" title="Python 爬虫从零开始(三)">
+                Python 爬虫从零开始(三) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Eli chen">
+  <p class="site-author-name" itemprop="name">Eli chen</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/chenqikai" title="GitHub &rarr; https://github.com/chenqikai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:qikaidesheng666@gmail.com" title="E-Mail &rarr; mailto:qikaidesheng666@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/cheneli" title="Weibo &rarr; https://weibo.com/cheneli" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-基础"><span class="nav-number">1.</span> <span class="nav-text">Python 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">标准数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Number（数字）"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、Number（数字）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、String（字符串）"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、String（字符串）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、List（列表）"><span class="nav-number">1.2.3.</span> <span class="nav-text">3、List（列表）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、Tuple（元组）"><span class="nav-number">1.2.4.</span> <span class="nav-text">4、Tuple（元组）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、Set（集合）"><span class="nav-number">1.2.5.</span> <span class="nav-text">5、Set（集合）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、Dictionary（字典）"><span class="nav-number">1.2.6.</span> <span class="nav-text">6、Dictionary（字典）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python数据类型转换"><span class="nav-number">1.3.</span> <span class="nav-text">Python数据类型转换</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eli chen</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">119k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:48</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,255,255' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
