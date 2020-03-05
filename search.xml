@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[spark入门]]></title>
+    <url>%2F2019%2F12%2F03%2Fspark%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>大数据</category>
+      </categories>
+      <tags>
+        <tag>大数据</tag>
+        <tag>Spark</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[HDFS读写数据流程]]></title>
     <url>%2F2019%2F11%2F06%2FHDFS%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%89%AF%E6%9C%AC%2F</url>
     <content type="text"><![CDATA[HDFS的数据流HDFS写数据流程 1）客户端通过Distributed FileSystem模块向NameNode请求上传文件，NameNode检查目标文件是否已存在，父目录是否存在。 2）NameNode返回是否可以上传。 3）客户端请求第一个 Block上传到哪几个DataNode服务器上。 4）NameNode返回3个DataNode节点，分别为dn1、dn2、dn3。 5）客户端通过FSDataOutputStream模块请求dn1上传数据，dn1收到请求会继续调用dn2，然后dn2调用dn3，将这个通信管道建立完成。 6）dn1、dn2、dn3逐级应答客户端。 7）客户端开始往dn1上传第一个Block（先从磁盘读取数据放到一个本地内存缓存），以Packet为单位，dn1收到一个Packet就会传给dn2，dn2传给dn3；dn1每传一个packet会放入一个应答队列等待应答。 8）当一个Block传输完成之后，客户端再次请求NameNode上传第二个Block的服务器。（重复执行3-7步）。 HDFS读数据流程 1）客户端通过Distributed FileSystem向NameNode请求下载文件，NameNode通过查询元数据，找到文件块所在的DataNode地址。 2）挑选一台DataNode（就近原则，然后随机）服务器，请求读取数据。 3）DataNode开始传输数据给客户端（从磁盘里面读取数据输入流，以Packet为单位来做校验）。 4）客户端以Packet为单位接收，先在本地缓存，然后写入目标文件。 副本节点选择的副本放置策略的基本思想是：1.第一副本：放置在上传文件的DataNode上;如果是集群外提交，则随机挑选一台磁盘不太慢，CPU不太忙的节点上; 2.第二副本：放置在于第一个副本不同的机架节点上; 3.第三副本：与第二个副本相同机架的不同节点上; 4.如果还有更多的副本，则随机放在节点中。]]></content>
@@ -8,8 +20,8 @@
         <category>大数据</category>
       </categories>
       <tags>
-        <tag>HDFS</tag>
         <tag>Hadoop</tag>
+        <tag>HDFS</tag>
       </tags>
   </entry>
   <entry>
@@ -53,8 +65,8 @@
         <category>大数据</category>
       </categories>
       <tags>
-        <tag>HDFS</tag>
         <tag>Hadoop</tag>
+        <tag>HDFS</tag>
         <tag>大数据</tag>
       </tags>
   </entry>
@@ -267,11 +279,11 @@
   <entry>
     <title><![CDATA[happybirthday]]></title>
     <url>%2F2019%2F04%2F18%2F%E7%94%9F%E6%97%A5%E5%BF%AB%E4%B9%90%2F</url>
-    <content type="text"><![CDATA[function doDecrypt (pwd, onError) { console.log('in doDecrypt'); const txt = document.getElementById('enc_content').innerHTML; let plantext; try { const bytes = CryptoJS.AES.decrypt(txt, pwd); var plaintext = bytes.toString(CryptoJS.enc.Utf8); } catch(err) { if(onError) { onError(err); } return; } document.getElementById('enc_content').innerHTML = plaintext; document.getElementById('enc_content').style.display = 'block'; document.getElementById('enc_passwd').style.display = 'none'; if(typeof MathJax !== 'undefined') { MathJax.Hub.Queue( ['resetEquationNumbers', MathJax.InputJax.TeX], ['PreProcess', MathJax.Hub], ['Reprocess', MathJax.Hub] ); } } U2FsdGVkX1+jAR58srVju/LNMIS5wSi4Bvy0d1ZZEHV/QmmrTPZ4PQ2v6CsnrqHN86Foxo55T8Y+sKJmuh92gW7X3zPOGXHBOhJ+/TPs0EZKaNdw7o8d/P9rHHcTsk/GxfZHVSAxrOVAQO1gWX9uEugAVi036qSXdhYl5TO82Cxl84CFiU1VccTsa9ItuXsx var onError = function(error) { document.getElementById("enc_error").innerHTML = "password error!" }; function decrypt() { var passwd = document.getElementById("enc_pwd_input").value; console.log(passwd); doDecrypt(passwd, onError); }]]></content>
+    <content type="text"><![CDATA[function doDecrypt (pwd, onError) { console.log('in doDecrypt'); const txt = document.getElementById('enc_content').innerHTML; let plantext; try { const bytes = CryptoJS.AES.decrypt(txt, pwd); var plaintext = bytes.toString(CryptoJS.enc.Utf8); } catch(err) { if(onError) { onError(err); } return; } document.getElementById('enc_content').innerHTML = plaintext; document.getElementById('enc_content').style.display = 'block'; document.getElementById('enc_passwd').style.display = 'none'; if(typeof MathJax !== 'undefined') { MathJax.Hub.Queue( ['resetEquationNumbers', MathJax.InputJax.TeX], ['PreProcess', MathJax.Hub], ['Reprocess', MathJax.Hub] ); } } U2FsdGVkX1+/8JhpWqzULlxtPydQFkZ0xMThBq+W4M4kgH80M1IEj0uedhBugNdetRCklsye6YwNmalJ1PYFftpazTVMDuA06KFj1jzfX0p2OtVBY1SZ/sz4OUP7KaZ4i8SWmnsmB9Os2+7v/Wkl79lG+CR8FjRCk1dr4h1hte5fA492PHXW0psrL0GlOzna var onError = function(error) { document.getElementById("enc_error").innerHTML = "password error!" }; function decrypt() { var passwd = document.getElementById("enc_pwd_input").value; console.log(passwd); doDecrypt(passwd, onError); }]]></content>
   </entry>
   <entry>
     <title><![CDATA[给🐖的信]]></title>
     <url>%2F2019%2F03%2F30%2F%E4%B8%80%E5%91%A8%E5%B9%B4%E5%BF%AB%E4%B9%90%2F</url>
-    <content type="text"><![CDATA[function doDecrypt (pwd, onError) { console.log('in doDecrypt'); const txt = document.getElementById('enc_content').innerHTML; let plantext; try { const bytes = CryptoJS.AES.decrypt(txt, pwd); var plaintext = bytes.toString(CryptoJS.enc.Utf8); } catch(err) { if(onError) { onError(err); } return; } document.getElementById('enc_content').innerHTML = plaintext; document.getElementById('enc_content').style.display = 'block'; document.getElementById('enc_passwd').style.display = 'none'; if(typeof MathJax !== 'undefined') { MathJax.Hub.Queue( ['resetEquationNumbers', MathJax.InputJax.TeX], ['PreProcess', MathJax.Hub], ['Reprocess', MathJax.Hub] ); } } U2FsdGVkX1+qK7MHwvs3Hdr1y8gUCsYObk9dCs5ijH2y/4EJF3MYBKcwsVDhP5pgFFsjYw/sEdCK+PXolMMEBrnAK/FczmbawD8ymW5QV45nvFz/BWgjzJ5T38Z9NwHfMD5oHruk/5dD2P+GuDD0/IxGISRdEx7TU20WXddG5Up3EUm1/pXF02H9TZS9Q3AV var onError = function(error) { document.getElementById("enc_error").innerHTML = "password error!" }; function decrypt() { var passwd = document.getElementById("enc_pwd_input").value; console.log(passwd); doDecrypt(passwd, onError); }]]></content>
+    <content type="text"><![CDATA[function doDecrypt (pwd, onError) { console.log('in doDecrypt'); const txt = document.getElementById('enc_content').innerHTML; let plantext; try { const bytes = CryptoJS.AES.decrypt(txt, pwd); var plaintext = bytes.toString(CryptoJS.enc.Utf8); } catch(err) { if(onError) { onError(err); } return; } document.getElementById('enc_content').innerHTML = plaintext; document.getElementById('enc_content').style.display = 'block'; document.getElementById('enc_passwd').style.display = 'none'; if(typeof MathJax !== 'undefined') { MathJax.Hub.Queue( ['resetEquationNumbers', MathJax.InputJax.TeX], ['PreProcess', MathJax.Hub], ['Reprocess', MathJax.Hub] ); } } U2FsdGVkX1+TfylLUSpbLAPqUd971pADsLQIba7VhC/ASwjGg/RCGV6vRU/uY7IFCYPhIEc+Cwoobhc7Avf/O6xaBj3ctlBWIYIUKwCtgX0JPLkfN2YQCbhnqB8xVspH19PqqL0NCu9FuyBaXugyX3jE8LN5PFkS2LoV4OMczg8YrO7kSgnrVwr/PbrPqzuB var onError = function(error) { document.getElementById("enc_error").innerHTML = "password error!" }; function decrypt() { var passwd = document.getElementById("enc_pwd_input").value; console.log(passwd); doDecrypt(passwd, onError); }]]></content>
   </entry>
 </search>
