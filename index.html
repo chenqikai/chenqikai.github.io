@@ -247,7 +247,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/11/06/HDFS读写数据流程与副本/">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/27/Hbase_Java_API/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
@@ -264,7 +264,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/11/06/HDFS读写数据流程与副本/" class="post-title-link" itemprop="url">HDFS读写数据流程</a>
+                <a href="/2019/07/27/Hbase_Java_API/" class="post-title-link" itemprop="url">HBase Java API 的基本使用</a>
               
             
           </h1>
@@ -283,7 +283,7 @@
                 
               
 
-              <time title="创建时间：2019-11-06 13:28:51" itemprop="dateCreated datePublished" datetime="2019-11-06T13:28:51+08:00">2019-11-06</time>
+              <time title="创建时间：2019-07-27 21:52:35" itemprop="dateCreated datePublished" datetime="2019-07-27T21:52:35+08:00">2019-07-27</time>
             </span>
           
             <span class="post-meta-item">
@@ -294,7 +294,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a></span>
 
                 
                 
@@ -310,7 +310,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">827</span>
+              <span title="本文字数">23k</span>
             </span>
           
             <span class="post-meta-item">
@@ -320,7 +320,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">1 分钟</span>
+              <span title="阅读时长">21 分钟</span>
             </span>
           
 
@@ -335,17 +335,14 @@
       
           
             <p>
-              HDFS的数据流HDFS写数据流程
-1）客户端通过Distributed FileSystem模块向NameNode请求上传文件，NameNode检查目标文件是否已存在，父目录是否存在。
-2）NameNode返回是否可以上传。
-3）客户端请求第一个 Block上传到哪几个DataNode服务器上。
-
+              HBase Java API 的基本使用一、简述截至到目前 ，HBase 有两个主要的版本，分别是 1.x 和 2.x ，两个版本的 Java API 有所不同，1.x 中某些方法在 2.x 中被标识为 @deprecated 过时。
+同时你使用的客户端的版本必须与服务端版本保持一致，如果用 2.x
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/11/06/HDFS读写数据流程与副本/#more" rel="contents">
+              <a class="btn" href="/2019/07/27/Hbase_Java_API/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -377,7 +374,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/11/05/集群同步脚本xsync/">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/23/Hbase_Shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
@@ -394,7 +391,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/11/05/集群同步脚本xsync/" class="post-title-link" itemprop="url">集群同步脚本xsync</a>
+                <a href="/2019/07/23/Hbase_Shell/" class="post-title-link" itemprop="url">Hbase 常用 Shell 命令</a>
               
             
           </h1>
@@ -413,7 +410,401 @@
                 
               
 
-              <time title="创建时间：2019-11-05 21:50:32" itemprop="dateCreated datePublished" datetime="2019-11-05T21:50:32+08:00">2019-11-05</time>
+              <time title="创建时间：2019-07-23 19:52:35" itemprop="dateCreated datePublished" datetime="2019-07-23T19:52:35+08:00">2019-07-23</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">3.5k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">3 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              Hbase 常用 Shell 命令一、基本命令打开 Hbase Shell：
+# hbase shell
+
+1.1 获取帮助# 获取帮助help# 获取命令的详细信息help 'status'
+
+1.2 查看服务器状态status
+
+1.3 查看版本信息version
+
+二、关于表的操作2.1 查看
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/23/Hbase_Shell/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/21/Hbase系统架构及数据结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/21/Hbase系统架构及数据结构/" class="post-title-link" itemprop="url">Hbase系统架构及数据结构</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-21 16:02:35" itemprop="dateCreated datePublished" datetime="2019-07-21T16:02:35+08:00">2019-07-21</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">3.8k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">3 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              Hbase系统架构及数据结构一、基本概念一个典型的 Hbase Table 表如下：
+  
+
+1.1 Row Key (行键)Row Key 是用来检索记录的主键。想要访问 HBase Table 中的数据，只有以下三种方式：
+
+通过指定的 Row Key 进行访问；
+
+通过 Row Key 的 r
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/21/Hbase系统架构及数据结构/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/15/Kafka消费者详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/15/Kafka消费者详解/" class="post-title-link" itemprop="url">Kafka消费者详解</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-15 21:14:53" itemprop="dateCreated datePublished" datetime="2019-07-15T21:14:53+08:00">2019-07-15</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">11k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">10 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              Kafka消费者详解一、消费者和消费者群组在 Kafka 中，消费者通常是消费者群组的一部分，多个消费者群组共同读取同一个主题时，彼此之间互不影响。Kafka 之所以要引入消费者群组这个概念是因为 Kafka 消费者经常会做一些高延迟的操作，比如把数据写到数据库或 HDFS ，或者进行耗时的计算，在
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/15/Kafka消费者详解/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/05/集群同步脚本xsync/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/05/集群同步脚本xsync/" class="post-title-link" itemprop="url">集群同步脚本xsync</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-05 21:50:32" itemprop="dateCreated datePublished" datetime="2019-07-05T21:50:32+08:00">2019-07-05</time>
             </span>
           
             <span class="post-meta-item">
@@ -472,7 +863,7 @@
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/11/05/集群同步脚本xsync/#more" rel="contents">
+              <a class="btn" href="/2019/07/05/集群同步脚本xsync/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -504,7 +895,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/11/05/集群批量命令脚本xcall/">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/05/集群批量命令脚本xcall/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
@@ -521,7 +912,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/11/05/集群批量命令脚本xcall/" class="post-title-link" itemprop="url">集群批量命令脚本xcall</a>
+                <a href="/2019/07/05/集群批量命令脚本xcall/" class="post-title-link" itemprop="url">集群批量命令脚本xcall</a>
               
             
           </h1>
@@ -540,7 +931,7 @@
                 
               
 
-              <time title="创建时间：2019-11-05 21:49:53" itemprop="dateCreated datePublished" datetime="2019-11-05T21:49:53+08:00">2019-11-05</time>
+              <time title="创建时间：2019-07-05 21:49:53" itemprop="dateCreated datePublished" datetime="2019-07-05T21:49:53+08:00">2019-07-05</time>
             </span>
           
             <span class="post-meta-item">
@@ -599,7 +990,7 @@
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/11/05/集群批量命令脚本xcall/#more" rel="contents">
+              <a class="btn" href="/2019/07/05/集群批量命令脚本xcall/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -631,7 +1022,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/11/04/Hadoop集群时间同步/">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/07/04/Hadoop集群时间同步/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
@@ -648,7 +1039,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/11/04/Hadoop集群时间同步/" class="post-title-link" itemprop="url">Hadoop集群时间同步</a>
+                <a href="/2019/07/04/Hadoop集群时间同步/" class="post-title-link" itemprop="url">Hadoop集群时间同步</a>
               
             
           </h1>
@@ -667,7 +1058,7 @@
                 
               
 
-              <time title="创建时间：2019-11-04 13:58:51" itemprop="dateCreated datePublished" datetime="2019-11-04T13:58:51+08:00">2019-11-04</time>
+              <time title="创建时间：2019-07-04 13:58:51" itemprop="dateCreated datePublished" datetime="2019-07-04T13:58:51+08:00">2019-07-04</time>
             </span>
           
             <span class="post-meta-item">
@@ -749,7 +1140,7 @@ hadoop102
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/11/04/Hadoop集群时间同步/#more" rel="contents">
+              <a class="btn" href="/2019/07/04/Hadoop集群时间同步/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -781,7 +1172,7 @@ hadoop102
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/11/02/HDFS入门/">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/26/Python爬虫从零开始(六)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
@@ -798,7 +1189,7 @@ hadoop102
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/11/02/HDFS入门/" class="post-title-link" itemprop="url">HDFS入门</a>
+                <a href="/2019/06/26/Python爬虫从零开始(六)/" class="post-title-link" itemprop="url">Python爬虫从零开始(六)</a>
               
             
           </h1>
@@ -817,7 +1208,138 @@ hadoop102
                 
               
 
-              <time title="创建时间：2019-11-02 15:41:54" itemprop="dateCreated datePublished" datetime="2019-11-02T15:41:54+08:00">2019-11-02</time>
+              <time title="创建时间：2019-06-26 22:20:59" itemprop="dateCreated datePublished" datetime="2019-06-26T22:20:59+08:00">2019-06-26</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">7.2k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">7 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              认识HTML什么是HTMLHTML 是用来描述网页的一种语言。
+
+HTML 指的是超文本标记语言 (Hyper Text Markup Language)
+HTML 不是一种编程语言，而是一种标记语言 (markup language)
+标记语言是一套标记标签 (markup tag)
+HTML 使
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/26/Python爬虫从零开始(六)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/25/Flume整合Kafka/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/25/Flume整合Kafka/" class="post-title-link" itemprop="url">Flume 整合 Kafka</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-25 22:51:25" itemprop="dateCreated datePublished" datetime="2019-06-25T22:51:25+08:00">2019-06-25</time>
             </span>
           
             <span class="post-meta-item">
@@ -844,7 +1366,7 @@ hadoop102
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">5.7k</span>
+              <span title="本文字数">1.7k</span>
             </span>
           
             <span class="post-meta-item">
@@ -854,7 +1376,7 @@ hadoop102
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">5 分钟</span>
+              <span title="阅读时长">2 分钟</span>
             </span>
           
 
@@ -869,14 +1391,14 @@ hadoop102
       
           
             <p>
-              HDFS概述HDFS的产生背景随着数据量越来越大，在一个操作系统存不下所有的数据，那么就分配到更多的操作系统管理的磁盘中，但是不方便管理和维护，迫切需要一种系统来管理多台机器上的文件，这就是分布式文件管理系统。HDFS只是分布式文件管理系统中的一种。
-HDFS概念HDFS（Hadoop Distri
+              Flume 整合 Kafka一、背景先说一下，为什么要使用 Flume + Kafka？
+以实时流处理项目为例，由于采集的数据量可能存在峰值和峰谷，假设是一个电商项目，那么峰值通常出现在秒杀时，这时如果直接将 Flume 聚合后的数据输入到 Storm 等分布式计算框架中，可能就会超过集群的处理能力
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/11/02/HDFS入门/#more" rel="contents">
+              <a class="btn" href="/2019/06/25/Flume整合Kafka/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -908,7 +1430,7 @@ HDFS概念HDFS（Hadoop Distri
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/08/17/==和equals/">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/06/25/Python爬虫从零开始(五)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
@@ -925,7 +1447,7 @@ HDFS概念HDFS（Hadoop Distri
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/17/==和equals/" class="post-title-link" itemprop="url">==和equals()方法</a>
+                <a href="/2019/06/25/Python爬虫从零开始(五)/" class="post-title-link" itemprop="url">Python爬虫从零开始(五)</a>
               
             
           </h1>
@@ -944,7 +1466,7 @@ HDFS概念HDFS（Hadoop Distri
                 
               
 
-              <time title="创建时间：2019-08-17 15:32:38" itemprop="dateCreated datePublished" datetime="2019-08-17T15:32:38+08:00">2019-08-17</time>
+              <time title="创建时间：2019-06-25 16:42:05" itemprop="dateCreated datePublished" datetime="2019-06-25T16:42:05+08:00">2019-06-25</time>
             </span>
           
             <span class="post-meta-item">
@@ -955,14 +1477,7 @@ HDFS概念HDFS（Hadoop Distri
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/java基础/" itemprop="url" rel="index"><span itemprop="name">java基础</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -978,7 +1493,7 @@ HDFS概念HDFS（Hadoop Distri
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1.1k</span>
+              <span title="本文字数">8.4k</span>
             </span>
           
             <span class="post-meta-item">
@@ -988,7 +1503,7 @@ HDFS概念HDFS（Hadoop Distri
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">1 分钟</span>
+              <span title="阅读时长">8 分钟</span>
             </span>
           
 
@@ -1003,575 +1518,14 @@ HDFS概念HDFS（Hadoop Distri
       
           
             <p>
-              “==”java中==为关系运算符,表示左边的数据是否和右边的数据相等，相等返回true否则返回false。基本数据类型之间的比较直接使用==，java是面向对象的语言，除了基本数据类型外的全部都为引用数据类型，也就是对象类型。引用数据类型在内存中的存储分为两部分，栈空间存储的为堆空间内存地址，堆空
+              Python 基础Python 输入输出读文件读写文件是最常见的IO操作。Python内置了读写文件的函数，用法和C是兼容的。要以读文件的模式打开一个文件对象，使用Python内置的open()函数，传入文件名和标示符：
+&gt;&gt;&gt; f = open(&apos;/Users/mich
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/08/17/==和equals/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/08/12/一千行MySQL命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eli chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Elichen blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/12/一千行MySQL命令/" class="post-title-link" itemprop="url">一千行MySQL学习笔记</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-12 20:33:44" itemprop="dateCreated datePublished" datetime="2019-08-12T20:33:44+08:00">2019-08-12</time>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          <br>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span title="本文字数">26k</span>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span title="阅读时长">23 分钟</span>
-            </span>
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-              
-原文地址：https://shockerli.net/post/1000-line-mysql-note/
-
-
-作者：格物
-
-基本操作/* Windows服务 */-- 启动MySQL    net start mysql-- 创建Windows服务    sc create mysql binP
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/12/一千行MySQL命令/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/08/12/String、StringBuilder与StringBuffer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eli chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Elichen blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/12/String、StringBuilder与StringBuffer/" class="post-title-link" itemprop="url">String、StringBuffer与StringBuilder</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-12 08:51:55" itemprop="dateCreated datePublished" datetime="2019-08-12T08:51:55+08:00">2019-08-12</time>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/java基础/" itemprop="url" rel="index"><span itemprop="name">java基础</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          <br>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span title="本文字数">5.9k</span>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span title="阅读时长">5 分钟</span>
-            </span>
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-              StringString简介java中String为引用数据类型，其本身也为一个class文件，实现原理为char类型数组。（看下图）由于String类为final修饰的并且数组char value[]也为final修饰，所以String为不可变类型,赋值后不能改变，为字符串常量。
-
-举个栗子🌰
-
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/12/String、StringBuilder与StringBuffer/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/08/11/java包装类/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eli chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Elichen blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/11/java包装类/" class="post-title-link" itemprop="url">java包装类</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-11 15:22:20" itemprop="dateCreated datePublished" datetime="2019-08-11T15:22:20+08:00">2019-08-11</time>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/java基础/" itemprop="url" rel="index"><span itemprop="name">java基础</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          <br>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span title="本文字数">5.1k</span>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span title="阅读时长">5 分钟</span>
-            </span>
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-              浅谈Java包装类为什么会有包装类，包装类是什么？Java语言一直宣称自己是完全面向对象的语言，但对于基本数据类型并没有做到面向对象。为解决这一个问题Java提供了基本数据类型对应的包装类。
-如下表
-
-
-
-基本数据类型
-包装类型
-
-
-
-byte
-Byte
-
-
-short
-Short
-
-
-int
-In
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/11/java包装类/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/08/10/java常用工具类/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eli chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Elichen blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/10/java常用工具类/" class="post-title-link" itemprop="url">java常用工具类</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-10 11:11:51" itemprop="dateCreated datePublished" datetime="2019-08-10T11:11:51+08:00">2019-08-10</time>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/java基础/" itemprop="url" rel="index"><span itemprop="name">java基础</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          <br>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span title="本文字数">3.3k</span>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span title="阅读时长">3 分钟</span>
-            </span>
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-              java常用工具类Math类顾名思义，math为数学，Math类为java提供的数学计算相关的类库。Math类中的方法都为静态方法，直接使用类名调用。
-常用方法
-public static void main(String[] args) &#123;    //常数π    System.out.
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/10/java常用工具类/#more" rel="contents">
+              <a class="btn" href="/2019/06/25/Python爬虫从零开始(五)/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1600,7 +1554,7 @@ public static void main(String[] args) &#123;    //常数π    System.out.
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1636,7 +1590,7 @@ public static void main(String[] args) &#123;    //常数π    System.out.
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1669,7 +1623,9 @@ public static void main(String[] args) &#123;    //常数π    System.out.
         
           
         
-        <span class="site-state-item-count">9</span>
+          
+        
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1710,24 +1666,23 @@ public static void main(String[] args) &#123;    //常数π    System.out.
         
           
         
-        <span class="site-state-item-count">13</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
     
   </nav>
   <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/chenqikai" title="GitHub &rarr; https://github.com/chenqikai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
       <span class="links-of-author-item">
       
       
@@ -1783,12 +1738,12 @@ public static void main(String[] args) &#123;    //常数π    System.out.
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">119k</span>
+    <span title="站点总字数">202k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:48</span>
+    <span title="站点阅读时长">3:03</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

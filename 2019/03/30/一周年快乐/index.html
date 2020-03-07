@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-20T04:24:26.000Z">
+<meta property="og:updated_time" content="2020-03-07T14:17:04.015Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给🐖的信">
 <meta name="twitter:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
@@ -348,7 +348,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1/I15r0msMcoI4YuQrbWzIpTDU0o1PjXP1+54NEXzDG/pY13eVL2Nrky8tX20czD7tQCT04Pl2n68OikjdIOJY9ZSflYboaInDgJXDJItCgvqPCHHws9jUyKYfx/5mStm+DDhxykPfrOVhfdoPI7TYwUcSrDkYZIqSs194WAIi8IRgqt7Qj1EoI</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+5ywK/VDndZLmmxO0UagYYXbyTQZXbt758cMlLt5fSLLQnfebCQ6I0jvPIBuw7n88sT6b398NBH6Dp/0gG/ujehZS/S4pHE/zRx578z+l8ZA1YYyYQdco4rbrGi7XoASDvdapAM9Vg0A==</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -410,6 +410,10 @@ doDecrypt(passwd, onError);
     <footer class="post-footer">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+              <a href="/2019/03/22/Hadoop-YARN/" rel="next" title="集群资源管理器——YARN">
+                <i class="fa fa-chevron-left"></i> 集群资源管理器——YARN
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
@@ -464,7 +468,7 @@ doDecrypt(passwd, onError);
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -497,7 +501,9 @@ doDecrypt(passwd, onError);
         
           
         
-        <span class="site-state-item-count">9</span>
+          
+        
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -538,24 +544,23 @@ doDecrypt(passwd, onError);
         
           
         
-        <span class="site-state-item-count">13</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
     
   </nav>
   <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/chenqikai" title="GitHub &rarr; https://github.com/chenqikai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
       <span class="links-of-author-item">
       
       
@@ -611,12 +616,12 @@ doDecrypt(passwd, onError);
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">119k</span>
+    <span title="站点总字数">202k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:48</span>
+    <span title="站点阅读时长">3:03</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

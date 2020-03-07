@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-corner-indicator.min.css?v=1.0.2">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="Linux教程Linux教程参考： 1http://www.runoob.com/linux/Linux-intro.html  必备命令1.man和page12345678910111213141516171819201.内部命令：echo查看内部命令帮助：help echo 或者 man echo2.外部命令：ls查看外部命令帮助：ls --help 或者 man ls 或者 info ls3">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux基础">
+<meta property="og:url" content="http://chenqikai.github.io/2018/12/05/Linux基础和命令/index.html">
+<meta property="og:site_name" content="Elichen blog">
+<meta property="og:description" content="Linux教程Linux教程参考： 1http://www.runoob.com/linux/Linux-intro.html  必备命令1.man和page12345678910111213141516171819201.内部命令：echo查看内部命令帮助：help echo 或者 man echo2.外部命令：ls查看外部命令帮助：ls --help 或者 man ls 或者 info ls3">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-07T14:14:59.799Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux基础">
+<meta name="twitter:description" content="Linux教程Linux教程参考： 1http://www.runoob.com/linux/Linux-intro.html  必备命令1.man和page12345678910111213141516171819201.内部命令：echo查看内部命令帮助：help echo 或者 man echo2.外部命令：ls查看外部命令帮助：ls --help 或者 man ls 或者 info ls3">
+  <link rel="canonical" href="http://chenqikai.github.io/2018/12/05/Linux基础和命令/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Linux基础 | Elichen blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?00dc780f8ffe07194bbae3a2dcd66e8c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/chenqikai" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Elichen blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2018/12/05/Linux基础和命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">Linux基础
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-05 21:49:53" itemprop="dateCreated datePublished" datetime="2018-12-05T21:49:53+08:00">2018-12-05</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">7.2k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">7 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Linux教程"><a href="#Linux教程" class="headerlink" title="Linux教程"></a>Linux教程</h2><p>Linux教程参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.runoob.com/linux/Linux-intro.html</span><br></pre></td></tr></table></figure>
+
+<h2 id="必备命令"><a href="#必备命令" class="headerlink" title="必备命令"></a>必备命令</h2><h3 id="1-man和page"><a href="#1-man和page" class="headerlink" title="1.man和page"></a>1.man和page</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1.内部命令：echo</span><br><span class="line">查看内部命令帮助：help echo 或者 man echo</span><br><span class="line"></span><br><span class="line">2.外部命令：ls</span><br><span class="line">查看外部命令帮助：ls --help 或者 man ls 或者 info ls</span><br><span class="line"></span><br><span class="line">3.man文档的类型(1~9)</span><br><span class="line">man 7 man</span><br><span class="line">man 5 passwd</span><br><span class="line"></span><br><span class="line">4.快捷键：</span><br><span class="line">ctrl + c：停止进程</span><br><span class="line"></span><br><span class="line">ctrl + l：清屏</span><br><span class="line"></span><br><span class="line">ctrl + r：搜索历史命令</span><br><span class="line"></span><br><span class="line">ctrl + q：退出</span><br><span class="line"></span><br><span class="line">5.善于用tab键</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-常用"><a href="#2-常用" class="headerlink" title="2.常用"></a>2.常用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">说明：安装linux时，创建一个hadoop用户，然后使用root用户登陆系统</span><br><span class="line"></span><br><span class="line">1.进入到用户根目录</span><br><span class="line">cd ~ 或 cd</span><br><span class="line"></span><br><span class="line">2.查看当前所在目录</span><br><span class="line">pwd</span><br><span class="line"></span><br><span class="line">3.进入到hadoop用户根目录</span><br><span class="line">cd ~hadoop</span><br><span class="line"></span><br><span class="line">4.返回到原来目录</span><br><span class="line">cd -</span><br><span class="line"></span><br><span class="line">5.返回到上一级目录</span><br><span class="line">cd ..</span><br><span class="line"></span><br><span class="line">6.查看hadoop用户根目录下的所有文件</span><br><span class="line">ls -la</span><br><span class="line"></span><br><span class="line">7.在根目录下创建一个hadoop的文件夹</span><br><span class="line">mkdir /hadoop</span><br><span class="line"></span><br><span class="line">8.在/hadoop目录下创建src和WebRoot两个文件夹</span><br><span class="line">分别创建：mkdir /hadoop/src</span><br><span class="line">		  mkdir /hadoop/WebRoot</span><br><span class="line">同时创建：mkdir /hadoop/&#123;src,WebRoot&#125;</span><br><span class="line"></span><br><span class="line">进入到/hadoop目录，在该目录下创建.classpath和README文件</span><br><span class="line">分别创建：touch .classpath</span><br><span class="line">		  touch README</span><br><span class="line">同时创建：touch &#123;.classpath,README&#125;</span><br><span class="line"></span><br><span class="line">查看/hadoop目录下面的所有文件</span><br><span class="line">ls -la</span><br><span class="line"></span><br><span class="line">在/hadoop目录下面创建一个test.txt文件,同时写入内容&quot;this is test&quot;</span><br><span class="line">echo &quot;this is test&quot; &gt; test.txt</span><br><span class="line"></span><br><span class="line">查看一下test.txt的内容</span><br><span class="line">cat test.txt</span><br><span class="line">more test.txt</span><br><span class="line">less test.txt</span><br><span class="line"></span><br><span class="line">向README文件追加写入&quot;please read me first&quot;</span><br><span class="line">echo &quot;please read me first&quot; &gt;&gt; README</span><br><span class="line"></span><br><span class="line">将test.txt的内容追加到README文件中</span><br><span class="line">cat test.txt &gt;&gt; README</span><br><span class="line"></span><br><span class="line">拷贝/hadoop目录下的所有文件到/hadoop-bak</span><br><span class="line">cp -r /hadoop /hadoop-bak</span><br><span class="line"></span><br><span class="line">进入到/hadoop-bak目录，将test.txt移动到src目录下，并修改文件名为Student.java</span><br><span class="line">mv test.txt src/Student.java</span><br><span class="line"></span><br><span class="line">在src目录下创建一个struts.xml</span><br><span class="line">&gt; struts.xml</span><br><span class="line"></span><br><span class="line">删除所有的xml类型的文件</span><br><span class="line">rm -rf *.xml</span><br><span class="line"></span><br><span class="line">删除/hadoop-bak目录和下面的所有文件</span><br><span class="line">rm -rf /hadoop-bak</span><br><span class="line"></span><br><span class="line">返回到/hadoop目录，查看一下README文件有多单词，多少个少行</span><br><span class="line">wc -w README</span><br><span class="line">wc -l README</span><br><span class="line"></span><br><span class="line">返回到根目录，将/hadoop目录先打包，再用gzip压缩</span><br><span class="line">分步完成：tar -cvf hadoop.tar hadoop</span><br><span class="line">		  gzip hadoop.tar</span><br><span class="line">一步完成：tar -zcvf hadoop.tar.gz hadoop</span><br><span class="line">		  </span><br><span class="line">将其解压缩，再取消打包</span><br><span class="line">分步完成：gzip -d hadoop.tar.gz 或 gunzip hadoop.tar.gz</span><br><span class="line">一步完成：tar -zxvf hadoop.tar.gz</span><br><span class="line"></span><br><span class="line">将/hadoop目录先打包，同时用bzip2压缩，并保存到/tmp目录下</span><br><span class="line">tar -jcvf /tmp/hadoop.tar.bz2 hadoop</span><br><span class="line"></span><br><span class="line">将/tmp/hadoop.tar.bz2解压到/usr目录下面</span><br><span class="line">tar -jxvf hadoop.tar.bz2 -C /usr/</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-文件命令"><a href="#3-文件命令" class="headerlink" title="3. 文件命令"></a>3. 文件命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">1.进入到用户根目录</span><br><span class="line">cd ~ 或者 cd</span><br><span class="line">cd ~hadoop</span><br><span class="line">回到原来路径</span><br><span class="line">cd -</span><br><span class="line"></span><br><span class="line">2.查看文件详情</span><br><span class="line">stat a.txt</span><br><span class="line"></span><br><span class="line">3.移动</span><br><span class="line">mv a.txt /ect/</span><br><span class="line">改名</span><br><span class="line">mv b.txt a.txt</span><br><span class="line">移动并改名</span><br><span class="line">mv a.txt ../b.txt</span><br><span class="line"></span><br><span class="line">4拷贝并改名</span><br><span class="line">cp a.txt /etc/b.txt</span><br><span class="line"></span><br><span class="line">5.vi撤销修改</span><br><span class="line">ctrl + u (undo)</span><br><span class="line">恢复</span><br><span class="line">ctrl + r (redo)</span><br><span class="line"></span><br><span class="line">6.名令设置别名(重启后无效)</span><br><span class="line">alias ll=&quot;ls -l&quot;</span><br><span class="line">取消</span><br><span class="line">unalias ll</span><br><span class="line"></span><br><span class="line">7.如果想让别名重启后仍然有效需要修改</span><br><span class="line">vi ~/.bashrc</span><br><span class="line"></span><br><span class="line">8.添加用户</span><br><span class="line">useradd hadoop</span><br><span class="line">passwd hadoop</span><br><span class="line"></span><br><span class="line">9创建多个文件</span><br><span class="line">touch a.txt b.txt</span><br><span class="line">touch /home/&#123;a.txt,b.txt&#125;</span><br><span class="line"></span><br><span class="line">10.将一个文件的内容复制到里另一个文件中</span><br><span class="line">cat a.txt &gt; b.txt</span><br><span class="line">追加内容</span><br><span class="line">cat a.txt &gt;&gt; b.txt </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">11.将a.txt 与b.txt设为其拥有者和其所属同一个组者可写入，但其他以外的人则不可写入:</span><br><span class="line">chmod ug+w,o-w a.txt b.txt</span><br><span class="line"></span><br><span class="line">chmod a=wx c.txt</span><br><span class="line"></span><br><span class="line">12.将当前目录下的所有文件与子目录皆设为任何人可读取:</span><br><span class="line">chmod -R a+r *</span><br><span class="line"></span><br><span class="line">13.将a.txt的用户拥有者设为users,组的拥有者设为jessie:</span><br><span class="line">chown users:jessie a.txt</span><br><span class="line"></span><br><span class="line">14.将当前目录下的所有文件与子目录的用户的使用者为lamport,组拥有者皆设为users，</span><br><span class="line">chown -R lamport:users *</span><br><span class="line"></span><br><span class="line">15.将所有的java语言程式拷贝至finished子目录中:</span><br><span class="line">cp *.java finished</span><br><span class="line"></span><br><span class="line">16.将目前目录及其子目录下所有扩展名是java的文件列出来。</span><br><span class="line">find -name &quot;*.java&quot;</span><br><span class="line">查找当前目录下扩展名是java 的文件</span><br><span class="line">find -name *.java</span><br><span class="line"></span><br><span class="line">17.删除当前目录下扩展名是java的文件</span><br><span class="line">rm -f *.java</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-系统命令"><a href="#4-系统命令" class="headerlink" title="4.系统命令"></a>4.系统命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">1.查看主机名</span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line">2.修改主机名(重启后无效)</span><br><span class="line">hostname hadoop</span><br><span class="line"></span><br><span class="line">3.修改主机名(重启后永久生效)</span><br><span class="line">vi /ect/sysconfig/network</span><br><span class="line"></span><br><span class="line">4.修改IP(重启后无效)</span><br><span class="line">ifconfig eth0 192.168.12.22</span><br><span class="line"></span><br><span class="line">5.修改IP(重启后永久生效)</span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line"></span><br><span class="line">6.查看系统信息</span><br><span class="line">uname -a</span><br><span class="line">uname -r</span><br><span class="line"></span><br><span class="line">7.查看ID命令</span><br><span class="line">id -u</span><br><span class="line">id -g</span><br><span class="line"></span><br><span class="line">8.日期</span><br><span class="line">date</span><br><span class="line">date +%Y-%m-%d</span><br><span class="line">date +%T</span><br><span class="line">date +%Y-%m-%d&quot; &quot;%T</span><br><span class="line"></span><br><span class="line">9.日历</span><br><span class="line">cal 2012</span><br><span class="line"></span><br><span class="line">10.查看文件信息</span><br><span class="line">file filename</span><br><span class="line"></span><br><span class="line">11.挂载硬盘</span><br><span class="line">mount</span><br><span class="line">umount</span><br><span class="line">加载windows共享</span><br><span class="line">mount -t cifs //192.168.1.100/tools /mnt</span><br><span class="line"></span><br><span class="line">12.查看文件大小</span><br><span class="line">du -h</span><br><span class="line">du -ah</span><br><span class="line"></span><br><span class="line">13.查看分区</span><br><span class="line">df -h</span><br><span class="line"></span><br><span class="line">14.ssh</span><br><span class="line">ssh hadoop@192.168.1.1</span><br><span class="line"></span><br><span class="line">15.关机</span><br><span class="line">shutdown -h now /init 0</span><br><span class="line">shutdown -r now /reboot</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-用户和组"><a href="#5-用户和组" class="headerlink" title="5.用户和组"></a>5.用户和组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">添加一个tom用户，设置它属于users组，并添加注释信息</span><br><span class="line">分步完成：useradd tom</span><br><span class="line">          usermod -g users tom</span><br><span class="line">	      usermod -c &quot;hr tom&quot; tom</span><br><span class="line">一步完成：useradd -g users -c &quot;hr tom&quot; tom</span><br><span class="line"></span><br><span class="line">设置tom用户的密码</span><br><span class="line">passwd tom</span><br><span class="line"></span><br><span class="line">修改tom用户的登陆名为tomcat</span><br><span class="line">usermod -l tomcat tom</span><br><span class="line"></span><br><span class="line">将tomcat添加到sys和root组中</span><br><span class="line">usermod -G sys,root tomcat</span><br><span class="line"></span><br><span class="line">查看tomcat的组信息</span><br><span class="line">groups tomcat</span><br><span class="line"></span><br><span class="line">添加一个jerry用户并设置密码</span><br><span class="line">useradd jerry</span><br><span class="line">passwd jerry</span><br><span class="line"></span><br><span class="line">添加一个交america的组</span><br><span class="line">groupadd america</span><br><span class="line"></span><br><span class="line">将jerry添加到america组中</span><br><span class="line">usermod -g america jerry</span><br><span class="line"></span><br><span class="line">将tomcat用户从root组和sys组删除</span><br><span class="line">gpasswd -d tomcat root</span><br><span class="line">gpasswd -d tomcat sys</span><br><span class="line"></span><br><span class="line">将america组名修改为am</span><br><span class="line">groupmod -n am america</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-权限"><a href="#6-权限" class="headerlink" title="6. 权限"></a>6. 权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">创建a.txt和b.txt文件，将他们设为其拥有者和所在组可写入，但其他以外的人则不可写入:</span><br><span class="line">chmod ug+w,o-w a.txt b.txt</span><br><span class="line"></span><br><span class="line">创建c.txt文件所有人都可以写和执行</span><br><span class="line">chmod a=wx c.txt 或chmod 666 c.txt</span><br><span class="line"></span><br><span class="line">将/hadoop目录下的所有文件与子目录皆设为任何人可读取</span><br><span class="line">chmod -R a+r /hadoop</span><br><span class="line"></span><br><span class="line">将/hadoop目录下的所有文件与子目录的拥有者设为root，用户拥有组为users</span><br><span class="line">chown -R root:users /hadoop</span><br><span class="line"></span><br><span class="line">将当前目录下的所有文件与子目录的用户皆设为hadoop，组设为users</span><br><span class="line">chown -R hadoop:users *</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-目录属性"><a href="#7-目录属性" class="headerlink" title="7.目录属性"></a>7.目录属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1.查看文件夹属性</span><br><span class="line">ls -ld test</span><br><span class="line"></span><br><span class="line">2.文件夹的rwx</span><br><span class="line">--x:可以cd进去</span><br><span class="line">r-x:可以cd进去并ls</span><br><span class="line">-wx:可以cd进去并touch，rm自己的文件，并且可以vi其他用户的文件</span><br><span class="line">-wt:可以cd进去并touch，rm自己的文件</span><br><span class="line"></span><br><span class="line">ls -ld /tmp</span><br><span class="line">drwxrwxrwt的权限值是1777(sticky)</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-软件安装"><a href="#8-软件安装" class="headerlink" title="8.软件安装"></a>8.软件安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1.安装JDK</span><br><span class="line">	*添加执行权限 </span><br><span class="line">		chmod u+x jdk-6u45-linux-i586.bin</span><br><span class="line">	*解压</span><br><span class="line">		./jdk-6u45-linux-i586.bin</span><br><span class="line">	*在/usr目录下创建java目录</span><br><span class="line">		mkdir /usr/java</span><br><span class="line">	*将/soft目录下的解压的jdk1.6.0_45剪切到/usr/java目录下</span><br><span class="line">		mv jdk1.6.0_45/ /usr/java/</span><br><span class="line">	*添加环境变量</span><br><span class="line">		vim /etc/profile</span><br><span class="line">		*在/etc/profile文件最后添加</span><br><span class="line">			export JAVA_HOME=/usr/java/jdk1.6.0_45</span><br><span class="line">			export CLASSPATH=$JAVA_HOME/lib</span><br><span class="line">			export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">	*更新配置</span><br><span class="line">		source /etc/profile</span><br><span class="line">		</span><br><span class="line">2.安装tomcat</span><br><span class="line">	tar -zxvf /soft/apache-tomcat-7.0.47.tar.gz -C /programs/</span><br><span class="line">	cd /programs/apache-tomcat-7.0.47/bin/</span><br><span class="line">	./startup.sh</span><br><span class="line">	</span><br><span class="line">3.安装eclipse</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-vim"><a href="#9-vim" class="headerlink" title="9.vim"></a>9.vim</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">i</span><br><span class="line">a/A</span><br><span class="line">o/O</span><br><span class="line">r + ?替换</span><br><span class="line"></span><br><span class="line">0:文件当前行的开头</span><br><span class="line">$:文件当前行的末尾</span><br><span class="line">G:文件的最后一行开头</span><br><span class="line">1 + G到第一行 </span><br><span class="line">9 + G到第九行 = :9</span><br><span class="line"></span><br><span class="line">dd:删除一行</span><br><span class="line">3dd：删除3行</span><br><span class="line">yy:复制一行</span><br><span class="line">3yy:复制3行</span><br><span class="line">p:粘贴</span><br><span class="line">u:undo</span><br><span class="line">ctrl + r:redo</span><br><span class="line"></span><br><span class="line">&quot;a剪切板a</span><br><span class="line">&quot;b剪切板b</span><br><span class="line"></span><br><span class="line">&quot;ap粘贴剪切板a的内容</span><br><span class="line"></span><br><span class="line">每次进入vi就有行号</span><br><span class="line">vi ~/.vimrc</span><br><span class="line">set nu</span><br><span class="line"></span><br><span class="line">:w a.txt另存为</span><br><span class="line">:w &gt;&gt; a.txt内容追加到a.txt</span><br><span class="line"></span><br><span class="line">:e!恢复到最初状态</span><br><span class="line"></span><br><span class="line">:1,$s/hadoop/root/g 将第一行到追后一行的hadoop替换为root</span><br><span class="line">:1,$s/hadoop/root/c 将第一行到追后一行的hadoop替换为root(有提示)</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-查找"><a href="#10-查找" class="headerlink" title="10.查找"></a>10.查找</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">1.查找可执行的命令：</span><br><span class="line">which ls</span><br><span class="line"></span><br><span class="line">2.查找可执行的命令和帮助的位置：</span><br><span class="line">whereis ls</span><br><span class="line"></span><br><span class="line">3.查找文件(需要更新库:updatedb)</span><br><span class="line">locate hadoop.txt</span><br><span class="line"></span><br><span class="line">4.从某个文件夹开始查找</span><br><span class="line">find / -name &quot;hadooop*&quot;</span><br><span class="line">find / -name &quot;hadooop*&quot; -ls</span><br><span class="line"></span><br><span class="line">5.查找并删除</span><br><span class="line">find / -name &quot;hadooop*&quot; -ok rm &#123;&#125; \;</span><br><span class="line">find / -name &quot;hadooop*&quot; -exec rm &#123;&#125; \;</span><br><span class="line"></span><br><span class="line">6.查找用户为hadoop的文件</span><br><span class="line">find /usr -user hadoop -ls</span><br><span class="line"></span><br><span class="line">7.查找用户为hadoop并且(-a)拥有组为root的文件</span><br><span class="line">find /usr -user hadoop -a -group root -ls</span><br><span class="line"></span><br><span class="line">8.查找用户为hadoop或者(-o)拥有组为root并且是文件夹类型的文件</span><br><span class="line">find /usr -user hadoop -o -group root -a -type d</span><br><span class="line"></span><br><span class="line">9.查找权限为777的文件</span><br><span class="line">find / -perm -777 -type d -ls</span><br><span class="line"></span><br><span class="line">10.显示命令历史</span><br><span class="line">history</span><br><span class="line"></span><br><span class="line">11.grep</span><br><span class="line">grep hadoop /etc/password</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-打包与压缩"><a href="#11-打包与压缩" class="headerlink" title="11.打包与压缩"></a>11.打包与压缩</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">1.gzip压缩</span><br><span class="line">gzip a.txt</span><br><span class="line"></span><br><span class="line">2.解压</span><br><span class="line">gunzip a.txt.gz</span><br><span class="line">gzip -d a.txt.gz</span><br><span class="line"></span><br><span class="line">3.bzip2压缩</span><br><span class="line">bzip2 a</span><br><span class="line"></span><br><span class="line">4.解压</span><br><span class="line">bunzip2 a.bz2</span><br><span class="line">bzip2 -d a.bz2</span><br><span class="line"></span><br><span class="line">5.将当前目录的文件打包</span><br><span class="line">tar -cvf bak.tar .</span><br><span class="line">将/etc/password追加文件到bak.tar中(r)</span><br><span class="line">tar -rvf bak.tar /etc/password</span><br><span class="line"></span><br><span class="line">6.解压</span><br><span class="line">tar -xvf bak.tar</span><br><span class="line"></span><br><span class="line">7.打包并压缩gzip</span><br><span class="line">tar -zcvf a.tar.gz</span><br><span class="line"></span><br><span class="line">8.解压缩</span><br><span class="line">tar -zxvf a.tar.gz</span><br><span class="line">解压到/usr/下</span><br><span class="line">tar -zxvf a.tar.gz -C /usr</span><br><span class="line"></span><br><span class="line">9.查看压缩包内容</span><br><span class="line">tar -ztvf a.tar.gz</span><br><span class="line"></span><br><span class="line">zip/unzip</span><br><span class="line"></span><br><span class="line">10.打包并压缩成bz2</span><br><span class="line">tar -jcvf a.tar.bz2</span><br><span class="line"></span><br><span class="line">11.解压bz2</span><br><span class="line">tar -jxvf a.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-正则"><a href="#12-正则" class="headerlink" title="12.正则"></a>12.正则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">1.cut截取以:分割保留第七段</span><br><span class="line">grep hadoop /etc/passwd | cut -d: -f7</span><br><span class="line"></span><br><span class="line">2.排序</span><br><span class="line">du | sort -n </span><br><span class="line"></span><br><span class="line">3.查询不包含hadoop的</span><br><span class="line">grep -v hadoop /etc/passwd</span><br><span class="line"></span><br><span class="line">4.正则表达包含hadoop</span><br><span class="line">grep &apos;hadoop&apos; /etc/passwd</span><br><span class="line"></span><br><span class="line">5.正则表达(点代表任意一个字符)</span><br><span class="line">grep &apos;h.*p&apos; /etc/passwd</span><br><span class="line"></span><br><span class="line">6.正则表达以hadoop开头</span><br><span class="line">grep &apos;^hadoop&apos; /etc/passwd</span><br><span class="line"></span><br><span class="line">7.正则表达以hadoop结尾</span><br><span class="line">grep &apos;hadoop$&apos; /etc/passwd</span><br><span class="line"></span><br><span class="line">规则：</span><br><span class="line">.  : 任意一个字符</span><br><span class="line">a* : 任意多个a(零个或多个a)</span><br><span class="line">a? : 零个或一个a</span><br><span class="line">a+ : 一个或多个a</span><br><span class="line">.* : 任意多个任意字符</span><br><span class="line">\. : 转义.</span><br><span class="line">\&lt;h.*p\&gt; ：以h开头，p结尾的一个单词</span><br><span class="line">o\&#123;2\&#125; : o重复两次</span><br><span class="line"></span><br><span class="line">grep &apos;^i.\&#123;18\&#125;n$&apos; /usr/share/dict/words</span><br><span class="line"></span><br><span class="line">查找不是以#开头的行</span><br><span class="line">grep -v &apos;^#&apos; a.txt | grep -v &apos;^$&apos; </span><br><span class="line"></span><br><span class="line">以h或r开头的</span><br><span class="line">grep &apos;^[hr]&apos; /etc/passwd</span><br><span class="line"></span><br><span class="line">不是以h和r开头的</span><br><span class="line">grep &apos;^[^hr]&apos; /etc/passwd</span><br><span class="line"></span><br><span class="line">不是以h到r开头的</span><br><span class="line">grep &apos;^[^h-r]&apos; /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<h3 id="13-输入输出重定向及管道"><a href="#13-输入输出重定向及管道" class="headerlink" title="13.输入输出重定向及管道"></a>13.输入输出重定向及管道</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">1.新建一个文件</span><br><span class="line">touch a.txt</span><br><span class="line">&gt; b.txt</span><br><span class="line"></span><br><span class="line">2.错误重定向:2&gt;</span><br><span class="line">find /etc -name zhaoxing.txt 2&gt; error.txt</span><br><span class="line"></span><br><span class="line">3.将正确或错误的信息都输入到log.txt中</span><br><span class="line">find /etc -name passwd &gt; /tmp/log.txt 2&gt;&amp;1 </span><br><span class="line">find /etc -name passwd &amp;&gt; /tmp/log.txt</span><br><span class="line"></span><br><span class="line">4.追加&gt;&gt;</span><br><span class="line"></span><br><span class="line">5.将小写转为大写（输入重定向）</span><br><span class="line">tr &quot;a-z&quot; &quot;A-Z&quot; &lt; /etc/passwd</span><br><span class="line"></span><br><span class="line">6.自动创建文件</span><br><span class="line">cat &gt; log.txt &lt;&lt; EXIT</span><br><span class="line">&gt; ccc</span><br><span class="line">&gt; ddd</span><br><span class="line">&gt; EXI</span><br><span class="line"></span><br><span class="line">7.查看/etc下的文件有多少个？</span><br><span class="line">ls -l /etc/ | grep &apos;^d&apos; | wc -l</span><br><span class="line"></span><br><span class="line">8.查看/etc下的文件有多少个，并将文件详情输入到result.txt中</span><br><span class="line">ls -l /etc/ | grep &apos;^d&apos; | tee result.txt | wc -l</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-进程控制"><a href="#14-进程控制" class="headerlink" title="14.进程控制"></a>14.进程控制</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">1.查看用户最近登录情况</span><br><span class="line">last</span><br><span class="line">lastlog</span><br><span class="line"></span><br><span class="line">2.查看硬盘使用情况</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line">3.查看文件大小</span><br><span class="line">du</span><br><span class="line"></span><br><span class="line">4.查看内存使用情况</span><br><span class="line">free</span><br><span class="line"></span><br><span class="line">5.查看文件系统</span><br><span class="line">/proc</span><br><span class="line"></span><br><span class="line">6.查看日志</span><br><span class="line">ls /var/log/</span><br><span class="line"></span><br><span class="line">7.查看系统报错日志</span><br><span class="line">tail /var/log/messages</span><br><span class="line"></span><br><span class="line">8.查看进程</span><br><span class="line">top</span><br><span class="line"></span><br><span class="line">9.结束进程</span><br><span class="line">kill 1234</span><br><span class="line">kill -9 4333</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Eli chen 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Eli chen 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      </div>
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Eli chen</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chenqikai.github.io/2018/12/05/Linux基础和命令/" title="Linux基础">http://chenqikai.github.io/2018/12/05/Linux基础和命令/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2018/11/21/String、StringBuilder与StringBuffer/" rel="next" title="String、StringBuffer与StringBuilder">
+                <i class="fa fa-chevron-left"></i> String、StringBuffer与StringBuilder
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2018/12/17/==和equals/" rel="prev" title="==和equals()方法">
+                ==和equals()方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Eli chen">
+  <p class="site-author-name" itemprop="name">Eli chen</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:1610252715@vip.henu.edu.cn" title="E-Mail &rarr; mailto:1610252715@vip.henu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="http://39.106.192.112/" title="Resume &rarr; http://39.106.192.112/" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>Resume</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux教程"><span class="nav-number">1.</span> <span class="nav-text">Linux教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#必备命令"><span class="nav-number">2.</span> <span class="nav-text">必备命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-man和page"><span class="nav-number">2.1.</span> <span class="nav-text">1.man和page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-常用"><span class="nav-number">2.2.</span> <span class="nav-text">2.常用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-文件命令"><span class="nav-number">2.3.</span> <span class="nav-text">3. 文件命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-系统命令"><span class="nav-number">2.4.</span> <span class="nav-text">4.系统命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-用户和组"><span class="nav-number">2.5.</span> <span class="nav-text">5.用户和组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-权限"><span class="nav-number">2.6.</span> <span class="nav-text">6. 权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-目录属性"><span class="nav-number">2.7.</span> <span class="nav-text">7.目录属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-软件安装"><span class="nav-number">2.8.</span> <span class="nav-text">8.软件安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-vim"><span class="nav-number">2.9.</span> <span class="nav-text">9.vim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-查找"><span class="nav-number">2.10.</span> <span class="nav-text">10.查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-打包与压缩"><span class="nav-number">2.11.</span> <span class="nav-text">11.打包与压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-正则"><span class="nav-number">2.12.</span> <span class="nav-text">12.正则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-输入输出重定向及管道"><span class="nav-number">2.13.</span> <span class="nav-text">13.输入输出重定向及管道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-进程控制"><span class="nav-number">2.14.</span> <span class="nav-text">14.进程控制</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eli chen</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">202k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:03</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,255,255' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
