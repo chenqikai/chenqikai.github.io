@@ -71,6 +71,7 @@
 <meta property="og:image" content="http://chenqikai.github.io/pictures/flume-multi-agent-flow.png">
 <meta property="og:image" content="http://chenqikai.github.io/pictures/flume-consolidation.png">
 <meta property="og:image" content="http://chenqikai.github.io/pictures/flume-multiplexing-the-flow.png">
+<meta property="og:image" content="https://github.com/heibaiying/BigData-Notes/blob/master/pictures/flume-version.png">
 <meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-1.png">
 <meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-2.png">
 <meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-3.png">
@@ -78,7 +79,7 @@
 <meta property="og:image" content="http://chenqikai.github.io/pictures/flume-retry.png">
 <meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-8.png">
 <meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-9.png">
-<meta property="og:updated_time" content="2020-03-07T15:44:31.270Z">
+<meta property="og:updated_time" content="2020-03-08T01:57:52.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flume 简介及基本使用">
 <meta name="twitter:description" content="Flume 简介及基本使用一、Flume简介Apache Flume 是一个分布式，高可用的数据收集系统。它可以从不同的数据源收集数据，经过聚合后发送到存储系统中，通常用于日志数据的收集。Flume 分为 NG 和 OG (1.0 之前) 两个版本，NG 在 OG 的基础上进行了完全的重构，是目前使用最为广泛的版本。下面的介绍均以 NG 为基础。 二、Flume架构和基本概念下图为 Flume 的">
@@ -326,7 +327,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">6.2k</span>
+              <span title="本文字数">6.8k</span>
             </span>
           
             <span class="post-meta-item">
@@ -405,8 +406,29 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;Agent&gt;.sources.&lt;Source&gt;.&lt;someProperty&gt; = &lt;someValue&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> properties for channels</span><br><span class="line">&lt;Agent&gt;.channel.&lt;Channel&gt;.&lt;someProperty&gt; = &lt;someValue&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> properties for sinks</span><br><span class="line">&lt;Agent&gt;.sources.&lt;Sink&gt;.&lt;someProperty&gt; = &lt;someValue&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="五、Flume的安装部署"><a href="#五、Flume的安装部署" class="headerlink" title="五、Flume的安装部署"></a>五、Flume的安装部署</h2><p>为方便大家后期查阅，本仓库中所有软件的安装均单独成篇，Flume 的安装见：</p>
-<p><a href="https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Linux%E4%B8%8BFlume%E7%9A%84%E5%AE%89%E8%A3%85.md" target="_blank" rel="noopener">Linux 环境下 Flume 的安装部署</a></p>
+<h2 id="五、Flume的安装部署"><a href="#五、Flume的安装部署" class="headerlink" title="五、Flume的安装部署"></a>五、Flume的安装部署</h2><h3 id="一、前置条件"><a href="#一、前置条件" class="headerlink" title="一、前置条件"></a>一、前置条件</h3><p>Flume 需要依赖 JDK 1.8+</p>
+<h3 id="二-、安装步骤"><a href="#二-、安装步骤" class="headerlink" title="二 、安装步骤"></a>二 、安装步骤</h3><h4 id="2-1-下载并解压"><a href="#2-1-下载并解压" class="headerlink" title="2.1 下载并解压"></a>2.1 下载并解压</h4><p>下载所需版本的 Flume，这里我下载的是 <code>CDH</code> 版本的 Flume。下载地址为：<a href="http://archive.cloudera.com/cdh5/cdh/5/" target="_blank" rel="noopener">http://archive.cloudera.com/cdh5/cdh/5/</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 下载后进行解压</span><br><span class="line">tar -zxvf  flume-ng-1.6.0-cdh5.15.2.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-配置环境变量"><a href="#2-2-配置环境变量" class="headerlink" title="2.2 配置环境变量"></a>2.2 配置环境变量</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>添加环境变量：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export FLUME_HOME=/usr/app/apache-flume-1.6.0-cdh5.15.2-bin</span><br><span class="line">export PATH=$FLUME_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>使得配置的环境变量立即生效：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-修改配置"><a href="#2-3-修改配置" class="headerlink" title="2.3 修改配置"></a>2.3 修改配置</h4><p>进入安装目录下的 <code>conf/</code> 目录，拷贝 Flume 的环境配置模板 <code>flume-env.sh.template</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> cp flume-env.sh.template flume-env.sh</span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>flume-env.sh</code>,指定 JDK 的安装路径：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Enviroment variables can be set here.</span><br><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_201</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-验证"><a href="#2-4-验证" class="headerlink" title="2.4 验证"></a>2.4 验证</h4><p>由于已经将 Flume 的 bin 目录配置到环境变量，直接使用以下命令验证是否配置成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> flume-ng version</span><br></pre></td></tr></table></figure>
+
+<p>出现对应的版本信息则代表配置成功。</p>
+<p><img src="https://github.com/heibaiying/BigData-Notes/blob/master/pictures/flume-version.png" alt="flume-version"></p>
 <h2 id="六、Flume使用案例"><a href="#六、Flume使用案例" class="headerlink" title="六、Flume使用案例"></a>六、Flume使用案例</h2><p>介绍几个 Flume 的使用案例：</p>
 <ul>
 <li>案例一：使用 Flume 监听文件内容变动，将新增加的内容输出到控制台。</li>
@@ -591,7 +613,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -626,7 +648,11 @@
         
           
         
-        <span class="site-state-item-count">10</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -677,7 +703,11 @@
         
           
         
-        <span class="site-state-item-count">18</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -722,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Flume-简介及基本使用"><span class="nav-number">1.</span> <span class="nav-text">Flume 简介及基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Flume简介"><span class="nav-number">1.1.</span> <span class="nav-text">一、Flume简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Flume架构和基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">二、Flume架构和基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-基本架构"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 基本架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-基本概念"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-组件种类"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 组件种类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Flume架构模式"><span class="nav-number">1.3.</span> <span class="nav-text">三、Flume架构模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-multi-agent-flow"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 multi-agent flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Consolidation"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Consolidation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Multiplexing-the-flow"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 Multiplexing the flow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Flume配置格式"><span class="nav-number">1.4.</span> <span class="nav-text">四、Flume配置格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Flume的安装部署"><span class="nav-number">1.5.</span> <span class="nav-text">五、Flume的安装部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、Flume使用案例"><span class="nav-number">1.6.</span> <span class="nav-text">六、Flume使用案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-案例一"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 案例一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-配置"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">1. 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启动"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">2. 启动　</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-测试"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">3. 测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-案例二"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 案例二</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-配置-1"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">1. 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启动-1"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">2. 启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-测试-1"><span class="nav-number">1.6.2.3.</span> <span class="nav-text">3. 测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-案例三"><span class="nav-number">1.6.3.</span> <span class="nav-text">6.3 案例三</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-配置日志收集Flume"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">1. 配置日志收集Flume</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-配置日志聚合Flume"><span class="nav-number">1.6.3.2.</span> <span class="nav-text">2. 配置日志聚合Flume</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-启动"><span class="nav-number">1.6.3.3.</span> <span class="nav-text">3. 启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-测试"><span class="nav-number">1.6.3.4.</span> <span class="nav-text">4.测试</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Flume-简介及基本使用"><span class="nav-number">1.</span> <span class="nav-text">Flume 简介及基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Flume简介"><span class="nav-number">1.1.</span> <span class="nav-text">一、Flume简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Flume架构和基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">二、Flume架构和基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-基本架构"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 基本架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-基本概念"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-组件种类"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 组件种类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Flume架构模式"><span class="nav-number">1.3.</span> <span class="nav-text">三、Flume架构模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-multi-agent-flow"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 multi-agent flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Consolidation"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Consolidation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Multiplexing-the-flow"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 Multiplexing the flow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Flume配置格式"><span class="nav-number">1.4.</span> <span class="nav-text">四、Flume配置格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Flume的安装部署"><span class="nav-number">1.5.</span> <span class="nav-text">五、Flume的安装部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、前置条件"><span class="nav-number">1.5.1.</span> <span class="nav-text">一、前置条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-、安装步骤"><span class="nav-number">1.5.2.</span> <span class="nav-text">二 、安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-下载并解压"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">2.1 下载并解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-配置环境变量"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">2.2 配置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-修改配置"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">2.3 修改配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-验证"><span class="nav-number">1.5.2.4.</span> <span class="nav-text">2.4 验证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、Flume使用案例"><span class="nav-number">1.6.</span> <span class="nav-text">六、Flume使用案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-案例一"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 案例一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-配置"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">1. 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启动"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">2. 启动　</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-测试"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">3. 测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-案例二"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 案例二</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-配置-1"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">1. 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启动-1"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">2. 启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-测试-1"><span class="nav-number">1.6.2.3.</span> <span class="nav-text">3. 测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-案例三"><span class="nav-number">1.6.3.</span> <span class="nav-text">6.3 案例三</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-配置日志收集Flume"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">1. 配置日志收集Flume</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-配置日志聚合Flume"><span class="nav-number">1.6.3.2.</span> <span class="nav-text">2. 配置日志聚合Flume</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-启动"><span class="nav-number">1.6.3.3.</span> <span class="nav-text">3. 启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-测试"><span class="nav-number">1.6.3.4.</span> <span class="nav-text">4.测试</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -756,12 +786,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">202k</span>
+    <span title="站点总字数">243k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:03</span>
+    <span title="站点阅读时长">3:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>
