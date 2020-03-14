@@ -67,13 +67,13 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="“==”java中==为关系运算符,表示左边的数据是否和右边的数据相等，相等返回true否则返回false。基本数据类型之间的比较直接使用==，java是面向对象的语言，除了基本数据类型外的全部都为引用数据类型，也就是对象类型。引用数据类型在内存中的存储分为两部分，栈空间存储的为堆空间内存地址，堆空间存储实际的数据。直接使用==比较的是内存地址，但所得到的结果可能并不是我们想要的。比如String">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/img/equals/equals.png">
-<meta property="og:image" content="http://chenqikai.github.io/img/equals/String.png">
-<meta property="og:updated_time" content="2020-03-11T00:38:46.603Z">
+<meta property="og:image" content="http://chenqikai.github.io/2018/12/17/img/equals/equals.png">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthn4gmg0j30n10gl756.jpg">
+<meta property="og:updated_time" content="2020-03-14T07:28:37.586Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="==和equals()方法">
 <meta name="twitter:description" content="“==”java中==为关系运算符,表示左边的数据是否和右边的数据相等，相等返回true否则返回false。基本数据类型之间的比较直接使用==，java是面向对象的语言，除了基本数据类型外的全部都为引用数据类型，也就是对象类型。引用数据类型在内存中的存储分为两部分，栈空间存储的为堆空间内存地址，堆空间存储实际的数据。直接使用==比较的是内存地址，但所得到的结果可能并不是我们想要的。比如String">
-<meta name="twitter:image" content="http://chenqikai.github.io/img/equals/equals.png">
+<meta name="twitter:image" content="http://chenqikai.github.io/2018/12/17/img/equals/equals.png">
   <link rel="canonical" href="http://chenqikai.github.io/2018/12/17/==和equals/">
 
 
@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1.1k</span>
+              <span title="本文字数">1k</span>
             </span>
           
             <span class="post-meta-item">
@@ -348,14 +348,14 @@
 
       
         <h1 id="“-”"><a href="#“-”" class="headerlink" title="“==”"></a>“==”</h1><p>java中<code>==</code>为关系运算符,表示左边的数据是否和右边的数据相等，相等返回<code>true</code>否则返回<code>false</code>。基本数据类型之间的比较直接使用<code>==</code>，java是面向对象的语言，除了基本数据类型外的全部都为引用数据类型，也就是对象类型。引用数据类型在内存中的存储分为两部分，栈空间存储的为堆空间内存地址，堆空间存储实际的数据。直接使用<code>==</code>比较的是内存地址，但所得到的结果可能并不是我们想要的。<br>比如String的比较</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">代码段1：</span><br><span class="line">String str1 = &quot;aa&quot;;</span><br><span class="line">String str2 = &quot;aa&quot;;</span><br><span class="line">System.out.println(str1 == str2);         //true</span><br><span class="line">System.out.println(str1.equals(str2));    //true</span><br><span class="line">代码段2：</span><br><span class="line">String str3 = new String(&quot;cc&quot;);</span><br><span class="line">String str4 = new String(&quot;cc&quot;);</span><br><span class="line">System.out.println(str3 == str4);         //false</span><br><span class="line">System.out.println(str3.equals(str4));    //true</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">代码段<span class="number">1</span>：</span><br><span class="line">String str1 = <span class="string">"aa"</span>;</span><br><span class="line">String str2 = <span class="string">"aa"</span>;</span><br><span class="line">System.out.println(str1 == str2);         <span class="comment">//true</span></span><br><span class="line">System.out.println(str1.equals(str2));    <span class="comment">//true</span></span><br><span class="line">代码段<span class="number">2</span>：</span><br><span class="line">String str3 = <span class="keyword">new</span> String(<span class="string">"cc"</span>);</span><br><span class="line">String str4 = <span class="keyword">new</span> String(<span class="string">"cc"</span>);</span><br><span class="line">System.out.println(str3 == str4);         <span class="comment">//false</span></span><br><span class="line">System.out.println(str3.equals(str4));    <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 
 <p>看以上代码发现<code>str1==str2</code>为<code>true</code>而<code>str3==str4</code>为<code>false</code>，原因是因为java在编译期会将相同的字符串当做一个对象放入常量池，所以<code>str1</code>和<code>str2</code>为同一个对象，<code>==</code>也为<code>true</code>。使用<code>new String()</code>来创建对象会强制创建两个不同的对象，所以<code>str3==str4</code>为<code>false</code>。所以引用数据类型之间的比较一定不能使用<code>==</code>，而应使用<code>equals()</code>方法。</p>
 <h1 id="equals-方法"><a href="#equals-方法" class="headerlink" title="equals()方法"></a>equals()方法</h1><p><code>equals()</code>方法为<code>Object</code>类的方法，源码如下；</p>
-<p><img src="/img/equals/equals.png" alt="equals()"></p>
+<p><img src="../img/equals/equals.png" alt="equals(https://tva1.sinaimg.cn/large/00831rSTly1gcthn29xtkj30oy084t99.jpg)"></p>
 <p><code>Object</code>类中的<code>equals()</code>方法和<code>==</code>比较是相同的，返回的是<code>==</code>比较的结果。<br>为了能使<code>equals()</code>方法比较对象的内容我们必须重写<code>equals()</code>方法。</p>
 <p><code>String</code>类中重写了<code>equals()</code>方法。源码如下：</p>
-<p><img src="/img/equals/String.png" alt="String"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthn4gmg0j30n10gl756.jpg" alt="String"></p>
 <p><code>String</code>类的<code>equals()</code>方法首先比较的是不是同一个对象，是直接返回<code>true</code>，不是则判断是否是<code>String</code>类的对象，不是返回<code>false</code>，是接着比较字符串中的每一个<code>char</code>是否都相同，相同则返回<code>true</code>，否则返回<code>false</code>。</p>
 <p>所以<code>String</code>使用<code>equals()</code>方法比较的是字符串的内容。</p>
 <p>我们自己写的类中可以使用IDE工具直接生成<code>equals()</code>方法，使其比较对象中的内容。</p>
@@ -661,12 +661,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

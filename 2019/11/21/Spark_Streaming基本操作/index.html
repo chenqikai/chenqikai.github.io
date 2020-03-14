@@ -67,15 +67,15 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="Spark Streaming 基本操作一、案例引入这里先引入一个基本的案例来演示流的创建：获取指定端口上的数据并进行词频统计。项目依赖和代码实现如下： 12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.spark&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spark-streaming_2.12&amp;lt;/ar">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-streaming-word-count-v1.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-streaming-dstream-ops.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-streaming-word-count-v2.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-streaming-word-count-v3.png">
-<meta property="og:updated_time" content="2020-03-11T00:39:07.463Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgl38oonj30k50ao74p.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctglytjnwj30ub0asmxs.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgmhikmzj30kp07fgml.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgnbfaphj30lk084mxs.jpg">
+<meta property="og:updated_time" content="2020-03-14T06:55:54.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark Streaming 基本操作">
 <meta name="twitter:description" content="Spark Streaming 基本操作一、案例引入这里先引入一个基本的案例来演示流的创建：获取指定端口上的数据并进行词频统计。项目依赖和代码实现如下： 12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.spark&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spark-streaming_2.12&amp;lt;/ar">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/spark-streaming-word-count-v1.png">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgl38oonj30k50ao74p.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/11/21/Spark_Streaming基本操作/">
 
 
@@ -358,9 +358,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop001 ~]#  nc -lk 9999</span><br><span class="line">hello world hello spark hive hive hadoop</span><br><span class="line">storm storm flink azkaban</span><br></pre></td></tr></table></figure>
 
 <p>此时控制台输出如下，可以看到已经接收到数据并按行进行了词频统计。</p>
-<div align="center"> <img src="/pictures/spark-streaming-word-count-v1.png"> </div>
-<br>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgl38oonj30k50ao74p.jpg" alt=""></p>
 <p>下面针对示例代码进行讲解：</p>
 <h3 id="3-1-StreamingContext"><a href="#3-1-StreamingContext" class="headerlink" title="3.1 StreamingContext"></a>3.1 StreamingContext</h3><p>Spark Streaming 编程的入口类是 StreamingContext，在创建时候需要指明 <code>sparkConf</code> 和 <code>batchDuration</code>(批次时间)，Spark 流处理本质是将流数据拆分为一个个批次，然后进行微批处理，<code>batchDuration</code> 就是批次拆分的时间间隔。这个时间可以根据业务需求和服务器性能进行指定，如果业务要求低延迟并且服务器性能也允许，则这个时间可以指定得很短。</p>
 <p>这里需要注意的是：示例代码使用的是本地模式，配置为 <code>local[2]</code>，这里不能配置为 <code>local[1]</code>。这是因为对于流数据的处理，Spark 必须有一个独立的 Executor 来接收数据，然后再由其他的 Executors 来处理，所以为了保证数据能够被处理，至少要有 2 个 Executors。这里我们的程序只有一个数据流，在并行读取多个数据流的时候，也需要保证有足够的 Executors 来接收和处理数据。</p>
@@ -378,8 +376,7 @@
 </blockquote>
 <h3 id="3-3-服务的启动与停止"><a href="#3-3-服务的启动与停止" class="headerlink" title="3.3 服务的启动与停止"></a>3.3 服务的启动与停止</h3><p>在示例代码中，使用 <code>streamingContext.start()</code> 代表启动服务，此时还要使用 <code>streamingContext.awaitTermination()</code> 使服务处于等待和可用的状态，直到发生异常或者手动使用 <code>streamingContext.stop()</code> 进行终止。</p>
 <h2 id="二、Transformation"><a href="#二、Transformation" class="headerlink" title="二、Transformation"></a>二、Transformation</h2><h3 id="2-1-DStream与RDDs"><a href="#2-1-DStream与RDDs" class="headerlink" title="2.1 DStream与RDDs"></a>2.1 DStream与RDDs</h3><p>DStream 是 Spark Streaming 提供的基本抽象。它表示连续的数据流。在内部，DStream 由一系列连续的 RDD 表示。所以从本质上而言，应用于 DStream 的任何操作都会转换为底层 RDD 上的操作。例如，在示例代码中 flatMap 算子的操作实际上是作用在每个 RDDs 上 (如下图)。因为这个原因，所以 DStream 能够支持 RDD 大部分的<em>transformation</em>算子。</p>
-<div align="center"> <img src="/pictures/spark-streaming-dstream-ops.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctglytjnwj30ub0asmxs.jpg" alt=""></p>
 <h3 id="2-2-updateStateByKey"><a href="#2-2-updateStateByKey" class="headerlink" title="2.2 updateStateByKey"></a>2.2 updateStateByKey</h3><p>除了能够支持 RDD 的算子外，DStream 还有部分独有的<em>transformation</em>算子，这当中比较常用的是 <code>updateStateByKey</code>。文章开头的词频统计程序，只能统计每一次输入文本中单词出现的数量，想要统计所有历史输入中单词出现的数量，可以使用 <code>updateStateByKey</code> 算子。代码如下：</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">NetworkWordCountV2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 本地测试时最好指定 hadoop 用户名,否则会默认使用本地电脑的用户名,</span></span><br><span class="line"><span class="comment">     * 此时在 HDFS 上创建目录时可能会抛出权限不足的异常</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">System</span>.setProperty(<span class="string">"HADOOP_USER_NAME"</span>, <span class="string">"root"</span>)</span><br><span class="line">      </span><br><span class="line">    <span class="keyword">val</span> sparkConf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setAppName(<span class="string">"NetworkWordCountV2"</span>).setMaster(<span class="string">"local[2]"</span>)</span><br><span class="line">    <span class="keyword">val</span> ssc = <span class="keyword">new</span> <span class="type">StreamingContext</span>(sparkConf, <span class="type">Seconds</span>(<span class="number">5</span>))</span><br><span class="line">    <span class="comment">/*必须要设置检查点*/</span></span><br><span class="line">    ssc.checkpoint(<span class="string">"hdfs://hadoop001:8020/spark-streaming"</span>)</span><br><span class="line">    <span class="keyword">val</span> lines = ssc.socketTextStream(<span class="string">"hadoop001"</span>, <span class="number">9999</span>)</span><br><span class="line">    lines.flatMap(_.split(<span class="string">" "</span>)).map(x =&gt; (x, <span class="number">1</span>))</span><br><span class="line">      .updateStateByKey[<span class="type">Int</span>](updateFunction _)   <span class="comment">//updateStateByKey 算子</span></span><br><span class="line">      .print()</span><br><span class="line"></span><br><span class="line">    ssc.start()</span><br><span class="line">    ssc.awaitTermination()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 累计求和</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * @param currentValues 当前的数据</span></span><br><span class="line"><span class="comment">    * @param preValues     之前的数据</span></span><br><span class="line"><span class="comment">    * @return 相加后的数据</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">updateFunction</span></span>(currentValues: <span class="type">Seq</span>[<span class="type">Int</span>], preValues: <span class="type">Option</span>[<span class="type">Int</span>]): <span class="type">Option</span>[<span class="type">Int</span>] = &#123;</span><br><span class="line">    <span class="keyword">val</span> current = currentValues.sum</span><br><span class="line">    <span class="keyword">val</span> pre = preValues.getOrElse(<span class="number">0</span>)</span><br><span class="line">    <span class="type">Some</span>(current + pre)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -388,9 +385,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop001 ~]#  nc -lk 9999</span><br><span class="line">hello world hello spark hive hive hadoop</span><br><span class="line">storm storm flink azkaban</span><br><span class="line">hello world hello spark hive hive hadoop</span><br><span class="line">storm storm flink azkaban</span><br></pre></td></tr></table></figure>
 
 <p>此时控制台输出如下，所有输入都被进行了词频累计：</p>
-<div align="center"> <img src="/pictures/spark-streaming-word-count-v2.png"> </div>
-同时在输出日志中还可以看到检查点操作的相关信息：
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgmhikmzj30kp07fgml.jpg" alt=""></p>
+<p>同时在输出日志中还可以看到检查点操作的相关信息：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 保存检查点信息</span><br><span class="line">19/05/27 16:21:05 INFO CheckpointWriter: Saving checkpoint for time 1558945265000 ms </span><br><span class="line">to file 'hdfs://hadoop001:8020/spark-streaming/checkpoint-1558945265000'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 删除已经无用的检查点信息</span><br><span class="line">19/05/27 16:21:30 INFO CheckpointWriter: </span><br><span class="line">Deleting hdfs://hadoop001:8020/spark-streaming/checkpoint-1558945265000</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、输出操作"><a href="#三、输出操作" class="headerlink" title="三、输出操作"></a>三、输出操作</h2><h3 id="3-1-输出API"><a href="#3-1-输出API" class="headerlink" title="3.1 输出API"></a>3.1 输出API</h3><p>Spark Streaming 支持以下输出操作：</p>
@@ -444,11 +440,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop001 ~]#  nc -lk 9999</span><br><span class="line">hello world hello spark hive hive hadoop</span><br><span class="line">storm storm flink azkaban</span><br><span class="line">hello world hello spark hive hive hadoop</span><br><span class="line">storm storm flink azkaban</span><br></pre></td></tr></table></figure>
 
 <p>使用 Redis Manager 查看写入结果 (如下图),可以看到与使用 <code>updateStateByKey</code> 算子得到的计算结果相同。</p>
-<div align="center"> <img src="/pictures/spark-streaming-word-count-v3.png"> </div>  
-<br>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgnbfaphj30lk084mxs.jpg" alt=""></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>Spark 官方文档：<a href="http://spark.apache.org/docs/latest/streaming-programming-guide.html" target="_blank" rel="noopener">http://spark.apache.org/docs/latest/streaming-programming-guide.html</a></p>
 
     </div>
@@ -748,12 +740,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

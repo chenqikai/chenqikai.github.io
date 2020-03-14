@@ -67,23 +67,23 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="Flume 简介及基本使用一、Flume简介Apache Flume 是一个分布式，高可用的数据收集系统。它可以从不同的数据源收集数据，经过聚合后发送到存储系统中，通常用于日志数据的收集。Flume 分为 NG 和 OG (1.0 之前) 两个版本，NG 在 OG 的基础上进行了完全的重构，是目前使用最为广泛的版本。下面的介绍均以 NG 为基础。 二、Flume架构和基本概念下图为 Flume 的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-architecture.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-multi-agent-flow.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-consolidation.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-multiplexing-the-flow.png">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthrarihrj30h8065q31.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthrkl2tpj30h403eaa5.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthrqas9lj30h80bnt9g.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthrx74tsj30h70a1weu.jpg">
 <meta property="og:image" content="https://github.com/heibaiying/BigData-Notes/blob/master/pictures/flume-version.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-1.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-2.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-3.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-4.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-retry.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-8.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/flume-example-9.png">
-<meta property="og:updated_time" content="2020-03-11T00:38:36.288Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcths5mr7qj30sk04c74d.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcths9sfo3j30sj031dg1.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthsgcqkfj30sm07fjsa.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthsumab1j30sm03ydfx.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthtc9033j30up098jsm.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctht8kj7wj30uo04saa5.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctht5vgg2j30up078dgr.jpg">
+<meta property="og:updated_time" content="2020-03-14T07:34:24.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flume 简介及基本使用">
 <meta name="twitter:description" content="Flume 简介及基本使用一、Flume简介Apache Flume 是一个分布式，高可用的数据收集系统。它可以从不同的数据源收集数据，经过聚合后发送到存储系统中，通常用于日志数据的收集。Flume 分为 NG 和 OG (1.0 之前) 两个版本，NG 在 OG 的基础上进行了完全的重构，是目前使用最为广泛的版本。下面的介绍均以 NG 为基础。 二、Flume架构和基本概念下图为 Flume 的">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/flume-architecture.png">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthrarihrj30h8065q31.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/08/02/Flume简介及基本使用/">
 
 
@@ -359,8 +359,7 @@
       
         <h1 id="Flume-简介及基本使用"><a href="#Flume-简介及基本使用" class="headerlink" title="Flume 简介及基本使用"></a>Flume 简介及基本使用</h1><h2 id="一、Flume简介"><a href="#一、Flume简介" class="headerlink" title="一、Flume简介"></a>一、Flume简介</h2><p>Apache Flume 是一个分布式，高可用的数据收集系统。它可以从不同的数据源收集数据，经过聚合后发送到存储系统中，通常用于日志数据的收集。Flume 分为 NG 和 OG (1.0 之前) 两个版本，NG 在 OG 的基础上进行了完全的重构，是目前使用最为广泛的版本。下面的介绍均以 NG 为基础。</p>
 <h2 id="二、Flume架构和基本概念"><a href="#二、Flume架构和基本概念" class="headerlink" title="二、Flume架构和基本概念"></a>二、Flume架构和基本概念</h2><p>下图为 Flume 的基本架构图：</p>
-<div align="center"> <img src="/pictures/flume-architecture.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthrarihrj30h8065q31.jpg" alt=""></p>
 <h3 id="2-1-基本架构"><a href="#2-1-基本架构" class="headerlink" title="2.1 基本架构"></a>2.1 基本架构</h3><p>外部数据源以特定格式向 Flume 发送 <code>events</code> (事件)，当 <code>source</code> 接收到 <code>events</code> 时，它将其存储到一个或多个 <code>channel</code>，<code>channe</code> 会一直保存 <code>events</code> 直到它被 <code>sink</code> 所消费。<code>sink</code> 的主要功能从 <code>channel</code> 中读取 <code>events</code>，并将其存入外部存储系统或转发到下一个 <code>source</code>，成功后再从 <code>channel</code> 中移除 <code>events</code>。</p>
 <h3 id="2-2-基本概念"><a href="#2-2-基本概念" class="headerlink" title="2.2 基本概念"></a>2.2 基本概念</h3><p><strong>1. Event</strong></p>
 <p><code>Event</code> 是 Flume NG 数据传输的基本单元。类似于 JMS 和消息系统中的消息。一个 <code>Event</code> 由标题和正文组成：前者是键/值映射，后者是任意字节数组。</p>
@@ -387,20 +386,15 @@
 </ul>
 <p>对于 Flume 的使用，除非有特别的需求，否则通过组合内置的各种类型的 Source，Sink 和 Channel 就能满足大多数的需求。在 <a href="http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html" target="_blank" rel="noopener">Flume 官网</a> 上对所有类型组件的配置参数均以表格的方式做了详尽的介绍，并附有配置样例；同时不同版本的参数可能略有所不同，所以使用时建议选取官网对应版本的 User Guide 作为主要参考资料。</p>
 <h2 id="三、Flume架构模式"><a href="#三、Flume架构模式" class="headerlink" title="三、Flume架构模式"></a>三、Flume架构模式</h2><p>Flume 支持多种架构模式，分别介绍如下</p>
-<h3 id="3-1-multi-agent-flow"><a href="#3-1-multi-agent-flow" class="headerlink" title="3.1 multi-agent flow"></a>3.1 multi-agent flow</h3><div align="center"> <img src="/pictures/flume-multi-agent-flow.png"> </div>
-
+<h3 id="3-1-multi-agent-flow"><a href="#3-1-multi-agent-flow" class="headerlink" title="3.1 multi-agent flow"></a>3.1 multi-agent flow</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthrkl2tpj30h403eaa5.jpg" alt=""></p>
 <br>
 
 <p>Flume 支持跨越多个 Agent 的数据传递，这要求前一个 Agent 的 Sink 和下一个 Agent 的 Source 都必须是 <code>Avro</code> 类型，Sink 指向 Source 所在主机名 (或 IP 地址) 和端口（详细配置见下文案例三）。</p>
-<h3 id="3-2-Consolidation"><a href="#3-2-Consolidation" class="headerlink" title="3.2 Consolidation"></a>3.2 Consolidation</h3><div align="center"> <img src="/pictures/flume-consolidation.png"> </div>
-
-
-
+<h3 id="3-2-Consolidation"><a href="#3-2-Consolidation" class="headerlink" title="3.2 Consolidation"></a>3.2 Consolidation</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthrqas9lj30h80bnt9g.jpg" alt=""></p>
 <br>
 
 <p>日志收集中常常存在大量的客户端（比如分布式 web 服务），Flume 支持使用多个 Agent 分别收集日志，然后通过一个或者多个 Agent 聚合后再存储到文件系统中。</p>
-<h3 id="3-3-Multiplexing-the-flow"><a href="#3-3-Multiplexing-the-flow" class="headerlink" title="3.3 Multiplexing the flow"></a>3.3 Multiplexing the flow</h3><div align="center"> <img src="/pictures/flume-multiplexing-the-flow.png"> </div>
-
+<h3 id="3-3-Multiplexing-the-flow"><a href="#3-3-Multiplexing-the-flow" class="headerlink" title="3.3 Multiplexing the flow"></a>3.3 Multiplexing the flow</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthrx74tsj30h70a1weu.jpg" alt=""></p>
 <p>Flume 支持从一个 Source 向多个 Channel，也就是向多个 Sink 传递事件，这个操作称之为 <code>Fan Out</code>(扇出)。默认情况下 <code>Fan Out</code> 是向所有的 Channel 复制 <code>Event</code>，即所有 Channel 收到的数据都是相同的。同时 Flume 也支持在 <code>Source</code> 上自定义一个复用选择器 (multiplexing selector) 来实现自定义的路由规则。</p>
 <h2 id="四、Flume配置格式"><a href="#四、Flume配置格式" class="headerlink" title="四、Flume配置格式"></a>四、Flume配置格式</h2><p>Flume 配置通常需要以下两个步骤：</p>
 <ol>
@@ -450,13 +444,9 @@
 <h4 id="2-启动"><a href="#2-启动" class="headerlink" title="2. 启动　"></a>2. 启动　</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flume-ng agent \</span><br><span class="line">--conf conf \</span><br><span class="line">--conf-file /usr/app/apache-flume-1.6.0-cdh5.15.2-bin/examples/exec-memory-logger.properties \</span><br><span class="line">--name a1 \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure>
 
 <h4 id="3-测试"><a href="#3-测试" class="headerlink" title="3. 测试"></a>3. 测试</h4><p>向文件中追加数据：</p>
-<div align="center"> <img src="/pictures/flume-example-1.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcths5mr7qj30sk04c74d.jpg" alt=""></p>
 <p>控制台的显示：</p>
-<div align="center"> <img src="/pictures/flume-example-2.png"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcths9sfo3j30sj031dg1.jpg" alt=""></p>
 <h3 id="6-2-案例二"><a href="#6-2-案例二" class="headerlink" title="6.2 案例二"></a>6.2 案例二</h3><p>需求： 监听指定目录，将目录下新增加的文件存储到 HDFS。</p>
 <p>实现：使用 <code>Spooling Directory Source</code> 和 <code>HDFS Sink</code>。</p>
 <h4 id="1-配置-1"><a href="#1-配置-1" class="headerlink" title="1. 配置"></a>1. 配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#指定agent的sources,sinks,channels</span><br><span class="line">a1.sources = s1  </span><br><span class="line">a1.sinks = k1  </span><br><span class="line">a1.channels = c1  </span><br><span class="line">   </span><br><span class="line">#配置sources属性</span><br><span class="line">a1.sources.s1.type =spooldir  </span><br><span class="line">a1.sources.s1.spoolDir =/tmp/logs</span><br><span class="line">a1.sources.s1.basenameHeader = true</span><br><span class="line">a1.sources.s1.basenameHeaderKey = fileName </span><br><span class="line">#将sources与channels进行绑定  </span><br><span class="line">a1.sources.s1.channels =c1 </span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">#配置sink </span><br><span class="line">a1.sinks.k1.type = hdfs</span><br><span class="line">a1.sinks.k1.hdfs.path = /flume/events/%y-%m-%d/%H/</span><br><span class="line">a1.sinks.k1.hdfs.filePrefix = %&#123;fileName&#125;</span><br><span class="line">#生成的文件类型，默认是Sequencefile，可用DataStream，则为普通文本</span><br><span class="line">a1.sinks.k1.hdfs.fileType = DataStream  </span><br><span class="line">a1.sinks.k1.hdfs.useLocalTimeStamp = true</span><br><span class="line">#将sinks与channels进行绑定  </span><br><span class="line">a1.sinks.k1.channel = c1</span><br><span class="line">   </span><br><span class="line">#配置channel类型</span><br><span class="line">a1.channels.c1.type = memory</span><br></pre></td></tr></table></figure>
@@ -466,15 +456,11 @@
 <h4 id="3-测试-1"><a href="#3-测试-1" class="headerlink" title="3. 测试"></a>3. 测试</h4><p>拷贝任意文件到监听目录下，可以从日志看到文件上传到 HDFS 的路径：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> cp log.txt logs/</span><br></pre></td></tr></table></figure>
 
-<div align="center"> <img src="/pictures/flume-example-3.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthsgcqkfj30sm07fjsa.jpg" alt=""></p>
 <p>查看上传到 HDFS 上的文件内容与本地是否一致：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> hdfs dfs -cat /flume/events/19-04-09/13/log.txt.1554788567801</span><br></pre></td></tr></table></figure>
 
-<div align="center"> <img src="/pictures/flume-example-4.png"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthsumab1j30sm03ydfx.jpg" alt=""></p>
 <h3 id="6-3-案例三"><a href="#6-3-案例三" class="headerlink" title="6.3 案例三"></a>6.3 案例三</h3><p>需求： 将本服务器收集到的数据发送到另外一台服务器。</p>
 <p>实现：使用 <code>avro sources</code> 和 <code>avro Sink</code> 实现。</p>
 <h4 id="1-配置日志收集Flume"><a href="#1-配置日志收集Flume" class="headerlink" title="1. 配置日志收集Flume"></a>1. 配置日志收集Flume</h4><p>新建配置 <code>netcat-memory-avro.properties</code>，监听文件内容变化，然后将新的文件内容通过 <code>avro sink</code> 发送到 hadoop001 这台服务器的 8888 端口：</p>
@@ -490,13 +476,11 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flume-ng agent \</span><br><span class="line">--conf conf \</span><br><span class="line">--conf-file /usr/app/apache-flume-1.6.0-cdh5.15.2-bin/examples/netcat-memory-avro.properties \</span><br><span class="line">--name a1 -Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure>
 
 <p>这里建议按以上顺序启动，原因是 <code>avro.source</code> 会先与端口进行绑定，这样 <code>avro sink</code> 连接时才不会报无法连接的异常。但是即使不按顺序启动也是没关系的，<code>sink</code> 会一直重试，直至建立好连接。</p>
-<div align="center"> <img src="/pictures/flume-retry.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthtc9033j30up098jsm.jpg" alt=""></p>
 <h4 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h4><p>向文件 <code>tmp/log.txt</code> 中追加内容：</p>
-<div align="center"> <img src="/pictures/flume-example-8.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctht8kj7wj30uo04saa5.jpg" alt=""></p>
 <p>可以看到已经从 8888 端口监听到内容，并成功输出到控制台：</p>
-<div align="center"> <img src="/pictures/flume-example-9.png"> </div>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctht5vgg2j30up078dgr.jpg" alt=""></p>
 
     </div>
 
@@ -799,12 +783,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

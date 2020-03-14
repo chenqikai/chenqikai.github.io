@@ -67,16 +67,16 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="Spark部署模式与作业提交一、作业提交1.1  spark-submitSpark 所有模式均使用 spark-submit 命令提交作业，其格式如下： 12345678./bin/spark-submit \  --class &amp;lt;main-class&amp;gt; \        # 应用程序主入口类  --master &amp;lt;master-url&amp;gt; \       # 集群的 Ma">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-pi.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-集群模式.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-Standalone-web-ui.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-内存不足2.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-内存不足.png">
-<meta property="og:updated_time" content="2020-03-11T00:33:35.453Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgrbcm3vj30fo08egmh.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgrl0shfj30gk07ydg6.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgruhgrrj30jq09swf8.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgs5thtdj30ur03daab.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgsiey4xj311906qwf1.jpg">
+<meta property="og:updated_time" content="2020-03-14T06:59:09.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark部署模式与作业提交">
 <meta name="twitter:description" content="Spark部署模式与作业提交一、作业提交1.1  spark-submitSpark 所有模式均使用 spark-submit 命令提交作业，其格式如下： 12345678./bin/spark-submit \  --class &amp;lt;main-class&amp;gt; \        # 应用程序主入口类  --master &amp;lt;master-url&amp;gt; \       # 集群的 Ma">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/spark-pi.png">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgrbcm3vj30fo08egmh.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/11/15/Spark部署模式与作业提交/">
 
 
@@ -327,7 +327,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">5.6k</span>
+              <span title="本文字数">5.5k</span>
             </span>
           
             <span class="post-meta-item">
@@ -409,17 +409,13 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 本地模式提交应用</span><br><span class="line">spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master local[2] \</span><br><span class="line">/usr/app/spark-2.4.0-bin-hadoop2.6/examples/jars/spark-examples_2.11-2.4.0.jar \</span><br><span class="line">100   # 传给 SparkPi 的参数</span><br></pre></td></tr></table></figure>
 
 <p><code>spark-examples_2.11-2.4.0.jar</code> 是 Spark 提供的测试用例包，<code>SparkPi</code> 用于计算 Pi 值，执行结果如下：</p>
-<div align="center"> <img src="/pictures/spark-pi.png"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgrbcm3vj30fo08egmh.jpg" alt=""></p>
 <h2 id="三、Standalone模式"><a href="#三、Standalone模式" class="headerlink" title="三、Standalone模式"></a>三、Standalone模式</h2><p>Standalone 是 Spark 提供的一种内置的集群模式，采用内置的资源管理器进行管理。下面按照如图所示演示 1 个 Mater 和 2 个 Worker 节点的集群配置，这里使用两台主机进行演示：</p>
 <ul>
 <li>hadoop001： 由于只有两台主机，所以 hadoop001 既是 Master 节点，也是 Worker 节点;</li>
 <li>hadoop002 ： Worker 节点。</li>
 </ul>
-<div align="center"> <img src="/pictures/spark-集群模式.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgrl0shfj30gk07ydg6.jpg" alt=""></p>
 <h3 id="3-1-环境配置"><a href="#3-1-环境配置" class="headerlink" title="3.1 环境配置"></a>3.1 环境配置</h3><p>首先需要保证 Spark 已经解压在两台主机的相同路径上。然后进入 hadoop001 的 <code>${SPARK_HOME}/conf/</code> 目录下，拷贝配置样本并进行相关配置：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> cp spark-env.sh.template spark-env.sh</span><br></pre></td></tr></table></figure>
 
@@ -442,20 +438,17 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./sbin/start-master.sh</span><br></pre></td></tr></table></figure>
 
 <p>访问 8080 端口，查看 Spark 的 Web-UI 界面,，此时应该显示有两个有效的工作节点：</p>
-<div align="center"> <img src="/pictures/spark-Standalone-web-ui.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgruhgrrj30jq09swf8.jpg" alt=""></p>
 <h3 id="3-4-提交作业"><a href="#3-4-提交作业" class="headerlink" title="3.4 提交作业"></a>3.4 提交作业</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 以client模式提交到standalone集群 </span><br><span class="line">spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master spark://hadoop001:7077 \</span><br><span class="line">--executor-memory 2G \</span><br><span class="line">--total-executor-cores 10 \</span><br><span class="line">/usr/app/spark-2.4.0-bin-hadoop2.6/examples/jars/spark-examples_2.11-2.4.0.jar \</span><br><span class="line">100</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 以cluster模式提交到standalone集群 </span><br><span class="line">spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master spark://207.184.161.138:7077 \</span><br><span class="line">--deploy-mode cluster \</span><br><span class="line">--supervise \  # 配置此参数代表开启监督，如果主应用程序异常退出，则自动重启 Driver</span><br><span class="line">--executor-memory 2G \</span><br><span class="line">--total-executor-cores 10 \</span><br><span class="line">/usr/app/spark-2.4.0-bin-hadoop2.6/examples/jars/spark-examples_2.11-2.4.0.jar \</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-5-可选配置"><a href="#3-5-可选配置" class="headerlink" title="3.5 可选配置"></a>3.5 可选配置</h3><p>在虚拟机上提交作业时经常出现一个的问题是作业无法申请到足够的资源：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Initial job has not accepted any resources; </span><br><span class="line">check your cluster UI to ensure that workers are registered and have sufficient resources</span><br></pre></td></tr></table></figure>
 
-<div align="center"> <img src="/pictures/spark-内存不足2.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgs5thtdj30ur03daab.jpg" alt=""></p>
 <br>
 
 <p>这时候可以查看 Web UI，我这里是内存空间不足：提交命令中要求作业的 <code>executor-memory</code> 是 2G，但是实际的工作节点的 <code>Memory</code> 只有 1G，这时候你可以修改 <code>--executor-memory</code>，也可以修改 Woker 的 <code>Memory</code>，其默认值为主机所有可用内存值减去 1G。</p>
-<div align="center"> <img src="/pictures/spark-内存不足.png"> </div>   
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgsiey4xj311906qwf1.jpg" alt=""></p>
 <br>
 
 <p>关于 Master 和 Woker 节点的所有可选配置如下，可以在 <code>spark-env.sh</code> 中进行对应的配置：    </p>
@@ -834,12 +827,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

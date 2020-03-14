@@ -67,13 +67,13 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="Hive CLI和Beeline命令行的基本使用一、Hive CLI1.1 Help使用 hive -H 或者 hive --help 命令可以查看所有命令的帮助，显示如下： 12345678910111213usage: hive -d,--define &amp;lt;key=value&amp;gt;          Variable subsitution to apply to hive">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hive-e.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hive-n-j.png">
-<meta property="og:updated_time" content="2020-03-11T00:40:53.075Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth2qf3wdj30l00damyh.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth30uvrdj30lz0e7aal.jpg">
+<meta property="og:updated_time" content="2020-03-14T07:09:14.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hive CLI和Beeline命令行的基本使用">
 <meta name="twitter:description" content="Hive CLI和Beeline命令行的基本使用一、Hive CLI1.1 Help使用 hive -H 或者 hive --help 命令可以查看所有命令的帮助，显示如下： 12345678910111213usage: hive -d,--define &amp;lt;key=value&amp;gt;          Variable subsitution to apply to hive">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/hive-e.png">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth2qf3wdj30l00damyh.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/07/23/HiveCLI和Beeline命令行的基本使用/">
 
 
@@ -354,10 +354,7 @@
 <h3 id="1-3-执行SQL命令"><a href="#1-3-执行SQL命令" class="headerlink" title="1.3 执行SQL命令"></a>1.3 执行SQL命令</h3><p>在不进入交互式命令行的情况下，可以使用 <code>hive -e</code> 执行 SQL 命令。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive -e '<span class="keyword">select</span> * <span class="keyword">from</span> emp<span class="string">';</span></span><br></pre></td></tr></table></figure>
 
-<div align="center"> <img width="700px" src="/pictures/hive-e.png"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth2qf3wdj30l00damyh.jpg" alt=""></p>
 <h3 id="1-4-执行SQL脚本"><a href="#1-4-执行SQL脚本" class="headerlink" title="1.4 执行SQL脚本"></a>1.4 执行SQL脚本</h3><p>用于执行的 sql 脚本可以在本地文件系统，也可以在 HDFS 上。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 本地文件系统</span><br><span class="line">hive -f /usr/file/simple.sql;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> HDFS文件系统</span><br><span class="line">hive -f hdfs://hadoop001:8020/tmp/simple.sql;</span><br></pre></td></tr></table></figure>
 
@@ -387,8 +384,7 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下两条语句等价</span></span><br><span class="line">hive &gt; select $&#123;n&#125; from emp;</span><br><span class="line">hive &gt;  select $&#123;hivevar:n&#125; from emp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下两条语句等价</span></span><br><span class="line">hive &gt; select $&#123;j&#125; from emp;</span><br><span class="line">hive &gt;  select $&#123;hivevar:j&#125; from emp;</span><br></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
-<div align="center"> <img width="700px" src="/pictures/hive-n-j.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth30uvrdj30lz0e7aal.jpg" alt=""></p>
 <h2 id="二、Beeline"><a href="#二、Beeline" class="headerlink" title="二、Beeline"></a>二、Beeline</h2><h3 id="2-1-HiveServer2"><a href="#2-1-HiveServer2" class="headerlink" title="2.1 HiveServer2"></a>2.1 HiveServer2</h3><p>Hive 内置了 HiveServer 和 HiveServer2 服务，两者都允许客户端使用多种编程语言进行连接，但是 HiveServer 不能处理多个客户端的并发请求，所以产生了 HiveServer2。</p>
 <p>HiveServer2（HS2）允许远程客户端可以使用各种编程语言向 Hive 提交请求并检索结果，支持多客户端并发访问和身份验证。HS2 是由多个服务组成的单个进程，其包括基于 Thrift 的 Hive 服务（TCP 或 HTTP）和用于 Web UI 的 Jetty Web 服务器。</p>
 <p> HiveServer2 拥有自己的 CLI(Beeline)，Beeline 是一个基于 SQLLine 的 JDBC 客户端。由于 HiveServer2 是 Hive 开发维护的重点 (Hive0.15 后就不再支持 hiveserver)，所以 Hive CLI 已经不推荐使用了，官方更加推荐使用 Beeline。</p>
@@ -776,12 +772,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

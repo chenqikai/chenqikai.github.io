@@ -59,28 +59,28 @@
   };
 </script>
 
-  <meta name="description" content="Sqoop基本使用一、Sqoop 基本命令1. 查看所有命令1# sqoop help        2. 查看某条命令的具体使用方法1# sqoop help 命令名  二、Sqoop 与 MySQL1. 查询MySQL所有数据库通常用于 Sqoop 与 MySQL 连通测试： 1234sqoop list-databases \--connect jdbc:mysql://hadoop001:">
+  <meta name="description" content="Sqoop基本使用一、Sqoop 基本命令1. 查看所有命令1# sqoop help     2. 查看某条命令的具体使用方法1# sqoop help 命令名  二、Sqoop 与 MySQL1. 查询MySQL所有数据库通常用于 Sqoop 与 MySQL 连通测试： 1234sqoop list-databases \--connect jdbc:mysql://hadoop001:330">
 <meta name="keywords" content="Sqoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sqoop基本使用">
 <meta property="og:url" content="http://chenqikai.github.io/2019/10/02/Sqoop基本使用/index.html">
 <meta property="og:site_name" content="Elichen blog">
-<meta property="og:description" content="Sqoop基本使用一、Sqoop 基本命令1. 查看所有命令1# sqoop help        2. 查看某条命令的具体使用方法1# sqoop help 命令名  二、Sqoop 与 MySQL1. 查询MySQL所有数据库通常用于 Sqoop 与 MySQL 连通测试： 1234sqoop list-databases \--connect jdbc:mysql://hadoop001:">
+<meta property="og:description" content="Sqoop基本使用一、Sqoop 基本命令1. 查看所有命令1# sqoop help     2. 查看某条命令的具体使用方法1# sqoop help 命令名  二、Sqoop 与 MySQL1. 查询MySQL所有数据库通常用于 Sqoop 与 MySQL 连通测试： 1234sqoop list-databases \--connect jdbc:mysql://hadoop001:330">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/sqoop-help.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/sqoop-list-databases.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/sqoop-map-task.png">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth3wmt5ij30gy09hdgb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth432hg1j30sm088dgg.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth4cmwrhj30sm0gkdho.jpg">
 <meta property="og:image" content="http://chenqikai.github.io/pictures/sqoop_hdfs_ls.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/sqoop_hive_tables.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/sqoop_hive_error.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/sqoop-hive-location.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/sqoop-hive-hdfs.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/sqoop_hbase.png">
-<meta property="og:updated_time" content="2020-03-11T00:37:39.228Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth4n74nuj30mh08tq33.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth4t4se6j30sm0ayq40.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth52id8oj30ni0ait95.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth55s2a0j30sm03rt90.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth5h5a2sj30sm0agwfp.jpg">
+<meta property="og:updated_time" content="2020-03-14T07:11:54.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sqoop基本使用">
-<meta name="twitter:description" content="Sqoop基本使用一、Sqoop 基本命令1. 查看所有命令1# sqoop help        2. 查看某条命令的具体使用方法1# sqoop help 命令名  二、Sqoop 与 MySQL1. 查询MySQL所有数据库通常用于 Sqoop 与 MySQL 连通测试： 1234sqoop list-databases \--connect jdbc:mysql://hadoop001:">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/sqoop-help.png">
+<meta name="twitter:description" content="Sqoop基本使用一、Sqoop 基本命令1. 查看所有命令1# sqoop help     2. 查看某条命令的具体使用方法1# sqoop help 命令名  二、Sqoop 与 MySQL1. 查询MySQL所有数据库通常用于 Sqoop 与 MySQL 连通测试： 1234sqoop list-databases \--connect jdbc:mysql://hadoop001:330">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth3wmt5ij30gy09hdgb.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/10/02/Sqoop基本使用/">
 
 
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">6.9k</span>
+              <span title="本文字数">6.8k</span>
             </span>
           
             <span class="post-meta-item">
@@ -356,8 +356,7 @@
       
         <h1 id="Sqoop基本使用"><a href="#Sqoop基本使用" class="headerlink" title="Sqoop基本使用"></a>Sqoop基本使用</h1><h2 id="一、Sqoop-基本命令"><a href="#一、Sqoop-基本命令" class="headerlink" title="一、Sqoop 基本命令"></a>一、Sqoop 基本命令</h2><h3 id="1-查看所有命令"><a href="#1-查看所有命令" class="headerlink" title="1. 查看所有命令"></a>1. 查看所有命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sqoop help</span><br></pre></td></tr></table></figure>
 
-<div align="center"> <img src="/pictures/sqoop-help.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth3wmt5ij30gy09hdgb.jpg" alt=""></p>
 <br>
 
 <h3 id="2-查看某条命令的具体使用方法"><a href="#2-查看某条命令的具体使用方法" class="headerlink" title="2. 查看某条命令的具体使用方法"></a>2. 查看某条命令的具体使用方法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sqoop help 命令名</span><br></pre></td></tr></table></figure>
@@ -365,8 +364,7 @@
 <h2 id="二、Sqoop-与-MySQL"><a href="#二、Sqoop-与-MySQL" class="headerlink" title="二、Sqoop 与 MySQL"></a>二、Sqoop 与 MySQL</h2><h3 id="1-查询MySQL所有数据库"><a href="#1-查询MySQL所有数据库" class="headerlink" title="1. 查询MySQL所有数据库"></a>1. 查询MySQL所有数据库</h3><p>通常用于 Sqoop 与 MySQL 连通测试：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqoop list-databases \</span><br><span class="line">--connect jdbc:mysql://hadoop001:3306/ \</span><br><span class="line">--username root \</span><br><span class="line">--password root</span><br></pre></td></tr></table></figure>
 
-<div align="center"> <img src="/pictures/sqoop-list-databases.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth432hg1j30sm088dgg.jpg" alt=""></p>
 <br>
 
 <h3 id="2-查询指定数据库中所有数据表"><a href="#2-查询指定数据库中所有数据表" class="headerlink" title="2. 查询指定数据库中所有数据表"></a>2. 查询指定数据库中所有数据表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqoop list-tables \</span><br><span class="line">--connect jdbc:mysql://hadoop001:3306/mysql \</span><br><span class="line">--username root \</span><br><span class="line">--password root</span><br></pre></td></tr></table></figure>
@@ -382,8 +380,7 @@
 <li>添加 <code>-- autoreset-to-one-mapper</code> 参数，代表只启动一个 <code>map task</code>，即不并行执行；</li>
 <li>若仍希望并行执行，则可以使用 <code>--split-by &lt;column-name&gt;</code> 指明拆分数据的参考列。</li>
 </ul>
-<div align="center"> <img src="/pictures/sqoop-map-task.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth4cmwrhj30sm0gkdho.jpg" alt=""></p>
 <h4 id="2-导入验证"><a href="#2-导入验证" class="headerlink" title="2. 导入验证"></a>2. 导入验证</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看导入后的目录</span><br><span class="line">hadoop fs -ls  -R /sqoop</span><br><span class="line"><span class="meta">#</span> 查看导入内容</span><br><span class="line">hadoop fs -text  /sqoop/part-m-00000</span><br></pre></td></tr></table></figure>
 
 <p>查看 HDFS 导入目录,可以看到表中数据被分为 3 部分进行存储，这是由指定的并行度决定的。</p>
@@ -404,10 +401,8 @@
 
 <h4 id="2-导入验证-1"><a href="#2-导入验证-1" class="headerlink" title="2. 导入验证"></a>2. 导入验证</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看 sqoop_test 数据库的所有表</span><br><span class="line"><span class="meta"> hive&gt;</span>  SHOW  TABLES  IN  sqoop_test;</span><br><span class="line"><span class="meta">#</span> 查看表中数据</span><br><span class="line"><span class="meta"> hive&gt;</span> SELECT * FROM sqoop_test.help_keyword;</span><br></pre></td></tr></table></figure>
 
-<div align="center"> <img src="/pictures/sqoop_hive_tables.png"> </div>
-
-<h4 id="3-可能出现的问题"><a href="#3-可能出现的问题" class="headerlink" title="3. 可能出现的问题"></a>3. 可能出现的问题</h4><div align="center"> <img src="/pictures/sqoop_hive_error.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth4n74nuj30mh08tq33.jpg" alt=""></p>
+<h4 id="3-可能出现的问题"><a href="#3-可能出现的问题" class="headerlink" title="3. 可能出现的问题"></a>3. 可能出现的问题</h4><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth4t4se6j30sm0ayq40.jpg" alt=""></p>
 <br>
 
 <p>如果执行报错 <code>java.io.IOException: java.lang.ClassNotFoundException: org.apache.hadoop.hive.conf.HiveConf</code>，则需将 Hive 安装目录下 <code>lib</code> 下的 <code>hive-exec-**.jar</code> 放到 sqoop 的 <code>lib</code> 。</p>
@@ -419,32 +414,22 @@
 <h4 id="1-查看Hive表在HDFS的存储位置"><a href="#1-查看Hive表在HDFS的存储位置" class="headerlink" title="1. 查看Hive表在HDFS的存储位置"></a>1. 查看Hive表在HDFS的存储位置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 进入对应的数据库</span><br><span class="line"><span class="meta">hive&gt;</span> use sqoop_test;</span><br><span class="line"><span class="meta">#</span> 查看表信息</span><br><span class="line"><span class="meta">hive&gt;</span> desc formatted help_keyword;</span><br></pre></td></tr></table></figure>
 
 <p><code>Location</code> 属性为其存储位置：</p>
-<div align="center"> <img src="/pictures/sqoop-hive-location.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth52id8oj30ni0ait95.jpg" alt="">&gt;</p>
 <p>这里可以查看一下这个目录，文件结构如下：</p>
-<div align="center"> <img src="/pictures/sqoop-hive-hdfs.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth55s2a0j30sm03rt90.jpg" alt=""></p>
 <h4 id="3-2-执行导出命令"><a href="#3-2-执行导出命令" class="headerlink" title="3.2 执行导出命令"></a>3.2 执行导出命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sqoop export  \</span><br><span class="line">    --connect jdbc:mysql://hadoop001:3306/mysql \</span><br><span class="line">    --username root \</span><br><span class="line">    --password root \</span><br><span class="line">    --table help_keyword_from_hive \</span><br><span class="line">    --export-dir /user/hive/warehouse/sqoop_test.db/help_keyword  \</span><br><span class="line">    -input-fields-terminated-by '\001' \             # 需要注意的是 hive 中默认的分隔符为 \001</span><br><span class="line">    --m 3</span><br></pre></td></tr></table></figure>
 
 <p>MySQL 中的表需要预先创建：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> help_keyword_from_hive <span class="keyword">LIKE</span> help_keyword ;</span><br></pre></td></tr></table></figure>
 
-<h2 id="五、Sqoop-与-HBase"><a href="#五、Sqoop-与-HBase" class="headerlink" title="五、Sqoop 与 HBase"></a>五、Sqoop 与 HBase</h2><blockquote>
-<p>本小节只讲解从 RDBMS 导入数据到 HBase，因为暂时没有命令能够从 HBase 直接导出数据到 RDBMS。</p>
-</blockquote>
-<h3 id="5-1-MySQL导入数据到HBase"><a href="#5-1-MySQL导入数据到HBase" class="headerlink" title="5.1 MySQL导入数据到HBase"></a>5.1 MySQL导入数据到HBase</h3><h4 id="1-导入数据"><a href="#1-导入数据" class="headerlink" title="1. 导入数据"></a>1. 导入数据</h4><p>将 <code>help_keyword</code> 表中数据导入到 HBase 上的 <code>help_keyword_hbase</code> 表中，使用原表的主键 <code>help_keyword_id</code> 作为 <code>RowKey</code>，原表的所有列都会在 <code>keywordInfo</code> 列族下，目前只支持全部导入到一个列族下，不支持分别指定列族。</p>
+<h2 id="五、Sqoop-与-HBase"><a href="#五、Sqoop-与-HBase" class="headerlink" title="五、Sqoop 与 HBase"></a>五、Sqoop 与 HBase</h2><h3 id="5-1-MySQL导入数据到HBase"><a href="#5-1-MySQL导入数据到HBase" class="headerlink" title="5.1 MySQL导入数据到HBase"></a>5.1 MySQL导入数据到HBase</h3><h4 id="1-导入数据"><a href="#1-导入数据" class="headerlink" title="1. 导入数据"></a>1. 导入数据</h4><p>将 <code>help_keyword</code> 表中数据导入到 HBase 上的 <code>help_keyword_hbase</code> 表中，使用原表的主键 <code>help_keyword_id</code> 作为 <code>RowKey</code>，原表的所有列都会在 <code>keywordInfo</code> 列族下，目前只支持全部导入到一个列族下，不支持分别指定列族。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">    --connect jdbc:mysql://hadoop001:3306/mysql \</span><br><span class="line">    --username root \</span><br><span class="line">    --password root \</span><br><span class="line">    --table help_keyword \              # 待导入的表</span><br><span class="line">    --hbase-table help_keyword_hbase \  # hbase 表名称，表需要预先创建</span><br><span class="line">    --column-family keywordInfo \       # 所有列导入到 keywordInfo 列族下 </span><br><span class="line">    --hbase-row-key help_keyword_id     # 使用原表的 help_keyword_id 作为 RowKey</span><br></pre></td></tr></table></figure>
 
 <p>导入的 HBase 表需要预先创建：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看所有表</span><br><span class="line"><span class="meta">hbase&gt;</span> list</span><br><span class="line"><span class="meta">#</span> 创建表</span><br><span class="line"><span class="meta">hbase&gt;</span> create 'help_keyword_hbase', 'keywordInfo'</span><br><span class="line"><span class="meta">#</span> 查看表信息</span><br><span class="line"><span class="meta">hbase&gt;</span> desc 'help_keyword_hbase'</span><br></pre></td></tr></table></figure>
 
 <h4 id="2-导入验证-2"><a href="#2-导入验证-2" class="headerlink" title="2. 导入验证"></a>2. 导入验证</h4><p>使用 <code>scan</code> 查看表数据：</p>
-<div align="center"> <img src="/pictures/sqoop_hbase.png"> </div>
-
-
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth5h5a2sj30sm0agwfp.jpg" alt=""></p>
 <h2 id="六、全库导出"><a href="#六、全库导出" class="headerlink" title="六、全库导出"></a>六、全库导出</h2><p>Sqoop 支持通过 <code>import-all-tables</code> 命令进行全库导出到 HDFS/Hive，但需要注意有以下两个限制：</p>
 <ul>
 <li>所有表必须有主键；或者使用 <code>--autoreset-to-one-mapper</code>，代表只启动一个 <code>map task</code>;</li>
@@ -790,12 +775,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

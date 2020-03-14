@@ -59,23 +59,23 @@
   };
 </script>
 
-  <meta name="description" content="集群资源管理器——YARN一、hadoop yarn 简介Apache YARN (Yet Another Resource Negotiator)  是 hadoop 2.0 引入的集群资源管理系统。用户可以将各种服务框架部署在 YARN 上，由 YARN 进行统一地管理和资源分配。       二、YARN架构    1. ResourceManagerResourceManager 通常在独">
+  <meta name="description" content="集群资源管理器——YARN一、hadoop yarn 简介Apache YARN (Yet Another Resource Negotiator)  是 hadoop 2.0 引入的集群资源管理系统。用户可以将各种服务框架部署在 YARN 上，由 YARN 进行统一地管理和资源分配。  二、YARN架构 1. ResourceManagerResourceManager 通常在独立的机器上以后台">
 <meta name="keywords" content="YARN,Hadoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="集群资源管理器——YARN">
 <meta property="og:url" content="http://chenqikai.github.io/2019/05/22/Hadoop-YARN/index.html">
 <meta property="og:site_name" content="Elichen blog">
-<meta property="og:description" content="集群资源管理器——YARN一、hadoop yarn 简介Apache YARN (Yet Another Resource Negotiator)  是 hadoop 2.0 引入的集群资源管理系统。用户可以将各种服务框架部署在 YARN 上，由 YARN 进行统一地管理和资源分配。       二、YARN架构    1. ResourceManagerResourceManager 通常在独">
+<meta property="og:description" content="集群资源管理器——YARN一、hadoop yarn 简介Apache YARN (Yet Another Resource Negotiator)  是 hadoop 2.0 引入的集群资源管理系统。用户可以将各种服务框架部署在 YARN 上，由 YARN 进行统一地管理和资源分配。  二、YARN架构 1. ResourceManagerResourceManager 通常在独立的机器上以后台">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/yarn-base.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/Figure3Architecture-of-YARN.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/yarn工作原理简图.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/yarn工作原理.png">
-<meta property="og:updated_time" content="2020-03-11T00:35:55.061Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthm0fhpzj30pc09cdku.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthm85dwtj30i908o3yv.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthmduv9sj30ph0clac0.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthmjduxjj30fe0epdih.jpg">
+<meta property="og:updated_time" content="2020-03-14T07:27:53.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集群资源管理器——YARN">
-<meta name="twitter:description" content="集群资源管理器——YARN一、hadoop yarn 简介Apache YARN (Yet Another Resource Negotiator)  是 hadoop 2.0 引入的集群资源管理系统。用户可以将各种服务框架部署在 YARN 上，由 YARN 进行统一地管理和资源分配。       二、YARN架构    1. ResourceManagerResourceManager 通常在独">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/yarn-base.png">
+<meta name="twitter:description" content="集群资源管理器——YARN一、hadoop yarn 简介Apache YARN (Yet Another Resource Negotiator)  是 hadoop 2.0 引入的集群资源管理系统。用户可以将各种服务框架部署在 YARN 上，由 YARN 进行统一地管理和资源分配。  二、YARN架构 1. ResourceManagerResourceManager 通常在独立的机器上以后台">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthm0fhpzj30pc09cdku.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/05/22/Hadoop-YARN/">
 
 
@@ -350,12 +350,8 @@
 
       
         <h1 id="集群资源管理器——YARN"><a href="#集群资源管理器——YARN" class="headerlink" title="集群资源管理器——YARN"></a>集群资源管理器——YARN</h1><h2 id="一、hadoop-yarn-简介"><a href="#一、hadoop-yarn-简介" class="headerlink" title="一、hadoop yarn 简介"></a>一、hadoop yarn 简介</h2><p><strong>Apache YARN</strong> (Yet Another Resource Negotiator)  是 hadoop 2.0 引入的集群资源管理系统。用户可以将各种服务框架部署在 YARN 上，由 YARN 进行统一地管理和资源分配。</p>
-<div align="center"> <img width="600px" src="/pictures/yarn-base.png"> </div>
-
-
-
-<h2 id="二、YARN架构"><a href="#二、YARN架构" class="headerlink" title="二、YARN架构"></a>二、YARN架构</h2><div align="center"> <img width="600px" src="/pictures/Figure3Architecture-of-YARN.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthm0fhpzj30pc09cdku.jpg" alt=""></p>
+<h2 id="二、YARN架构"><a href="#二、YARN架构" class="headerlink" title="二、YARN架构"></a>二、YARN架构</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthm85dwtj30i908o3yv.jpg" alt=""></p>
 <h3 id="1-ResourceManager"><a href="#1-ResourceManager" class="headerlink" title="1. ResourceManager"></a>1. ResourceManager</h3><p><code>ResourceManager</code> 通常在独立的机器上以后台进程的形式运行，它是整个集群资源的主要协调者和管理者。<code>ResourceManager</code> 负责给用户提交的所有应用程序分配资源，它根据应用程序优先级、队列容量、ACLs、数据位置等信息，做出决策，然后以共享的、安全的、多租户的方式制定分配策略，调度集群资源。</p>
 <h3 id="2-NodeManager"><a href="#2-NodeManager" class="headerlink" title="2. NodeManager"></a>2. NodeManager</h3><p><code>NodeManager</code> 是 YARN 集群中的每个具体节点的管理者。主要负责该节点内所有容器的生命周期的管理，监视资源和跟踪节点健康。具体如下：</p>
 <ul>
@@ -371,8 +367,7 @@
 <li>负责任务的容错。</li>
 </ul>
 <h3 id="4-Contain"><a href="#4-Contain" class="headerlink" title="4. Contain"></a>4. Contain</h3><p><code>Container</code> 是 YARN 中的资源抽象，它封装了某个节点上的多维度资源，如内存、CPU、磁盘、网络等。当 AM 向 RM 申请资源时，RM 为 AM 返回的资源是用 <code>Container</code> 表示的。YARN 会为每个任务分配一个 <code>Container</code>，该任务只能使用该 <code>Container</code> 中描述的资源。<code>ApplicationMaster</code> 可在 <code>Container</code> 内运行任何类型的任务。例如，<code>MapReduce ApplicationMaster</code> 请求一个容器来启动 map 或 reduce 任务，而 <code>Giraph ApplicationMaster</code> 请求一个容器来运行 Giraph 任务。</p>
-<h2 id="三、YARN工作原理简述"><a href="#三、YARN工作原理简述" class="headerlink" title="三、YARN工作原理简述"></a>三、YARN工作原理简述</h2><div align="center"> <img src="/pictures/yarn工作原理简图.png"> </div>
-
+<h2 id="三、YARN工作原理简述"><a href="#三、YARN工作原理简述" class="headerlink" title="三、YARN工作原理简述"></a>三、YARN工作原理简述</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthmduv9sj30ph0clac0.jpg" alt=""></p>
 <ol>
 <li><p><code>Client</code> 提交作业到 YARN 上；</p>
 </li>
@@ -383,10 +378,7 @@
 <li><p><code>Application Master</code> 通过获取到的 <code>Container</code> 资源执行分布式计算。</p>
 </li>
 </ol>
-<h2 id="四、YARN工作原理详述"><a href="#四、YARN工作原理详述" class="headerlink" title="四、YARN工作原理详述"></a>四、YARN工作原理详述</h2><div align="center"> <img width="600px" src="/pictures/yarn工作原理.png"> </div>
-
-
-
+<h2 id="四、YARN工作原理详述"><a href="#四、YARN工作原理详述" class="headerlink" title="四、YARN工作原理详述"></a>四、YARN工作原理详述</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthmjduxjj30fe0epdih.jpg" alt=""></p>
 <h4 id="1-作业提交"><a href="#1-作业提交" class="headerlink" title="1. 作业提交"></a>1. 作业提交</h4><p>client 调用 job.waitForCompletion 方法，向整个集群提交 MapReduce 作业 (第 1 步) 。新的作业 ID(应用 ID) 由资源管理器分配 (第 2 步)。作业的 client 核实作业的输出, 计算输入的 split, 将作业的资源 (包括 Jar 包，配置文件, split 信息) 拷贝给 HDFS(第 3 步)。 最后, 通过调用资源管理器的 submitApplication() 来提交作业 (第 4 步)。</p>
 <h4 id="2-作业初始化"><a href="#2-作业初始化" class="headerlink" title="2. 作业初始化"></a>2. 作业初始化</h4><p>当资源管理器收到 submitApplciation() 的请求时, 就将该请求发给调度器 (scheduler), 调度器分配 container, 然后资源管理器在该 container 内启动应用管理器进程, 由节点管理器监控 (第 5 步)。</p>
 <p>MapReduce 作业的应用管理器是一个主类为 MRAppMaster 的 Java 应用，其通过创造一些 bookkeeping 对象来监控作业的进度,  得到任务的进度和完成报告 (第 6 步)。然后其通过分布式文件系统得到由客户端计算好的输入 split(第 7 步)，然后为每个输入 split 创建一个 map 任务, 根据 mapreduce.job.reduces 创建 reduce 任务对象。</p>
@@ -463,8 +455,8 @@
         </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/05/18/Hadoop-MapReduce/" rel="next" title="MapReduce">
-                <i class="fa fa-chevron-left"></i> MapReduce
+              <a href="/2019/05/18/Hadoop-MapReduce/" rel="next" title="分布式计算框架——MapReduce">
+                <i class="fa fa-chevron-left"></i> 分布式计算框架——MapReduce
               </a>
             
           </div>
@@ -709,12 +701,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

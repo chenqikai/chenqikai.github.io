@@ -67,15 +67,15 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="弹性式数据集RDD一、RDD简介RDD 全称为 Resilient Distributed Datasets，是 Spark 最基本的数据抽象，它是只读的、分区记录的集合，支持并行操作，可以由外部数据集或其他 RDD 转换而来，它具有以下特性：  一个 RDD 由一个或者多个分区（Partitions）组成。对于 RDD 来说，每个分区会被一个计算任务所处理，用户可以在创建 RDD 时指定其分区个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/scala-分区数.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-reducebykey.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-窄依赖和宽依赖.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/spark-DAG.png">
-<meta property="og:updated_time" content="2020-03-11T00:36:54.255Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth82bbwkj30lv062glr.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth8aglmwj315p0u07bb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth8h8fmhj30p40gi41e.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth8pnrqhj30n60rwac3.jpg">
+<meta property="og:updated_time" content="2020-03-14T07:14:37.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="弹性式数据集RDD">
 <meta name="twitter:description" content="弹性式数据集RDD一、RDD简介RDD 全称为 Resilient Distributed Datasets，是 Spark 最基本的数据抽象，它是只读的、分区记录的集合，支持并行操作，可以由外部数据集或其他 RDD 转换而来，它具有以下特性：  一个 RDD 由一个或者多个分区（Partitions）组成。对于 RDD 来说，每个分区会被一个计算任务所处理，用户可以在创建 RDD 时指定其分区个">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/scala-分区数.png">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcth82bbwkj30lv062glr.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/10/18/Spark_RDD/">
 
 
@@ -371,8 +371,7 @@
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> data = <span class="type">Array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="comment">// 由现有集合创建 RDD,默认分区数为程序所分配到的 CPU 的核心数</span></span><br><span class="line"><span class="keyword">val</span> dataRDD = sc.parallelize(data) </span><br><span class="line"><span class="comment">// 查看分区数</span></span><br><span class="line">dataRDD.getNumPartitions</span><br><span class="line"><span class="comment">// 明确指定分区数</span></span><br><span class="line"><span class="keyword">val</span> dataRDD = sc.parallelize(data,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
 <p>执行结果如下：</p>
-<div align="center"> <img src="/pictures/scala-分区数.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth82bbwkj30lv062glr.jpg" alt=""></p>
 <h3 id="2-2-引用外部存储系统中的数据集"><a href="#2-2-引用外部存储系统中的数据集" class="headerlink" title="2.2 引用外部存储系统中的数据集"></a>2.2 引用外部存储系统中的数据集</h3><p>引用外部存储系统中的数据集，例如本地文件系统，HDFS，HBase 或支持 Hadoop InputFormat 的任何数据源。</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> fileRDD = sc.textFile(<span class="string">"/usr/file/emp.txt"</span>)</span><br><span class="line"><span class="comment">// 获取第一行文本</span></span><br><span class="line">fileRDD.take(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
@@ -443,10 +442,7 @@
 
 <h3 id="4-3-移除缓存"><a href="#4-3-移除缓存" class="headerlink" title="4.3 移除缓存"></a>4.3 移除缓存</h3><p>Spark 会自动监视每个节点上的缓存使用情况，并按照最近最少使用（LRU）的规则删除旧数据分区。当然，你也可以使用 <code>RDD.unpersist()</code> 方法进行手动删除。</p>
 <h2 id="五、理解shuffle"><a href="#五、理解shuffle" class="headerlink" title="五、理解shuffle"></a>五、理解shuffle</h2><h3 id="5-1-shuffle介绍"><a href="#5-1-shuffle介绍" class="headerlink" title="5.1 shuffle介绍"></a>5.1 shuffle介绍</h3><p>在 Spark 中，一个任务对应一个分区，通常不会跨分区操作数据。但如果遇到 <code>reduceByKey</code> 等操作，Spark 必须从所有分区读取数据，并查找所有键的所有值，然后汇总在一起以计算每个键的最终结果 ，这称为 <code>Shuffle</code>。</p>
-<div align="center"> <img width="600px" src="/pictures/spark-reducebykey.png"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth8aglmwj315p0u07bb.jpg" alt=""></p>
 <h3 id="5-2-Shuffle的影响"><a href="#5-2-Shuffle的影响" class="headerlink" title="5.2 Shuffle的影响"></a>5.2 Shuffle的影响</h3><p>Shuffle 是一项昂贵的操作，因为它通常会跨节点操作数据，这会涉及磁盘 I/O，网络 I/O，和数据序列化。某些 Shuffle 操作还会消耗大量的堆内存，因为它们使用堆内存来临时存储需要网络传输的数据。Shuffle 还会在磁盘上生成大量中间文件，从 Spark 1.3 开始，这些文件将被保留，直到相应的 RDD 不再使用并进行垃圾回收，这样做是为了避免在计算时重复创建 Shuffle 文件。如果应用程序长期保留对这些 RDD 的引用，则垃圾回收可能在很长一段时间后才会发生，这意味着长时间运行的 Spark 作业可能会占用大量磁盘空间，通常可以使用 <code>spark.local.dir</code> 参数来指定这些临时文件的存储目录。</p>
 <h3 id="5-3-导致Shuffle的操作"><a href="#5-3-导致Shuffle的操作" class="headerlink" title="5.3 导致Shuffle的操作"></a>5.3 导致Shuffle的操作</h3><p>由于 Shuffle 操作对性能的影响比较大，所以需要特别注意使用，以下操作都会导致 Shuffle：</p>
 <ul>
@@ -460,10 +456,7 @@
 <li><strong>宽依赖 (wide dependency)</strong>：父 RDDs 的一个分区可以被子 RDDs 的多个子分区所依赖。</li>
 </ul>
 <p>如下图，每一个方框表示一个 RDD，带有颜色的矩形表示分区：</p>
-<div align="center"> <img width="600px" src="/pictures/spark-窄依赖和宽依赖.png"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth8h8fmhj30p40gi41e.jpg" alt=""></p>
 <p>区分这两种依赖是非常有用的：</p>
 <ul>
 <li>首先，窄依赖允许在一个集群节点上以流水线的方式（pipeline）对父分区数据进行计算，例如先执行 map 操作，然后执行 filter 操作。而宽依赖则需要计算好所有父分区的数据，然后再在节点之间进行 Shuffle，这与 MapReduce 类似。</li>
@@ -474,12 +467,7 @@
 <li>对于窄依赖，由于分区的依赖关系是确定的，其转换操作可以在同一个线程执行，所以可以划分到同一个执行阶段；</li>
 <li>对于宽依赖，由于 Shuffle 的存在，只能在父 RDD(s) 被 Shuffle 处理完成后，才能开始接下来的计算，因此遇到宽依赖就需要重新划分阶段。</li>
 </ul>
-<div align="center"> <img width="600px" height="600px" src="/pictures/spark-DAG.png"> </div>
-
-
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcth8pnrqhj30n60rwac3.jpg" alt=""></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
 <li>张安站 . Spark 技术内幕：深入解析 Spark 内核架构设计与实现原理[M] . 机械工业出版社 . 2015-09-01</li>
 <li><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html#rdd-programming-guide" target="_blank" rel="noopener">RDD Programming Guide</a></li>
@@ -787,12 +775,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

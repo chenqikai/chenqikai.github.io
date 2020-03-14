@@ -67,13 +67,13 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="Kafka消费者详解一、消费者和消费者群组在 Kafka 中，消费者通常是消费者群组的一部分，多个消费者群组共同读取同一个主题时，彼此之间互不影响。Kafka 之所以要引入消费者群组这个概念是因为 Kafka 消费者经常会做一些高延迟的操作，比如把数据写到数据库或 HDFS ，或者进行耗时的计算，在这些情况下，单个消费者无法跟上数据生成的速度。此时可以增加更多的消费者，让它们分担负载，分别处理部分">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/kafka-consumer01.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/kafka-consumer02.png">
-<meta property="og:updated_time" content="2020-03-11T00:36:24.164Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthgqrlugj30au0b73zm.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthguqx4qj30ay087dgg.jpg">
+<meta property="og:updated_time" content="2020-03-14T07:22:43.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka消费者详解">
 <meta name="twitter:description" content="Kafka消费者详解一、消费者和消费者群组在 Kafka 中，消费者通常是消费者群组的一部分，多个消费者群组共同读取同一个主题时，彼此之间互不影响。Kafka 之所以要引入消费者群组这个概念是因为 Kafka 消费者经常会做一些高延迟的操作，比如把数据写到数据库或 HDFS ，或者进行耗时的计算，在这些情况下，单个消费者无法跟上数据生成的速度。此时可以增加更多的消费者，让它们分担负载，分别处理部分">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/kafka-consumer01.png">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthgqrlugj30au0b73zm.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/09/07/Kafka消费者详解/">
 
 
@@ -348,11 +348,9 @@
 
       
         <h1 id="Kafka消费者详解"><a href="#Kafka消费者详解" class="headerlink" title="Kafka消费者详解"></a>Kafka消费者详解</h1><h2 id="一、消费者和消费者群组"><a href="#一、消费者和消费者群组" class="headerlink" title="一、消费者和消费者群组"></a>一、消费者和消费者群组</h2><p>在 Kafka 中，消费者通常是消费者群组的一部分，多个消费者群组共同读取同一个主题时，彼此之间互不影响。Kafka 之所以要引入消费者群组这个概念是因为 Kafka 消费者经常会做一些高延迟的操作，比如把数据写到数据库或 HDFS ，或者进行耗时的计算，在这些情况下，单个消费者无法跟上数据生成的速度。此时可以增加更多的消费者，让它们分担负载，分别处理部分分区的消息，这就是 Kafka 实现横向伸缩的主要手段。 </p>
-<div align="center"> <img src="/pictures/kafka-consumer01.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthgqrlugj30au0b73zm.jpg" alt=""></p>
 <p>需要注意的是：同一个分区只能被同一个消费者群组里面的一个消费者读取，不可能存在同一个分区被同一个消费者群里多个消费者共同读取的情况，如图：</p>
-<div align="center"> <img src="/pictures/kafka-consumer02.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthguqx4qj30ay087dgg.jpg" alt=""></p>
 <p>可以看到即便消费者 Consumer5 空闲了，但是也不会去读取任何一个分区的数据，这同时也提醒我们在使用时应该合理设置消费者的数量，以免造成闲置和额外开销。</p>
 <h2 id="二、分区再均衡"><a href="#二、分区再均衡" class="headerlink" title="二、分区再均衡"></a>二、分区再均衡</h2><p>因为群组里的消费者共同读取主题的分区，所以当一个消费者被关闭或发生崩溃时，它就离开了群组，原本由它读取的分区将由群组里的其他消费者来读取。同时在主题发生变化时 ， 比如添加了新的分区，也会发生分区与消费者的重新分配，分区的所有权从一个消费者转移到另一个消费者，这样的行为被称为再均衡。正是因为再均衡，所以消费费者群组才能保证高可用性和伸缩性。</p>
 <p>消费者通过向群组协调器所在的 broker 发送心跳来维持它们和群组的从属关系以及它们对分区的所有权。只要消费者以正常的时间间隔发送心跳，就被认为是活跃的，说明它还在读取分区里的消息。消费者会在轮询消息或提交偏移量时发送心跳。如果消费者停止发送心跳的时间足够长，会话就会过期，群组协调器认为它已经死亡，就会触发再均衡。</p>
@@ -733,12 +731,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

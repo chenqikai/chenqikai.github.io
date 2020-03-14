@@ -59,31 +59,31 @@
   };
 </script>
 
-  <meta name="description" content="Hadoop分布式文件系统——HDFS一、介绍HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。 二、HDFS 设计原理    2.1 HDFS 架构HDFS 遵循主/从架构，由单个 NameNode(NN) 和多个 DataNode(DN) 组成：  NameNode : 负责执行">
+  <meta name="description" content="Hadoop分布式文件系统——HDFS一、介绍HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。 二、HDFS 设计原理 2.1 HDFS 架构HDFS 遵循主/从架构，由单个 NameNode(NN) 和多个 DataNode(DN) 组成：  NameNode : 负责执行有关">
 <meta name="keywords" content="Hadoop,HDFS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HDFS原理">
 <meta property="og:url" content="http://chenqikai.github.io/2019/05/10/Hadoop-HDFS/index.html">
 <meta property="og:site_name" content="Elichen blog">
-<meta property="og:description" content="Hadoop分布式文件系统——HDFS一、介绍HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。 二、HDFS 设计原理    2.1 HDFS 架构HDFS 遵循主/从架构，由单个 NameNode(NN) 和多个 DataNode(DN) 组成：  NameNode : 负责执行">
+<meta property="og:description" content="Hadoop分布式文件系统——HDFS一、介绍HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。 二、HDFS 设计原理 2.1 HDFS 架构HDFS 遵循主/从架构，由单个 NameNode(NN) 和多个 DataNode(DN) 组成：  NameNode : 负责执行有关">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfsarchitecture.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfsdatanodes.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-机架.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-write-1.jpg">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-write-2.jpg">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-write-3.jpg">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-read-1.jpg">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-tolerance-1.jpg">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-tolerance-2.jpg">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-tolerance-3.jpg">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-tolerance-4.jpg">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/hdfs-tolerance-5.jpg">
-<meta property="og:updated_time" content="2020-03-11T00:36:41.896Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgwfd1zzj30oa0gsjs7.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgwnx2ndj30oa0ewaal.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgwu7v7mj30ea09lwed.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgx7m4taj30rn0fhaib.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgxq89hoj30ri0e5wmg.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgxo51i5j30rk0e3n5f.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgxz81o4j30rl0e246b.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgybuem1j30rh0f7th1.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgyl7bnrj30rl0e147b.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgyxvyugj30rk0fbguy.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgz7icm3j30rb0f8wnn.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgzegp7uj30ri0fcn5l.jpg">
+<meta property="og:updated_time" content="2020-03-14T07:05:41.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDFS原理">
-<meta name="twitter:description" content="Hadoop分布式文件系统——HDFS一、介绍HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。 二、HDFS 设计原理    2.1 HDFS 架构HDFS 遵循主/从架构，由单个 NameNode(NN) 和多个 DataNode(DN) 组成：  NameNode : 负责执行">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/hdfsarchitecture.png">
+<meta name="twitter:description" content="Hadoop分布式文件系统——HDFS一、介绍HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。 二、HDFS 设计原理 2.1 HDFS 架构HDFS 遵循主/从架构，由单个 NameNode(NN) 和多个 DataNode(DN) 组成：  NameNode : 负责执行有关">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgwfd1zzj30oa0gsjs7.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/05/10/Hadoop-HDFS/">
 
 
@@ -334,7 +334,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">2.5k</span>
+              <span title="本文字数">2.4k</span>
             </span>
           
             <span class="post-meta-item">
@@ -358,8 +358,7 @@
 
       
         <h1 id="Hadoop分布式文件系统——HDFS"><a href="#Hadoop分布式文件系统——HDFS" class="headerlink" title="Hadoop分布式文件系统——HDFS"></a>Hadoop分布式文件系统——HDFS</h1><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p><strong>HDFS</strong> （<strong>Hadoop Distributed File System</strong>）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。</p>
-<h2 id="二、HDFS-设计原理"><a href="#二、HDFS-设计原理" class="headerlink" title="二、HDFS 设计原理"></a>二、HDFS 设计原理</h2><div align="center"> <img width="600px" src="/pictures/hdfsarchitecture.png"> </div>
-
+<h2 id="二、HDFS-设计原理"><a href="#二、HDFS-设计原理" class="headerlink" title="二、HDFS 设计原理"></a>二、HDFS 设计原理</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgwfd1zzj30oa0gsjs7.jpg" alt=""></p>
 <h3 id="2-1-HDFS-架构"><a href="#2-1-HDFS-架构" class="headerlink" title="2.1 HDFS 架构"></a>2.1 HDFS 架构</h3><p>HDFS 遵循主/从架构，由单个 NameNode(NN) 和多个 DataNode(DN) 组成：</p>
 <ul>
 <li><strong>NameNode</strong> : 负责执行有关 <code>文件系统命名空间</code> 的操作，例如打开，关闭、重命名文件和目录等。它同时还负责集群元数据的存储，记录着文件中各个数据块的位置信息。</li>
@@ -367,12 +366,10 @@
 </ul>
 <h3 id="2-2-文件系统命名空间"><a href="#2-2-文件系统命名空间" class="headerlink" title="2.2 文件系统命名空间"></a>2.2 文件系统命名空间</h3><p>HDFS 的 <code>文件系统命名空间</code> 的层次结构与大多数文件系统类似 (如 Linux)， 支持目录和文件的创建、移动、删除和重命名等操作，支持配置用户和访问权限，但不支持硬链接和软连接。<code>NameNode</code> 负责维护文件系统名称空间，记录对名称空间或其属性的任何更改。</p>
 <h3 id="2-3-数据复制"><a href="#2-3-数据复制" class="headerlink" title="2.3 数据复制"></a>2.3 数据复制</h3><p>由于 Hadoop 被设计运行在廉价的机器上，这意味着硬件是不可靠的，为了保证容错性，HDFS 提供了数据复制机制。HDFS 将每一个文件存储为一系列<strong>块</strong>，每个块由多个副本来保证容错，块的大小和复制因子可以自行配置（默认情况下，块大小是 128M，默认复制因子是 3）。</p>
-<div align="center"> <img width="600px" src="/pictures/hdfsdatanodes.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgwnx2ndj30oa0ewaal.jpg" alt=""></p>
 <h3 id="2-4-数据复制的实现原理"><a href="#2-4-数据复制的实现原理" class="headerlink" title="2.4 数据复制的实现原理"></a>2.4 数据复制的实现原理</h3><p>大型的 HDFS 实例在通常分布在多个机架的多台服务器上，不同机架上的两台服务器之间通过交换机进行通讯。在大多数情况下，同一机架中的服务器间的网络带宽大于不同机架中的服务器之间的带宽。因此 HDFS 采用机架感知副本放置策略，对于常见情况，当复制因子为 3 时，HDFS 的放置策略是：</p>
 <p>在写入程序位于 <code>datanode</code> 上时，就优先将写入文件的一个副本放置在该 <code>datanode</code> 上，否则放在随机 <code>datanode</code> 上。之后在另一个远程机架上的任意一个节点上放置另一个副本，并在该机架上的另一个节点上放置最后一个副本。此策略可以减少机架间的写入流量，从而提高写入性能。</p>
-<div align="center"> <img src="/pictures/hdfs-机架.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgwu7v7mj30ea09lwed.jpg" alt=""></p>
 <p>如果复制因子大于 3，则随机确定第 4 个和之后副本的放置位置，同时保持每个机架的副本数量低于上限，上限值通常为 <code>（复制系数 - 1）/机架数量 + 2</code>，需要注意的是不允许同一个 <code>dataNode</code> 上具有同一个块的多个副本。</p>
 <h3 id="2-5-副本的选择"><a href="#2-5-副本的选择" class="headerlink" title="2.5  副本的选择"></a>2.5  副本的选择</h3><p>为了最大限度地减少带宽消耗和读取延迟，HDFS 在执行读取请求时，优先读取距离读取器最近的副本。如果在与读取器节点相同的机架上存在副本，则优先选择该副本。如果 HDFS 群集跨越多个数据中心，则优先选择本地数据中心上的副本。</p>
 <h3 id="2-6-架构的稳定性"><a href="#2-6-架构的稳定性" class="headerlink" title="2.6 架构的稳定性"></a>2.6 架构的稳定性</h3><h4 id="1-心跳机制和重新复制"><a href="#1-心跳机制和重新复制" class="headerlink" title="1. 心跳机制和重新复制"></a>1. 心跳机制和重新复制</h4><p>每个 DataNode 定期向 NameNode 发送心跳消息，如果超过指定时间没有收到心跳消息，则将 DataNode 标记为死亡。NameNode 不会将任何新的 IO 请求转发给标记为死亡的 DataNode，也不会再使用这些 DataNode 上的数据。 由于数据不再可用，可能会导致某些块的复制因子小于其指定值，NameNode 会跟踪这些块，并在必要的时候进行重新复制。</p>
@@ -388,39 +385,18 @@
 <h2 id="附：图解HDFS存储原理"><a href="#附：图解HDFS存储原理" class="headerlink" title="附：图解HDFS存储原理"></a>附：图解HDFS存储原理</h2><blockquote>
 <p>说明：以下图片引用自博客：<a href="https://blog.csdn.net/hudiefenmu/article/details/37655491" target="_blank" rel="noopener">翻译经典 HDFS 原理讲解漫画</a></p>
 </blockquote>
-<h3 id="1-HDFS写数据原理"><a href="#1-HDFS写数据原理" class="headerlink" title="1. HDFS写数据原理"></a>1. HDFS写数据原理</h3><div align="center"> <img src="/pictures/hdfs-write-1.jpg"> </div>
-
-<div align="center"> <img src="/pictures/hdfs-write-2.jpg"> </div>
-
-<div align="center"> <img src="/pictures/hdfs-write-3.jpg"> </div>
-
-
-
-<h3 id="2-HDFS读数据原理"><a href="#2-HDFS读数据原理" class="headerlink" title="2. HDFS读数据原理"></a>2. HDFS读数据原理</h3><div align="center"> <img src="/pictures/hdfs-read-1.jpg"> </div>
-
-
-
-<h3 id="3-HDFS故障类型和其检测方法"><a href="#3-HDFS故障类型和其检测方法" class="headerlink" title="3. HDFS故障类型和其检测方法"></a>3. HDFS故障类型和其检测方法</h3><div align="center"> <img src="/pictures/hdfs-tolerance-1.jpg"> </div>
-
-<div align="center"> <img src="/pictures/hdfs-tolerance-2.jpg"> </div>
-
-
-
+<h3 id="1-HDFS写数据原理"><a href="#1-HDFS写数据原理" class="headerlink" title="1. HDFS写数据原理"></a>1. HDFS写数据原理</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgx7m4taj30rn0fhaib.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgxq89hoj30ri0e5wmg.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgxo51i5j30rk0e3n5f.jpg" alt=""></p>
+<h3 id="2-HDFS读数据原理"><a href="#2-HDFS读数据原理" class="headerlink" title="2. HDFS读数据原理"></a>2. HDFS读数据原理</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgxz81o4j30rl0e246b.jpg" alt=""></p>
+<h3 id="3-HDFS故障类型和其检测方法"><a href="#3-HDFS故障类型和其检测方法" class="headerlink" title="3. HDFS故障类型和其检测方法"></a>3. HDFS故障类型和其检测方法</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgybuem1j30rh0f7th1.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgyl7bnrj30rl0e147b.jpg" alt=""></p>
 <p><strong>第二部分：读写故障的处理</strong></p>
-<div align="center"> <img src="/pictures/hdfs-tolerance-3.jpg"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgyxvyugj30rk0fbguy.jpg" alt=""></p>
 <p><strong>第三部分：DataNode 故障处理</strong></p>
-<div align="center"> <img src="/pictures/hdfs-tolerance-4.jpg"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgz7icm3j30rb0f8wnn.jpg" alt=""></p>
 <p><strong>副本布局策略</strong>：</p>
-<div align="center"> <img src="/pictures/hdfs-tolerance-5.jpg"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgzegp7uj30ri0fcn5l.jpg" alt=""></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
 <li><a href="http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener">Apache Hadoop 2.9.2 &gt; HDFS Architecture</a></li>
 <li>Tom White . hadoop 权威指南 [M] . 清华大学出版社 . 2017.</li>
@@ -493,8 +469,8 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/05/18/Hadoop-MapReduce/" rel="prev" title="MapReduce">
-                MapReduce <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/18/Hadoop-MapReduce/" rel="prev" title="分布式计算框架——MapReduce">
+                分布式计算框架——MapReduce <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -730,12 +706,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

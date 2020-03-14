@@ -67,13 +67,13 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="Kafka生产者详解一、生产者发送消息的过程首先介绍一下 Kafka 生产者发送消息的过程：  Kafka 会将发送消息包装为 ProducerRecord 对象， ProducerRecord 对象包含了目标主题和要发送的内容，同时还可以指定键和分区。在发送 ProducerRecord 对象前，生产者会先把键和值对象序列化成字节数组，这样它们才能够在网络上传输。 接下来，数据被传给分区器。如果">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/kafka-send-messgaes.png">
-<meta property="og:image" content="http://chenqikai.github.io/pictures/kafka-simple-producer.png">
-<meta property="og:updated_time" content="2020-03-11T00:34:33.222Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgukwzjgj30h00h275x.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgutpxzej30f705e0sq.jpg">
+<meta property="og:updated_time" content="2020-03-14T07:01:21.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka生产者详解">
 <meta name="twitter:description" content="Kafka生产者详解一、生产者发送消息的过程首先介绍一下 Kafka 生产者发送消息的过程：  Kafka 会将发送消息包装为 ProducerRecord 对象， ProducerRecord 对象包含了目标主题和要发送的内容，同时还可以指定键和分区。在发送 ProducerRecord 对象前，生产者会先把键和值对象序列化成字节数组，这样它们才能够在网络上传输。 接下来，数据被传给分区器。如果">
-<meta name="twitter:image" content="http://chenqikai.github.io/pictures/kafka-send-messgaes.png">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gctgukwzjgj30h00h275x.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2019/08/17/Kafka生产者详解/">
 
 
@@ -353,8 +353,7 @@
 <li>接下来，数据被传给分区器。如果之前已经在 ProducerRecord 对象里指定了分区，那么分区器就不会再做任何事情。如果没有指定分区 ，那么分区器会根据 ProducerRecord 对象的键来选择一个分区，紧接着，这条记录被添加到一个记录批次里，这个批次里的所有消息会被发送到相同的主题和分区上。有一个独立的线程负责把这些记录批次发送到相应的 broker 上。</li>
 <li>服务器在收到这些消息时会返回一个响应。如果消息成功写入 Kafka，就返回一个 RecordMetaData 对象，它包含了主题和分区信息，以及记录在分区里的偏移量。如果写入失败，则会返回一个错误。生产者在收到错误之后会尝试重新发送消息，如果达到指定的重试次数后还没有成功，则直接抛出异常，不再重试。</li>
 </ul>
-<div align="center"> <img src="/pictures/kafka-send-messgaes.png"> </div>
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgukwzjgj30h00h275x.jpg" alt=""></p>
 <h2 id="二、创建生产者"><a href="#二、创建生产者" class="headerlink" title="二、创建生产者"></a>二、创建生产者</h2><h3 id="2-1-项目依赖"><a href="#2-1-项目依赖" class="headerlink" title="2.1 项目依赖"></a>2.1 项目依赖</h3><p>本项目采用 Maven 构建，想要调用 Kafka 生产者 API，需要导入 <code>kafka-clients</code> 依赖，如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.kafka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>kafka-clients<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -379,10 +378,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> bin/kafka-console-consumer.sh --bootstrap-server hadoop001:9092 --topic Hello-Kafka --from-beginning</span><br></pre></td></tr></table></figure>
 
 <h4 id="4-运行项目"><a href="#4-运行项目" class="headerlink" title="4. 运行项目"></a>4. 运行项目</h4><p>此时可以看到消费者控制台，输出如下，这里 <code>kafka-console-consumer</code> 只会打印出值信息，不会打印出键信息。</p>
-<div align="center"> <img src="/pictures/kafka-simple-producer.png"> </div>
-
-
-
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gctgutpxzej30f705e0sq.jpg" alt=""></p>
 <h3 id="2-4-可能出现的问题"><a href="#2-4-可能出现的问题" class="headerlink" title="2.4 可能出现的问题"></a>2.4 可能出现的问题</h3><p>在这里可能出现的一个问题是：生产者程序在启动后，一直处于等待状态。这通常出现在你使用默认配置启动 Kafka 的情况下，此时需要对 <code>server.properties</code> 文件中的 <code>listeners</code> 配置进行更改：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> hadoop001 为我启动kafka服务的主机名，你可以换成自己的主机名或者ip地址</span><br><span class="line">listeners=PLAINTEXT://hadoop001:9092</span><br></pre></td></tr></table></figure>
 
@@ -737,12 +733,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">250k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>
