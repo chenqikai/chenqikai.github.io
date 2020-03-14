@@ -1464,7 +1464,7 @@ sqoop list-dat
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/09/24/Hbase_Java_API/">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/09/28/HBASE进阶/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
@@ -1481,7 +1481,7 @@ sqoop list-dat
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/09/24/Hbase_Java_API/" class="post-title-link" itemprop="url">HBase Java API 的基本使用</a>
+                <a href="/2019/09/28/HBASE进阶/" class="post-title-link" itemprop="url">Hbase进阶</a>
               
             
           </h1>
@@ -1500,7 +1500,7 @@ sqoop list-dat
                 
               
 
-              <time title="创建时间：2019-09-24 21:52:35" itemprop="dateCreated datePublished" datetime="2019-09-24T21:52:35+08:00">2019-09-24</time>
+              <time title="创建时间：2019-09-28 19:12:31" itemprop="dateCreated datePublished" datetime="2019-09-28T19:12:31+08:00">2019-09-28</time>
             </span>
           
             <span class="post-meta-item">
@@ -1534,7 +1534,7 @@ sqoop list-dat
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">23k</span>
+              <span title="本文字数">1.8k</span>
             </span>
           
             <span class="post-meta-item">
@@ -1544,7 +1544,7 @@ sqoop list-dat
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">21 分钟</span>
+              <span title="阅读时长">2 分钟</span>
             </span>
           
 
@@ -1559,14 +1559,15 @@ sqoop list-dat
       
           
             <p>
-              HBase Java API 的基本使用一、简述截至到目前 ，HBase 有两个主要的版本，分别是 1.x 和 2.x ，两个版本的 Java API 有所不同，1.x 中某些方法在 2.x 中被标识为 @deprecated 过时。
-同时你使用的客户端的版本必须与服务端版本保持一致，如果用 2.x
+              MemStore FlushMemStore 刷写时机：
+
+当某个 memstroe 的大小达到了 hbase.hregion.memstore.flush.size（默认值 128M），其所在 region 的所有 memstore 都会刷写。 当 memstore 的大小达到了 hbase.hr
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/09/24/Hbase_Java_API/#more" rel="contents">
+              <a class="btn" href="/2019/09/28/HBASE进阶/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1631,7 +1632,7 @@ sqoop list-dat
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1793,12 +1794,12 @@ sqoop list-dat
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">250k</span>
+    <span title="站点总字数">251k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:47</span>
+    <span title="站点阅读时长">3:49</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>
