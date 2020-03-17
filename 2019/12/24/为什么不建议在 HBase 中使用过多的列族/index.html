@@ -59,22 +59,22 @@
   };
 </script>
 
-  <meta name="description" content="“==”java中==为关系运算符,表示左边的数据是否和右边的数据相等，相等返回true否则返回false。基本数据类型之间的比较直接使用==，java是面向对象的语言，除了基本数据类型外的全部都为引用数据类型，也就是对象类型。引用数据类型在内存中的存储分为两部分，栈空间存储的为堆空间内存地址，堆空间存储实际的数据。直接使用==比较的是内存地址，但所得到的结果可能并不是我们想要的。比如String">
-<meta name="keywords" content="java">
+  <meta name="description" content="我们知道，一张 HBase 表包含一个或多个列族。HBase 的官方文档中关于 HBase 表的列族的个数有两处描述：  A typical schema has between 1 and 3 column families per table. HBase tables should not be designed to mimic RDBMS tables.   HBase currentl">
+<meta name="keywords" content="Hbase">
 <meta property="og:type" content="article">
-<meta property="og:title" content="==和equals()方法">
-<meta property="og:url" content="http://chenqikai.github.io/2018/12/17/==和equals/index.html">
+<meta property="og:title" content="为什么不建议在 HBase 中使用过多的列族">
+<meta property="og:url" content="http://chenqikai.github.io/2019/12/24/为什么不建议在 HBase 中使用过多的列族/index.html">
 <meta property="og:site_name" content="Elichen blog">
-<meta property="og:description" content="“==”java中==为关系运算符,表示左边的数据是否和右边的数据相等，相等返回true否则返回false。基本数据类型之间的比较直接使用==，java是面向对象的语言，除了基本数据类型外的全部都为引用数据类型，也就是对象类型。引用数据类型在内存中的存储分为两部分，栈空间存储的为堆空间内存地址，堆空间存储实际的数据。直接使用==比较的是内存地址，但所得到的结果可能并不是我们想要的。比如String">
+<meta property="og:description" content="我们知道，一张 HBase 表包含一个或多个列族。HBase 的官方文档中关于 HBase 表的列族的个数有两处描述：  A typical schema has between 1 and 3 column families per table. HBase tables should not be designed to mimic RDBMS tables.   HBase currentl">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenqikai.github.io/2018/12/17/img/equals/equals.png">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcthn4gmg0j30n10gl756.jpg">
-<meta property="og:updated_time" content="2020-03-14T07:28:37.586Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfcyei3j30k207fglv.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfhfscej30ev0cr74o.jpg">
+<meta property="og:updated_time" content="2020-03-17T03:35:20.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="==和equals()方法">
-<meta name="twitter:description" content="“==”java中==为关系运算符,表示左边的数据是否和右边的数据相等，相等返回true否则返回false。基本数据类型之间的比较直接使用==，java是面向对象的语言，除了基本数据类型外的全部都为引用数据类型，也就是对象类型。引用数据类型在内存中的存储分为两部分，栈空间存储的为堆空间内存地址，堆空间存储实际的数据。直接使用==比较的是内存地址，但所得到的结果可能并不是我们想要的。比如String">
-<meta name="twitter:image" content="http://chenqikai.github.io/2018/12/17/img/equals/equals.png">
-  <link rel="canonical" href="http://chenqikai.github.io/2018/12/17/==和equals/">
+<meta name="twitter:title" content="为什么不建议在 HBase 中使用过多的列族">
+<meta name="twitter:description" content="我们知道，一张 HBase 表包含一个或多个列族。HBase 的官方文档中关于 HBase 表的列族的个数有两处描述：  A typical schema has between 1 and 3 column families per table. HBase tables should not be designed to mimic RDBMS tables.   HBase currentl">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfcyei3j30k207fglv.jpg">
+  <link rel="canonical" href="http://chenqikai.github.io/2019/12/24/为什么不建议在 HBase 中使用过多的列族/">
 
 
 <script id="page.configurations">
@@ -83,7 +83,7 @@
   };
 </script>
 
-  <title>==和equals()方法 | Elichen blog</title>
+  <title>为什么不建议在 HBase 中使用过多的列族 | Elichen blog</title>
   
 
 
@@ -256,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2018/12/17/==和equals/">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2019/12/24/为什么不建议在 HBase 中使用过多的列族/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eli chen">
@@ -270,7 +270,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">==和equals()方法
+          <h1 class="post-title" itemprop="name headline">为什么不建议在 HBase 中使用过多的列族
 
               
             
@@ -290,7 +290,7 @@
                 
               
 
-              <time title="创建时间：2018-12-17 15:32:38" itemprop="dateCreated datePublished" datetime="2018-12-17T15:32:38+08:00">2018-12-17</time>
+              <time title="创建时间：2019-12-24 22:12:35" itemprop="dateCreated datePublished" datetime="2019-12-24T22:12:35+08:00">2019-12-24</time>
             </span>
           
             <span class="post-meta-item">
@@ -301,14 +301,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/java基础/" itemprop="url" rel="index"><span itemprop="name">java基础</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a></span>
 
                 
                 
@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1k</span>
+              <span title="本文字数">2.6k</span>
             </span>
           
             <span class="post-meta-item">
@@ -334,7 +334,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">1 分钟</span>
+              <span title="阅读时长">2 分钟</span>
             </span>
           
 
@@ -347,18 +347,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="“-”"><a href="#“-”" class="headerlink" title="“==”"></a>“==”</h1><p>java中<code>==</code>为关系运算符,表示左边的数据是否和右边的数据相等，相等返回<code>true</code>否则返回<code>false</code>。基本数据类型之间的比较直接使用<code>==</code>，java是面向对象的语言，除了基本数据类型外的全部都为引用数据类型，也就是对象类型。引用数据类型在内存中的存储分为两部分，栈空间存储的为堆空间内存地址，堆空间存储实际的数据。直接使用<code>==</code>比较的是内存地址，但所得到的结果可能并不是我们想要的。<br>比如String的比较</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">代码段<span class="number">1</span>：</span><br><span class="line">String str1 = <span class="string">"aa"</span>;</span><br><span class="line">String str2 = <span class="string">"aa"</span>;</span><br><span class="line">System.out.println(str1 == str2);         <span class="comment">//true</span></span><br><span class="line">System.out.println(str1.equals(str2));    <span class="comment">//true</span></span><br><span class="line">代码段<span class="number">2</span>：</span><br><span class="line">String str3 = <span class="keyword">new</span> String(<span class="string">"cc"</span>);</span><br><span class="line">String str4 = <span class="keyword">new</span> String(<span class="string">"cc"</span>);</span><br><span class="line">System.out.println(str3 == str4);         <span class="comment">//false</span></span><br><span class="line">System.out.println(str3.equals(str4));    <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<p>看以上代码发现<code>str1==str2</code>为<code>true</code>而<code>str3==str4</code>为<code>false</code>，原因是因为java在编译期会将相同的字符串当做一个对象放入常量池，所以<code>str1</code>和<code>str2</code>为同一个对象，<code>==</code>也为<code>true</code>。使用<code>new String()</code>来创建对象会强制创建两个不同的对象，所以<code>str3==str4</code>为<code>false</code>。所以引用数据类型之间的比较一定不能使用<code>==</code>，而应使用<code>equals()</code>方法。</p>
-<h1 id="equals-方法"><a href="#equals-方法" class="headerlink" title="equals()方法"></a>equals()方法</h1><p><code>equals()</code>方法为<code>Object</code>类的方法，源码如下；</p>
-<p><img src="../img/equals/equals.png" alt="equals(https://tva1.sinaimg.cn/large/00831rSTly1gcthn29xtkj30oy084t99.jpg)"></p>
-<p><code>Object</code>类中的<code>equals()</code>方法和<code>==</code>比较是相同的，返回的是<code>==</code>比较的结果。<br>为了能使<code>equals()</code>方法比较对象的内容我们必须重写<code>equals()</code>方法。</p>
-<p><code>String</code>类中重写了<code>equals()</code>方法。源码如下：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcthn4gmg0j30n10gl756.jpg" alt="String"></p>
-<p><code>String</code>类的<code>equals()</code>方法首先比较的是不是同一个对象，是直接返回<code>true</code>，不是则判断是否是<code>String</code>类的对象，不是返回<code>false</code>，是接着比较字符串中的每一个<code>char</code>是否都相同，相同则返回<code>true</code>，否则返回<code>false</code>。</p>
-<p>所以<code>String</code>使用<code>equals()</code>方法比较的是字符串的内容。</p>
-<p>我们自己写的类中可以使用IDE工具直接生成<code>equals()</code>方法，使其比较对象中的内容。</p>
+        <p>我们知道，一张 HBase 表包含一个或多个列族。HBase 的官方文档中关于 HBase 表的列族的个数有两处描述：</p>
+<ol>
+<li><p>A typical schema has between 1 and 3 column families per table. HBase tables should not be designed to mimic RDBMS tables. </p>
+</li>
+<li><p>HBase currently does not do well with anything above two or three column families so keep the number of column families in your schema low.</p>
+</li>
+</ol>
+<p>上面两句话其实都是说一件事，HBase 中每张表的列族个数建议设在1<del>3之间。其实，HBase 支持的列族个数并没有限制，但为什么文档建议在1</del>3之间呢？我将从几个方面来阐述这么做的原因。</p>
+<h2 id="列族数对-Flush-的影响"><a href="#列族数对-Flush-的影响" class="headerlink" title="列族数对 Flush 的影响"></a>列族数对 Flush 的影响</h2><p>在 HBase 中，调用 API 往对应的表插入数据是会写到 MemStore 的，而 MemStore 是一种内存结构，每个列族对应一个 MemStore（和零个或多个 HFile）。如果我们的表有两个列族，那么相应的 Region 中存在两个 MemStore，如下图：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfcyei3j30k207fglv.jpg" alt="在这里插入图片描述"><br>从上图可以看出，越多的列族，将会导致内存中存在越多的 MemStore；而储存在 MemStore 中的数据在满足一定条件的时候将会进行 Flush 操作；每次 Flush 的时候，每个 MemStore 将在磁盘生产一个 HFile 文件，如下：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfhfscej30ev0cr74o.jpg" alt="在这里插入图片描述"><br>这样会导致越多的列族最终持久化到磁盘的 HFile 越多。更要命的是，当前 Flush 操作是 Region 级别的（当然，从HBase 1.1，HBase 2.0 开始 Flush 已经可以设置成列族级别的了），也就是说， Region 中某个 MemStore 被 Flush，同一个 Region 的其他 MemStore 也会进行 Flush 操作。当表有很多列族，而且列族之间数据不均匀，比如一个列族有100W行，一个列族只有10行，这样会导致持久化到磁盘的文件数很多，同时有很多小文件，而且每次 Flush 操作也涉及到一定的 IO 操作。</p>
+<p>为了解决每次 Flush 都对整个 Region 中 MemStore 进行的，<a href="https://www.iteblog.com/redirect.php?url=aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9IQkFTRS0xMDIwMQ==&article=true" target="_blank" rel="noopener">HBASE-10201</a>/<a href="https://www.iteblog.com/redirect.php?url=aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9IQkFTRS0zMTQ5&article=true" target="_blank" rel="noopener">HBASE-3149</a>引入了对 Flush 策略进行选择的功能（hbase.regionserver.flush.policy），可以仅对超过阈值（hbase.hregion.percolumnfamilyflush.size.lower.bound.min）的 MemStore 进行 Flush 操作。但是如果没有 MemStore 大于这个阈值，还是会对所有的 MemStore 进行 Flush 操作。</p>
+<p>此外，如果我们的列族数过多，这可能会导致触发 RegionServer 级别的 Flush 操作；这将会导致落在该 RegionServer上的更新操作被阻塞，而且阻塞时间可能会达到分钟级别。</p>
+<h2 id="列族数对-Split-的影响"><a href="#列族数对-Split-的影响" class="headerlink" title="列族数对 Split 的影响"></a>列族数对 Split 的影响</h2><p>我们知道，当 HBase 表中某个 Region 过大（比如大于 hbase.hregion.max.filesize 配置的大小。当然，Region 分裂并不是说整个 Region 大小加起来大于 hbase.hregion.max.filesize 就拆分，而是说 Region 中某个最大的 Store/HFile/storeFile 大于 hbase.hregion.max.filesize 才会触发 Region 拆分的），会被拆分成两个。如果我们有很多个列族，而这些列族之间的数据量相差悬殊，比如有些列族有 100W 行，而有些列族只有10行，这样在 Region Split 的时候会导致原本数据量很小的 HFile 文件进一步被拆分，从而产生更多的小文件。注意，Region Split 是针对所有的列族进行的，这样做的目的是同一行的数据即使在 Split 后也是存在同一个 Region 的。</p>
+<h2 id="列族数对-Compaction-的影响"><a href="#列族数对-Compaction-的影响" class="headerlink" title="列族数对 Compaction 的影响"></a>列族数对 Compaction 的影响</h2><p>与 Flush 操作一样，目前 HBase 的 Compaction 操作也是 Region 级别的，过多的列族也会产生不必要的 IO。</p>
+<h2 id="列族数对-HDFS-的影响"><a href="#列族数对-HDFS-的影响" class="headerlink" title="列族数对 HDFS 的影响"></a>列族数对 HDFS 的影响</h2><p>我们知道，HDFS 其实对一个目录下的文件数有限制的（dfs.namenode.fs-limits.max-directory-items）。如果我们有 N 个列族，M 个 Region，那么我们持久化到 HDFS 至少会产生 N<em>M 个文件；而每个列族对应底层的 HFile 文件往往不止一个，我们假设为 K 个，那么最终表在 HDFS 目录下的文件数将是 N</em>M*K，这可能会操作 HDFS 的限制。</p>
+<h2 id="列族数对-RegionServer-内存的影响"><a href="#列族数对-RegionServer-内存的影响" class="headerlink" title="列族数对 RegionServer 内存的影响"></a>列族数对 RegionServer 内存的影响</h2><p>前面说了，一个列族在 RegionServer 中对应于一个 MemStore。而 HBase 从 0.90.1 版本开始引入了 MSLAB（Memstore-Local Allocation Buffers，参考HBASE-3455），这个功能默认是开启的（通过hbase.hregion.memstore.mslab.enabled），这使得每个 MemStore 在内存占用了 2MB （通过hbase.hregion.memstore.mslab.chunksize 配置）的 buffer。如果我们有很多的列族，而且一般一个 RegionServer 上会存在很多个 Region，这么算起来光 MemStore 的缓存就会占用很多的内存。</p>
+<h2 id="关于列族数设置的建议"><a href="#关于列族数设置的建议" class="headerlink" title="关于列族数设置的建议"></a>关于列族数设置的建议</h2><p>在设置列族之前，我们最好想想，有没有必要将不同的列放到不同的列族里面。如果没有必要最好放一个列族。如果真要设置多个列族，但是其中一些列族相对于其他列族数据量相差非常悬殊，比如1000W相比100行，是不是考虑用另外一张表来存储相对小的列族。</p>
+<blockquote>
+<p>转载自：<a href="https://www.iteblog.com/archives/2474.html" target="_blank" rel="noopener">https://www.iteblog.com/archives/2474.html</a></p>
+</blockquote>
 
     </div>
 
@@ -398,7 +405,7 @@
     <strong>本文作者： </strong>Eli chen</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://chenqikai.github.io/2018/12/17/==和equals/" title="==和equals()方法">http://chenqikai.github.io/2018/12/17/==和equals/</a>
+    <a href="http://chenqikai.github.io/2019/12/24/为什么不建议在 HBase 中使用过多的列族/" title="为什么不建议在 HBase 中使用过多的列族">http://chenqikai.github.io/2019/12/24/为什么不建议在 HBase 中使用过多的列族/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -410,13 +417,13 @@
           
         
         <div class="post-tags">
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/Hbase/" rel="tag"># Hbase</a>
           
         </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2018/12/15/Linux基础和命令/" rel="next" title="Linux基础">
-                <i class="fa fa-chevron-left"></i> Linux基础
+              <a href="/2019/11/21/Spark_Streaming基本操作/" rel="next" title="Spark Streaming 基本操作">
+                <i class="fa fa-chevron-left"></i> Spark Streaming 基本操作
               </a>
             
           </div>
@@ -424,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/03/30/一周年快乐/" rel="prev" title="给🐖的信">
-                给🐖的信 <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
@@ -627,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#“-”"><span class="nav-number">1.</span> <span class="nav-text">“==”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#equals-方法"><span class="nav-number">2.</span> <span class="nav-text">equals()方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-Flush-的影响"><span class="nav-number">1.</span> <span class="nav-text">列族数对 Flush 的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-Split-的影响"><span class="nav-number">2.</span> <span class="nav-text">列族数对 Split 的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-Compaction-的影响"><span class="nav-number">3.</span> <span class="nav-text">列族数对 Compaction 的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-HDFS-的影响"><span class="nav-number">4.</span> <span class="nav-text">列族数对 HDFS 的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-RegionServer-内存的影响"><span class="nav-number">5.</span> <span class="nav-text">列族数对 RegionServer 内存的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于列族数设置的建议"><span class="nav-number">6.</span> <span class="nav-text">关于列族数设置的建议</span></a></li></ol></div>
             
 
           </div>
