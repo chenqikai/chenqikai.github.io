@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-corner-indicator.min.css?v=1.0.2">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="我们知道，一张 HBase 表包含一个或多个列族。HBase 的官方文档中关于 HBase 表的列族的个数有两处描述：  A typical schema has between 1 and 3 column families per table. HBase tables should not be designed to mimic RDBMS tables.   HBase currentl">
+<meta name="keywords" content="Hbase">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么不建议在 HBase 中使用过多的列族">
+<meta property="og:url" content="http://chenqikai.github.io/2020/01/03/为什么不建议在 HBase 中使用过多的列族/index.html">
+<meta property="og:site_name" content="Elichen blog">
+<meta property="og:description" content="我们知道，一张 HBase 表包含一个或多个列族。HBase 的官方文档中关于 HBase 表的列族的个数有两处描述：  A typical schema has between 1 and 3 column families per table. HBase tables should not be designed to mimic RDBMS tables.   HBase currentl">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfcyei3j30k207fglv.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfhfscej30ev0cr74o.jpg">
+<meta property="og:updated_time" content="2020-03-19T09:52:52.082Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为什么不建议在 HBase 中使用过多的列族">
+<meta name="twitter:description" content="我们知道，一张 HBase 表包含一个或多个列族。HBase 的官方文档中关于 HBase 表的列族的个数有两处描述：  A typical schema has between 1 and 3 column families per table. HBase tables should not be designed to mimic RDBMS tables.   HBase currentl">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfcyei3j30k207fglv.jpg">
+  <link rel="canonical" href="http://chenqikai.github.io/2020/01/03/为什么不建议在 HBase 中使用过多的列族/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>为什么不建议在 HBase 中使用过多的列族 | Elichen blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?00dc780f8ffe07194bbae3a2dcd66e8c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/chenqikai" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Elichen blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2020/01/03/为什么不建议在 HBase 中使用过多的列族/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">为什么不建议在 HBase 中使用过多的列族
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-03 23:02:23" itemprop="dateCreated datePublished" datetime="2020-01-03T23:02:23+08:00">2020-01-03</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">2.6k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">2 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我们知道，一张 HBase 表包含一个或多个列族。HBase 的官方文档中关于 HBase 表的列族的个数有两处描述：</p>
+<ol>
+<li><p>A typical schema has between 1 and 3 column families per table. HBase tables should not be designed to mimic RDBMS tables. </p>
+</li>
+<li><p>HBase currently does not do well with anything above two or three column families so keep the number of column families in your schema low.</p>
+</li>
+</ol>
+<p>上面两句话其实都是说一件事，HBase 中每张表的列族个数建议设在1<del>3之间。其实，HBase 支持的列族个数并没有限制，但为什么文档建议在1</del>3之间呢？我将从几个方面来阐述这么做的原因。</p>
+<h2 id="列族数对-Flush-的影响"><a href="#列族数对-Flush-的影响" class="headerlink" title="列族数对 Flush 的影响"></a>列族数对 Flush 的影响</h2><p>在 HBase 中，调用 API 往对应的表插入数据是会写到 MemStore 的，而 MemStore 是一种内存结构，每个列族对应一个 MemStore（和零个或多个 HFile）。如果我们的表有两个列族，那么相应的 Region 中存在两个 MemStore，如下图：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfcyei3j30k207fglv.jpg" alt="在这里插入图片描述"><br>从上图可以看出，越多的列族，将会导致内存中存在越多的 MemStore；而储存在 MemStore 中的数据在满足一定条件的时候将会进行 Flush 操作；每次 Flush 的时候，每个 MemStore 将在磁盘生产一个 HFile 文件，如下：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcwrfhfscej30ev0cr74o.jpg" alt="在这里插入图片描述"><br>这样会导致越多的列族最终持久化到磁盘的 HFile 越多。更要命的是，当前 Flush 操作是 Region 级别的（当然，从HBase 1.1，HBase 2.0 开始 Flush 已经可以设置成列族级别的了），也就是说， Region 中某个 MemStore 被 Flush，同一个 Region 的其他 MemStore 也会进行 Flush 操作。当表有很多列族，而且列族之间数据不均匀，比如一个列族有100W行，一个列族只有10行，这样会导致持久化到磁盘的文件数很多，同时有很多小文件，而且每次 Flush 操作也涉及到一定的 IO 操作。</p>
+<p>为了解决每次 Flush 都对整个 Region 中 MemStore 进行的，<a href="https://www.iteblog.com/redirect.php?url=aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9IQkFTRS0xMDIwMQ==&article=true" target="_blank" rel="noopener">HBASE-10201</a>/<a href="https://www.iteblog.com/redirect.php?url=aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9IQkFTRS0zMTQ5&article=true" target="_blank" rel="noopener">HBASE-3149</a>引入了对 Flush 策略进行选择的功能（hbase.regionserver.flush.policy），可以仅对超过阈值（hbase.hregion.percolumnfamilyflush.size.lower.bound.min）的 MemStore 进行 Flush 操作。但是如果没有 MemStore 大于这个阈值，还是会对所有的 MemStore 进行 Flush 操作。</p>
+<p>此外，如果我们的列族数过多，这可能会导致触发 RegionServer 级别的 Flush 操作；这将会导致落在该 RegionServer上的更新操作被阻塞，而且阻塞时间可能会达到分钟级别。</p>
+<h2 id="列族数对-Split-的影响"><a href="#列族数对-Split-的影响" class="headerlink" title="列族数对 Split 的影响"></a>列族数对 Split 的影响</h2><p>我们知道，当 HBase 表中某个 Region 过大（比如大于 hbase.hregion.max.filesize 配置的大小。当然，Region 分裂并不是说整个 Region 大小加起来大于 hbase.hregion.max.filesize 就拆分，而是说 Region 中某个最大的 Store/HFile/storeFile 大于 hbase.hregion.max.filesize 才会触发 Region 拆分的），会被拆分成两个。如果我们有很多个列族，而这些列族之间的数据量相差悬殊，比如有些列族有 100W 行，而有些列族只有10行，这样在 Region Split 的时候会导致原本数据量很小的 HFile 文件进一步被拆分，从而产生更多的小文件。注意，Region Split 是针对所有的列族进行的，这样做的目的是同一行的数据即使在 Split 后也是存在同一个 Region 的。</p>
+<h2 id="列族数对-Compaction-的影响"><a href="#列族数对-Compaction-的影响" class="headerlink" title="列族数对 Compaction 的影响"></a>列族数对 Compaction 的影响</h2><p>与 Flush 操作一样，目前 HBase 的 Compaction 操作也是 Region 级别的，过多的列族也会产生不必要的 IO。</p>
+<h2 id="列族数对-HDFS-的影响"><a href="#列族数对-HDFS-的影响" class="headerlink" title="列族数对 HDFS 的影响"></a>列族数对 HDFS 的影响</h2><p>我们知道，HDFS 其实对一个目录下的文件数有限制的（dfs.namenode.fs-limits.max-directory-items）。如果我们有 N 个列族，M 个 Region，那么我们持久化到 HDFS 至少会产生 N<em>M 个文件；而每个列族对应底层的 HFile 文件往往不止一个，我们假设为 K 个，那么最终表在 HDFS 目录下的文件数将是 N</em>M*K，这可能会操作 HDFS 的限制。</p>
+<h2 id="列族数对-RegionServer-内存的影响"><a href="#列族数对-RegionServer-内存的影响" class="headerlink" title="列族数对 RegionServer 内存的影响"></a>列族数对 RegionServer 内存的影响</h2><p>前面说了，一个列族在 RegionServer 中对应于一个 MemStore。而 HBase 从 0.90.1 版本开始引入了 MSLAB（Memstore-Local Allocation Buffers，参考HBASE-3455），这个功能默认是开启的（通过hbase.hregion.memstore.mslab.enabled），这使得每个 MemStore 在内存占用了 2MB （通过hbase.hregion.memstore.mslab.chunksize 配置）的 buffer。如果我们有很多的列族，而且一般一个 RegionServer 上会存在很多个 Region，这么算起来光 MemStore 的缓存就会占用很多的内存。</p>
+<h2 id="关于列族数设置的建议"><a href="#关于列族数设置的建议" class="headerlink" title="关于列族数设置的建议"></a>关于列族数设置的建议</h2><p>在设置列族之前，我们最好想想，有没有必要将不同的列放到不同的列族里面。如果没有必要最好放一个列族。如果真要设置多个列族，但是其中一些列族相对于其他列族数据量相差非常悬殊，比如1000W相比100行，是不是考虑用另外一张表来存储相对小的列族。</p>
+<blockquote>
+<p>转载自：<a href="https://www.iteblog.com/archives/2474.html" target="_blank" rel="noopener">https://www.iteblog.com/archives/2474.html</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Eli chen 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Eli chen 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      </div>
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Eli chen</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chenqikai.github.io/2020/01/03/为什么不建议在 HBase 中使用过多的列族/" title="为什么不建议在 HBase 中使用过多的列族">http://chenqikai.github.io/2020/01/03/为什么不建议在 HBase 中使用过多的列族/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Hbase/" rel="tag"># Hbase</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/12/20/HIVE优化/" rel="next" title="Hive优化">
+                <i class="fa fa-chevron-left"></i> Hive优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Eli chen">
+  <p class="site-author-name" itemprop="name">Eli chen</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:1610252715@vip.henu.edu.cn" title="E-Mail &rarr; mailto:1610252715@vip.henu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="http://39.106.192.112/" title="Resume &rarr; http://39.106.192.112/" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>Resume</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-Flush-的影响"><span class="nav-number">1.</span> <span class="nav-text">列族数对 Flush 的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-Split-的影响"><span class="nav-number">2.</span> <span class="nav-text">列族数对 Split 的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-Compaction-的影响"><span class="nav-number">3.</span> <span class="nav-text">列族数对 Compaction 的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-HDFS-的影响"><span class="nav-number">4.</span> <span class="nav-text">列族数对 HDFS 的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列族数对-RegionServer-内存的影响"><span class="nav-number">5.</span> <span class="nav-text">列族数对 RegionServer 内存的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于列族数设置的建议"><span class="nav-number">6.</span> <span class="nav-text">关于列族数设置的建议</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eli chen</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">258k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:55</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,255,255' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
