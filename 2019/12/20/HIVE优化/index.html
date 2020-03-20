@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="Elichen blog">
 <meta property="og:description" content="原文链接：https://blog.csdn.net/l1028386804/article/details/80629279  一、Hive优化目标在有限的资源下，提高执行效率 二、Hive执行HQL——&amp;gt; Job——&amp;gt; Map/Reduce 三、执行计划查看执行计划 1explain [extended] hql  四、Hive表优化1、分区静态分区动态分区 12set hiv">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-19T10:01:36.358Z">
+<meta property="og:updated_time" content="2020-03-20T13:43:30.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hive优化">
 <meta name="twitter:description" content="原文链接：https://blog.csdn.net/l1028386804/article/details/80629279  一、Hive优化目标在有限的资源下，提高执行效率 二、Hive执行HQL——&amp;gt; Job——&amp;gt; Map/Reduce 三、执行计划查看执行计划 1explain [extended] hql  四、Hive表优化1、分区静态分区动态分区 12set hiv">
@@ -321,7 +321,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">4.4k</span>
+              <span title="本文字数">4.7k</span>
             </span>
           
             <span class="post-meta-item">
@@ -392,10 +392,9 @@
 <h3 id="2、本地化执行"><a href="#2、本地化执行" class="headerlink" title="2、本地化执行"></a>2、本地化执行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set hive.exec.mode.local.auto=true;</span><br></pre></td></tr></table></figure>
 
 <p>当一个join满足如下条件才能真正使用本地模式：<br>Job的输入数据大小必须小于参数<br><code>hive.exec.mode.local.auto.inputbytes.max(默认128MB)</code><br>Job的map数必须小于参数<br><code>hive.exec.mode.local.auto.tasks.max(默认4)</code><br>Job的reduce数必须为0或者1</p>
-<h3 id="3、job合并输入小文件"><a href="#3、job合并输入小文件" class="headerlink" title="3、job合并输入小文件"></a>3、job合并输入小文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat</span><br></pre></td></tr></table></figure>
+<h3 id="3、job合并输入小文件"><a href="#3、job合并输入小文件" class="headerlink" title="3、job合并输入小文件"></a>3、job合并输入小文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;  </span><br><span class="line">//执行Map前进行小文件合并</span><br><span class="line">set mapred.max.split.size=256000000;  </span><br><span class="line">//每个Map最大输入大小</span><br><span class="line">set mapred.min.split.size.per.node=100000000; </span><br><span class="line">//一个节点上split的至少的大小 </span><br><span class="line">set mapred.min.split.size.per.rack=100000000; </span><br><span class="line">//一个交换机下split的至少的大小</span><br></pre></td></tr></table></figure>
 
-<p>合并文件数由<code>mapred.max.split.size</code>限制的大小决定</p>
-<h3 id="4、job合并输出小文件"><a href="#4、job合并输出小文件" class="headerlink" title="4、job合并输出小文件"></a>4、job合并输出小文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set hive.merge.smallfiles.avgsize=256000000;当输出文件平均大小小于该值，启动新job合并文件</span><br><span class="line">set hive.merge.size.per.task=64000000;合并之后的文件大小</span><br></pre></td></tr></table></figure>
+<h3 id="4、job合并输出小文件"><a href="#4、job合并输出小文件" class="headerlink" title="4、job合并输出小文件"></a>4、job合并输出小文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">set hive.merge.mapfiles = true </span><br><span class="line">//在Map-only的任务结束时合并小文件</span><br><span class="line">set hive.merge.tezfiles=true;</span><br><span class="line">set hive.merge.mapredfiles = true </span><br><span class="line">//在Map-Reduce的任务结束时合并小文件</span><br><span class="line">set hive.merge.size.per.task = 256*1000*1000 </span><br><span class="line">//合并文件的大小</span><br><span class="line">set hive.merge.smallfiles.avgsize=16000000 </span><br><span class="line">//当输出文件的平均大小小于该值时，启动一个独立的map-reduce任务进行文件merge</span><br></pre></td></tr></table></figure>
 
 <h2 id="七、JVM重利用"><a href="#七、JVM重利用" class="headerlink" title="七、JVM重利用"></a>七、JVM重利用</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set mapred.job.reuse.jvm.num.tasks=20;</span><br></pre></td></tr></table></figure>
 
@@ -556,7 +555,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -735,12 +734,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">262k</span>
+    <span title="站点总字数">278k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:58</span>
+    <span title="站点阅读时长">4:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
   <span class="post-meta-divider">|</span>

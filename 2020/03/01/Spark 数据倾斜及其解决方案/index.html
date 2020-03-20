@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-corner-indicator.min.css?v=1.0.2">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="本文从数据倾斜的危害、现象、原因等方面，由浅入深阐述Spark数据倾斜及其解决方案。 一、什么是数据倾斜对 Spark/Hadoop 这样的分布式大数据系统来讲，数据量大并不可怕，可怕的是数据倾斜。 对于分布式系统而言，理想情况下，随着系统规模（节点数量）的增加，应用整体耗时线性下降。如果一台机器处理一批大量数据需要120分钟，当机器数量增加到3台时，理想的耗时为120 / 3 = 40分钟。但是">
+<meta name="keywords" content="Spark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark 数据倾斜及其解决方案">
+<meta property="og:url" content="http://chenqikai.github.io/2020/03/01/Spark 数据倾斜及其解决方案/index.html">
+<meta property="og:site_name" content="Elichen blog">
+<meta property="og:description" content="本文从数据倾斜的危害、现象、原因等方面，由浅入深阐述Spark数据倾斜及其解决方案。 一、什么是数据倾斜对 Spark/Hadoop 这样的分布式大数据系统来讲，数据量大并不可怕，可怕的是数据倾斜。 对于分布式系统而言，理想情况下，随着系统规模（节点数量）的增加，应用整体耗时线性下降。如果一台机器处理一批大量数据需要120分钟，当机器数量增加到3台时，理想的耗时为120 / 3 = 40分钟。但是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/4g5IMGibSxt7I00KzicX7Y9KLt7XnXKNwP4T4f0Fh2G77E7VTuRf58zZ050u9E48ykibGIiarraOFuXCZsMoiauNaKA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:updated_time" content="2020-03-20T13:58:48.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spark 数据倾斜及其解决方案">
+<meta name="twitter:description" content="本文从数据倾斜的危害、现象、原因等方面，由浅入深阐述Spark数据倾斜及其解决方案。 一、什么是数据倾斜对 Spark/Hadoop 这样的分布式大数据系统来讲，数据量大并不可怕，可怕的是数据倾斜。 对于分布式系统而言，理想情况下，随着系统规模（节点数量）的增加，应用整体耗时线性下降。如果一台机器处理一批大量数据需要120分钟，当机器数量增加到3台时，理想的耗时为120 / 3 = 40分钟。但是">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/4g5IMGibSxt7I00KzicX7Y9KLt7XnXKNwP4T4f0Fh2G77E7VTuRf58zZ050u9E48ykibGIiarraOFuXCZsMoiauNaKA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+  <link rel="canonical" href="http://chenqikai.github.io/2020/03/01/Spark 数据倾斜及其解决方案/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Spark 数据倾斜及其解决方案 | Elichen blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?00dc780f8ffe07194bbae3a2dcd66e8c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/chenqikai" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Elichen blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenqikai.github.io/2020/03/01/Spark 数据倾斜及其解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eli chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elichen blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">Spark 数据倾斜及其解决方案
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-01 23:02:35" itemprop="dateCreated datePublished" datetime="2020-03-01T23:02:35+08:00">2020-03-01</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">9k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">8 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文从数据倾斜的危害、现象、原因等方面，由浅入深阐述Spark数据倾斜及其解决方案。</p>
+<h2 id="一、什么是数据倾斜"><a href="#一、什么是数据倾斜" class="headerlink" title="一、什么是数据倾斜"></a>一、什么是数据倾斜</h2><p>对 Spark/Hadoop 这样的分布式大数据系统来讲，数据量大并不可怕，可怕的是数据倾斜。</p>
+<p>对于分布式系统而言，理想情况下，随着系统规模（节点数量）的增加，应用整体耗时线性下降。如果一台机器处理一批大量数据需要120分钟，当机器数量增加到3台时，理想的耗时为120 / 3 = 40分钟。但是，想做到分布式情况下每台机器执行时间是单机时的1 / N，就必须保证每台机器的任务量相等。不幸的是，很多时候，任务的分配是不均匀的，甚至不均匀到大部分任务被分配到个别机器上，其它大部分机器所分配的任务量只占总得的小部分。比如一台机器负责处理 80% 的任务，另外两台机器各处理 10% 的任务。</p>
+<p>『不患多而患不均』，这是分布式环境下最大的问题。意味着计算能力不是线性扩展的，而是存在短板效应: 一个 Stage 所耗费的时间，是由最慢的那个 Task 决定。</p>
+<p>由于同一个 Stage 内的所有 task 执行相同的计算，在排除不同计算节点计算能力差异的前提下，不同 task 之间耗时的差异主要由该 task 所处理的数据量决定。所以，要想发挥分布式系统并行计算的优势，就必须解决数据倾斜问题。</p>
+<h2 id="二、数据倾斜的危害"><a href="#二、数据倾斜的危害" class="headerlink" title="二、数据倾斜的危害"></a>二、数据倾斜的危害</h2><p>当出现数据倾斜时，小量任务耗时远高于其它任务，从而使得整体耗时过大，未能充分发挥分布式系统的并行计算优势。　　</p>
+<p>另外，当发生数据倾斜时，部分任务处理的数据量过大，可能造成内存不足使得任务失败，并进而引进整个应用失败。　　</p>
+<h2 id="三、数据倾斜的现象"><a href="#三、数据倾斜的现象" class="headerlink" title="三、数据倾斜的现象"></a>三、数据倾斜的现象</h2><p>当发现如下现象时，十有八九是发生数据倾斜了:</p>
+<ul>
+<li>绝大多数 task 执行得都非常快，但个别 task 执行极慢，整体任务卡在某个阶段不能结束。</li>
+<li>原本能够正常执行的 Spark 作业，某天突然报出 OOM（内存溢出）异常，观察异常栈，是我们写的业务代码造成的。这种情况比较少见。</li>
+</ul>
+<blockquote>
+<p>TIPS  </p>
+<p>在 Spark streaming 程序中，数据倾斜更容易出现，特别是在程序中包含一些类似 sql 的 join、group 这种操作的时候。因为 Spark Streaming 程序在运行的时候，我们一般不会分配特别多的内存，因此一旦在这个过程中出现一些数据倾斜，就十分容易造成 OOM。</p>
+</blockquote>
+<h2 id="四、数据倾斜的原因"><a href="#四、数据倾斜的原因" class="headerlink" title="四、数据倾斜的原因"></a>四、数据倾斜的原因</h2><p>在进行 shuffle 的时候，必须将各个节点上相同的 key 拉取到某个节点上的一个 task 来进行处理，比如按照 key 进行聚合或 join 等操作。此时如果某个 key 对应的数据量特别大的话，就会发生数据倾斜。比如大部分 key 对应10条数据，但是个别 key 却对应了100万条数据，那么大部分 task 可能就只会分配到10条数据，然后1秒钟就运行完了；但是个别 task 可能分配到了100万数据，要运行一两个小时。</p>
+<p>因此出现数据倾斜的时候，Spark 作业看起来会运行得非常缓慢，甚至可能因为某个 task 处理的数据量过大导致内存溢出。</p>
+<h2 id="五、问题发现与定位"><a href="#五、问题发现与定位" class="headerlink" title="五、问题发现与定位"></a>五、问题发现与定位</h2><p><strong>1、通过 Spark Web UI</strong></p>
+<p>通过 Spark Web UI 来查看当前运行的 stage 各个 task 分配的数据量（Shuffle Read Size/Records），从而进一步确定是不是 task 分配的数据不均匀导致了数据倾斜。</p>
+<p>知道数据倾斜发生在哪一个 stage 之后，接着我们就需要根据 stage 划分原理，推算出来发生倾斜的那个 stage 对应代码中的哪一部分，这部分代码中肯定会有一个 shuffle 类算子。可以通过 countByKey 查看各个 key 的分布。</p>
+<blockquote>
+<p>TIPS</p>
+<p>数据倾斜只会发生在 shuffle 过程中。这里给大家罗列一些常用的并且可能会触发 shuffle 操作的算子: distinct、groupByKey、reduceByKey、aggregateByKey、join、cogroup、repartition 等。出现数据倾斜时，可能就是你的代码中使用了这些算子中的某一个所导致的。</p>
+</blockquote>
+<p><strong>2、通过 key 统计</strong></p>
+<p>也可以通过抽样统计 key 的出现次数验证。</p>
+<p>由于数据量巨大，可以采用抽样的方式，对数据进行抽样，统计出现的次数，根据出现次数大小排序取出前几个:</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df.select(<span class="string">"key"</span>).sample(<span class="literal">false</span>, <span class="number">0.1</span>)       <span class="comment">// 数据采样    </span></span><br><span class="line">	.(k =&gt; (k, <span class="number">1</span>)).reduceBykey(_ + _)         <span class="comment">// 统计 key 出现的次数    </span></span><br><span class="line">	.map(k =&gt; (k._2, k._1)).sortByKey(<span class="literal">false</span>)  <span class="comment">// 根据 key 出现次数进行排序    </span></span><br><span class="line">	.take(<span class="number">10</span>)                                 <span class="comment">// 取前 10 个。</span></span><br></pre></td></tr></table></figure>
+
+<p>（滑动可查看）</p>
+<p>如果发现多数数据分布都较为平均，而个别数据比其他数据大上若干个数量级，则说明发生了数据倾斜。</p>
+<h2 id="六、如何缓解数据倾斜"><a href="#六、如何缓解数据倾斜" class="headerlink" title="六、如何缓解数据倾斜"></a>六、如何缓解数据倾斜</h2><h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a><strong>基本思路</strong></h3><ul>
+<li>业务逻辑: 我们从业务逻辑的层面上来优化数据倾斜，比如要统计不同城市的订单情况，那么我们单独对这一线城市来做 count，最后和其它城市做整合。</li>
+<li>程序实现: 比如说在 Hive 中，经常遇到 count（distinct）操作，这样会导致最终只有一个 reduce，我们可以先 group 再在外面包一层 count，就可以了；在 Spark 中使用 reduceByKey 替代 groupByKey 等。</li>
+<li>参数调优: Hadoop 和 Spark 都自带了很多的参数和机制来调节数据倾斜，合理利用它们就能解决大部分问题。</li>
+</ul>
+<h3 id="思路1-过滤异常数据"><a href="#思路1-过滤异常数据" class="headerlink" title="思路1. 过滤异常数据"></a><strong>思路1. 过滤异常数据</strong></h3><p>如果导致数据倾斜的 key 是异常数据，那么简单的过滤掉就可以了。</p>
+<p>首先要对 key 进行分析，判断是哪些 key 造成数据倾斜。具体方法上面已经介绍过了，这里不赘述。</p>
+<p>然后对这些 key 对应的记录进行分析:</p>
+<ol>
+<li>空值或者异常值之类的，大多是这个原因引起</li>
+<li>无效数据，大量重复的测试数据或是对结果影响不大的有效数据</li>
+<li>有效数据，业务导致的正常数据分布</li>
+</ol>
+<p>解决方案</p>
+<p>对于第 1，2 种情况，直接对数据进行过滤即可。</p>
+<p>第3种情况则需要特殊的处理，具体我们下面详细介绍。</p>
+<h3 id="思路2-提高-shuffle-并行度"><a href="#思路2-提高-shuffle-并行度" class="headerlink" title="思路2. 提高 shuffle 并行度"></a><strong>思路2. 提高 shuffle 并行度</strong></h3><p>Spark 在做 Shuffle 时，默认使用 HashPartitioner（非 Hash Shuffle）对数据进行分区。如果并行度设置的不合适，可能造成大量不相同的 Key 对应的数据被分配到了同一个 Task 上，造成该 Task 所处理的数据远大于其它 Task，从而造成数据倾斜。</p>
+<p>如果调整 Shuffle 时的并行度，使得原本被分配到同一 Task 的不同 Key 发配到不同 Task 上处理，则可降低原 Task 所需处理的数据量，从而缓解数据倾斜问题造成的短板效应。</p>
+<p>（1）操作流程</p>
+<p>RDD 操作 可在需要 Shuffle 的操作算子上直接设置并行度或者使用 spark.default.parallelism 设置。如果是 Spark SQL，还可通过 SET spark.sql.shuffle.partitions=[num_tasks] 设置并行度。默认参数由不同的 Cluster Manager 控制。</p>
+<p>dataFrame 和 sparkSql 可以设置 spark.sql.shuffle.partitions=[num_tasks] 参数控制 shuffle 的并发度，默认为200。</p>
+<p>（2）适用场景</p>
+<p>大量不同的 Key 被分配到了相同的 Task 造成该 Task 数据量过大。</p>
+<p>（3）解决方案</p>
+<p>调整并行度。一般是增大并行度，但有时如减小并行度也可达到效果。</p>
+<p>（4）优势</p>
+<p>实现简单，只需要参数调优。可用最小的代价解决问题。一般如果出现数据倾斜，都可以通过这种方法先试验几次，如果问题未解决，再尝试其它方法。</p>
+<p>（5）劣势</p>
+<p>适用场景少，只是让每个 task 执行更少的不同的key。无法解决个别key特别大的情况造成的倾斜，如果某些 key 的大小非常大，即使一个 task 单独执行它，也会受到数据倾斜的困扰。并且该方法一般只能缓解数据倾斜，没有彻底消除问题。从实践经验来看，其效果一般。</p>
+<blockquote>
+<p> TIPS 可以把数据倾斜类比为 hash 冲突。提高并行度就类似于 提高 hash 表的大小。</p>
+</blockquote>
+<h3 id="思路3-自定义-Partitioner"><a href="#思路3-自定义-Partitioner" class="headerlink" title="思路3. 自定义 Partitioner"></a><strong>思路3. 自定义 Partitioner</strong></h3><p>（1）原理</p>
+<p>使用自定义的 Partitioner（默认为 HashPartitioner），将原本被分配到同一个 Task 的不同 Key 分配到不同 Task。</p>
+<p>例如，我们在 groupByKey 算子上，使用自定义的 Partitioner:</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.groupByKey(<span class="keyword">new</span> <span class="type">Partitioner</span>() &#123;  </span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">  public int numPartitions() &#123;</span><br><span class="line">  	<span class="keyword">return</span> <span class="number">12</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  public int getPartition(<span class="type">Object</span> key) &#123;</span><br><span class="line">    int id = <span class="type">Integer</span>.parseInt(key.toString());</span><br><span class="line">    <span class="keyword">if</span>(id &gt;= <span class="number">9500000</span> &amp;&amp; id &lt;= <span class="number">9500084</span> &amp;&amp; ((id - <span class="number">9500000</span>) % <span class="number">12</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> (id - <span class="number">9500000</span>) / <span class="number">12</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> id % <span class="number">12</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> TIPS 这个做法相当于自定义 hash 表的 哈希函数。</p>
+</blockquote>
+<p>（2）适用场景</p>
+<p>大量不同的 Key 被分配到了相同的 Task 造成该 Task 数据量过大。</p>
+<p>（3）解决方案</p>
+<p>使用自定义的 Partitioner 实现类代替默认的 HashPartitioner，尽量将所有不同的 Key 均匀分配到不同的 Task 中。</p>
+<p>（4）优势</p>
+<p>不影响原有的并行度设计。如果改变并行度，后续 Stage 的并行度也会默认改变，可能会影响后续 Stage。</p>
+<p>（5）劣势</p>
+<p>适用场景有限，只能将不同 Key 分散开，对于同一 Key 对应数据集非常大的场景不适用。效果与调整并行度类似，只能缓解数据倾斜而不能完全消除数据倾斜。而且需要根据数据特点自定义专用的 Partitioner，不够灵活。</p>
+<h3 id="思路4-Reduce-端-Join-转化为-Map-端-Join"><a href="#思路4-Reduce-端-Join-转化为-Map-端-Join" class="headerlink" title="思路4. Reduce 端 Join 转化为 Map 端 Join"></a><strong>思路4. Reduce 端 Join 转化为 Map 端 Join</strong></h3><p>通过 Spark 的 Broadcast 机制，将 Reduce 端 Join 转化为 Map 端 Join，这意味着 Spark 现在不需要跨节点做 shuffle 而是直接通过本地文件进行 join，从而完全消除 Shuffle 带来的数据倾斜。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/4g5IMGibSxt7I00KzicX7Y9KLt7XnXKNwP4T4f0Fh2G77E7VTuRf58zZ050u9E48ykibGIiarraOFuXCZsMoiauNaKA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> broadcast</span><br><span class="line">result = broadcast(A).join(B, [<span class="string">"join_col"</span>], <span class="string">"left"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>其中 A 是比较小的 dataframe 并且能够整个存放在 executor 内存中。</p>
+<p>（1）适用场景</p>
+<p>参与Join的一边数据集足够小，可被加载进 Driver 并通过 Broadcast 方法广播到各个 Executor 中。</p>
+<p>（2）解决方案</p>
+<p>在 Java/Scala 代码中将小数据集数据拉取到 Driver，然后通过 Broadcast 方案将小数据集的数据广播到各 Executor。或者在使用 SQL 前，将 Broadcast 的阈值调整得足够大，从而使 Broadcast 生效。进而将 Reduce Join 替换为 Map Join。</p>
+<p>（3）优势</p>
+<p>避免了 Shuffle，彻底消除了数据倾斜产生的条件，可极大提升性能。</p>
+<p>（4）劣势</p>
+<p>因为是先将小数据通过 Broadcase 发送到每个 executor 上，所以需要参与 Join 的一方数据集足够小，并且主要适用于 Join 的场景，不适合聚合的场景，适用条件有限。</p>
+<blockquote>
+<p> NOTES</p>
+<p>使用Spark SQL时需要通过 SET spark.sql.autoBroadcastJoinThreshold=104857600 将 Broadcast 的阈值设置得足够大，才会生效。</p>
+</blockquote>
+<h3 id="思路5-拆分-join-再-union"><a href="#思路5-拆分-join-再-union" class="headerlink" title="思路5. 拆分 join 再 union"></a><strong>思路5. 拆分 join 再 union</strong></h3><p>思路很简单，就是将一个 join 拆分成 倾斜数据集 Join 和 非倾斜数据集 Join，最后进行 union:</p>
+<ol>
+<li>对包含少数几个数据量过大的 key 的那个 RDD (假设是 leftRDD)，通过 sample 算子采样出一份样本来，然后统计一下每个 key 的数量，计算出来数据量最大的是哪几个 key。具体方法上面已经介绍过了，这里不赘述。</li>
+<li>然后将这 k 个 key 对应的数据从 leftRDD 中单独过滤出来，并给每个 key 都打上 1~n 以内的随机数作为前缀，形成一个单独的 leftSkewRDD；而不会导致倾斜的大部分 key 形成另外一个 leftUnSkewRDD。</li>
+<li>接着将需要 join 的另一个 rightRDD，也过滤出来那几个倾斜 key 并通过 flatMap 操作将该数据集中每条数据均转换为 n 条数据（这 n 条数据都按顺序附加一个 0~n 的前缀），形成单独的 rightSkewRDD；不会导致倾斜的大部分 key 也形成另外一个 rightUnSkewRDD。</li>
+<li>现在将 leftSkewRDD 与 膨胀 n 倍的 rightSkewRDD 进行 join，且在 Join 过程中将随机前缀去掉，得到倾斜数据集的 Join 结果 skewedJoinRDD。注意到此时我们已经成功将原先相同的 key 打散成 n 份，分散到多个 task 中去进行 join 了。</li>
+<li>对 leftUnSkewRDD 与 rightUnRDD 进行Join，得到 Join 结果 unskewedJoinRDD。</li>
+<li>通过 union 算子将 skewedJoinRDD 与 unskewedJoinRDD 进行合并，从而得到完整的 Join 结果集。</li>
+</ol>
+<blockquote>
+<p>TIPS </p>
+<p>rightRDD 与倾斜 Key 对应的部分数据，需要与随机前缀集 (1~n) 作笛卡尔乘积 (即将数据量扩大 n 倍），从而保证无论数据倾斜侧倾斜 Key 如何加前缀，都能与之正常 Join。</p>
+</blockquote>
+<p>skewRDD 的 join 并行度可以设置为 n * k (k 为 topSkewkey 的个数)。</p>
+<p>由于倾斜Key与非倾斜Key的操作完全独立，可并行进行。</p>
+<p>（1）适用场景</p>
+<p>两张表都比较大，无法使用 Map 端 Join。其中一个 RDD 有少数几个 Key 的数据量过大，另外一个 RDD 的 Key 分布较为均匀。</p>
+<p>（2）解决方案</p>
+<p>将有数据倾斜的 RDD 中倾斜 Key 对应的数据集单独抽取出来加上随机前缀，另外一个 RDD 每条数据分别与随机前缀结合形成新的RDD（相当于将其数据增到到原来的N倍，N即为随机前缀的总个数），然后将二者Join并去掉前缀。然后将不包含倾斜Key的剩余数据进行Join。最后将两次Join的结果集通过union合并，即可得到全部Join结果。</p>
+<p>（3）优势</p>
+<p>相对于 Map 则 Join，更能适应大数据集的 Join。如果资源充足，倾斜部分数据集与非倾斜部分数据集可并行进行，效率提升明显。且只针对倾斜部分的数据做数据扩展，增加的资源消耗有限。</p>
+<p>（4）劣势</p>
+<p>如果倾斜 Key 非常多，则另一侧数据膨胀非常大，此方案不适用。而且此时对倾斜 Key 与非倾斜 Key 分开处理，需要扫描数据集两遍，增加了开销。</p>
+<h3 id="思路6-大表-key-加盐，小表扩大-N-倍-jion"><a href="#思路6-大表-key-加盐，小表扩大-N-倍-jion" class="headerlink" title="思路6. 大表 key 加盐，小表扩大 N 倍 jion"></a><strong>思路6. 大表 key 加盐，小表扩大 N 倍 jion</strong></h3><p>如果出现数据倾斜的 Key 比较多，上一种方法将这些大量的倾斜 Key 分拆出来，意义不大。此时更适合直接对存在数据倾斜的数据集全部加上随机前缀，然后对另外一个不存在严重数据倾斜的数据集整体与随机前缀集作笛卡尔乘积（即将数据量扩大N倍）。</p>
+<p>其实就是上一个方法的特例或者简化。少了拆分，也就没有 union。</p>
+<p>（1）适用场景</p>
+<p>一个数据集存在的倾斜 Key 比较多，另外一个数据集数据分布比较均匀。</p>
+<p>（2）优势</p>
+<p>对大部分场景都适用，效果不错。</p>
+<p>（3）劣势</p>
+<p>需要将一个数据集整体扩大 N 倍，会增加资源消耗。</p>
+<h3 id="思路7-map-端先局部聚合"><a href="#思路7-map-端先局部聚合" class="headerlink" title="思路7. map 端先局部聚合"></a><strong>思路7. map 端先局部聚合</strong></h3><p>在 map 端加个 combiner 函数进行局部聚合。加上 combiner 相当于提前进行 reduce ,就会把一个 mapper 中的相同 key 进行聚合，减少 shuffle 过程中数据量 以及 reduce 端的计算量。这种方法可以有效的缓解数据倾斜问题，但是如果导致数据倾斜的 key 大量分布在不同的 mapper 的时候，这种方法就不是很有效了。</p>
+<blockquote>
+<p> TIPS 使用 reduceByKey 而不是 groupByKey。</p>
+</blockquote>
+<h3 id="思路8-加盐局部聚合-去盐全局聚合"><a href="#思路8-加盐局部聚合-去盐全局聚合" class="headerlink" title="思路8. 加盐局部聚合 + 去盐全局聚合"></a><strong>思路8. 加盐局部聚合 + 去盐全局聚合</strong></h3><p>这个方案的核心实现思路就是进行两阶段聚合。第一次是局部聚合，先给每个 key 都打上一个 1~n 的随机数，比如 3 以内的随机数，此时原先一样的 key 就变成不一样的了，比如 (hello, 1) (hello, 1) (hello, 1) (hello, 1) (hello, 1)，就会变成 (1_hello, 1) (3_hello, 1) (2_hello, 1) (1_hello, 1) (2_hello, 1)。接着对打上随机数后的数据，执行 reduceByKey 等聚合操作，进行局部聚合，那么局部聚合结果，就会变成了 (1_hello, 2) (2_hello, 2) (3_hello, 1)。然后将各个 key 的前缀给去掉，就会变成 (hello, 2) (hello, 2) (hello, 1)，再次进行全局聚合操作，就可以得到最终结果了，比如 (hello, 5)。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">antiSkew</span></span>(): <span class="type">RDD</span>[(<span class="type">String</span>, <span class="type">Int</span>)] = &#123;</span><br><span class="line"><span class="keyword">val</span> <span class="type">SPLIT</span> = <span class="string">"-"</span></span><br><span class="line"><span class="keyword">val</span> prefix = <span class="keyword">new</span> <span class="type">Random</span>().nextInt(<span class="number">10</span>)</span><br><span class="line">pairs.map(t =&gt; ( prefix + <span class="type">SPLIT</span> + t._1, <span class="number">1</span>))</span><br><span class="line">.reduceByKey((v1, v2) =&gt; v1 + v2)</span><br><span class="line">.map(t =&gt; (t._1.split(<span class="type">SPLIT</span>)(<span class="number">1</span>), t2._2))</span><br><span class="line">.reduceByKey((v1, v2) =&gt; v1 + v2)&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过进行两次 mapreduce，性能稍微比一次的差些。</p>
+<h2 id="七、Hadoop-中的数据倾斜"><a href="#七、Hadoop-中的数据倾斜" class="headerlink" title="七、Hadoop 中的数据倾斜"></a>七、Hadoop 中的数据倾斜</h2><p>Hadoop 中直接贴近用户使用的是 Mapreduce 程序和 Hive 程序，虽说 Hive 最后也是用 MR 来执行（至少目前 Hive 内存计算并不普及），但是毕竟写的内容逻辑区别很大，一个是程序，一个是Sql，因此这里稍作区分。</p>
+<p>Hadoop 中的数据倾斜主要表现在 ruduce 阶段卡在99.99%，一直99.99%不能结束。</p>
+<p>这里如果详细的看日志或者和监控界面的话会发现:</p>
+<ul>
+<li>有一个多几个 reduce 卡住</li>
+<li>各种 container报错 OOM</li>
+<li>读写的数据量极大，至少远远超过其它正常的 reduce</li>
+<li>伴随着数据倾斜，会出现任务被 kill 等各种诡异的表现。</li>
+</ul>
+<p><strong>经验:</strong> Hive的数据倾斜，一般都发生在 Sql 中 Group 和 On 上，而且和数据逻辑绑定比较深。</p>
+<p><strong>优化方法</strong></p>
+<p>这里列出来一些方法和思路，具体的参数和用法在官网看就行了。</p>
+<ol>
+<li><p>map join 方式</p>
+</li>
+<li><p>count distinct 的操作，先转成 group，再 count</p>
+</li>
+<li><p>参数调优</p>
+<p>set hive.map.aggr=true</p>
+<p>set hive.groupby.skewindata=true</p>
+</li>
+<li><p>left semi jion 的使用</p>
+</li>
+<li><p>设置 map 端输出、中间结果压缩。（不完全是解决数据倾斜的问题，但是减少了 IO 读写和网络传输，能提高很多效率）</p>
+</li>
+</ol>
+<p>说明</p>
+<blockquote>
+<p>hive.map.aggr=true: 在map中会做部分聚集操作，效率更高但需要更多的内存。</p>
+<p>hive.groupby.skewindata=true: 数据倾斜时负载均衡，当选项设定为true，生成的查询计划会有两个MRJob。第一个MRJob 中，Map的输出结果集合会随机分布到Reduce中，每个Reduce做部分聚合操作，并输出结果，这样处理的结果是相同的GroupBy Key有可能被分发到不同的Reduce中，从而达到负载均衡的目的；第二个MRJob再根据预处理的数据结果按照GroupBy Key分布到Reduce中（这个过程可以保证相同的GroupBy Key被分布到同一个Reduce中），最后完成最终的聚合操作。</p>
+</blockquote>
+<h2 id="八、参考文章"><a href="#八、参考文章" class="headerlink" title="八、参考文章"></a>八、参考文章</h2><ol>
+<li><a href="http://www.jasongj.com/spark/skew/" target="_blank" rel="noopener">Spark性能优化之道——解决Spark数据倾斜（Data Skew）的N种姿势</a></li>
+<li><a href="https://segmentfault.com/a/1190000009166436" target="_blank" rel="noopener">漫谈千亿级数据优化实践：</a><a href="https://segmentfault.com/a/1190000009166436" target="_blank" rel="noopener">数据倾斜（纯干货）</a></li>
+<li><a href="https://www.jianshu.com/p/06b67a3c61a9" target="_blank" rel="noopener">解决spark中遇到的数据倾斜问题</a></li>
+</ol>
+<p>作者简介：</p>
+<p>郑志彬，毕业于华南理工大学计算机科学与技术（双语班）。先后从事过电子商务、开放平台、移动浏览器、推荐广告和大数据、人工智能等相关开发和架构。目前在vivo智能平台中心从事 AI中台建设以及广告推荐业务。擅长各种业务形态的业务架构、平台化以及各种业务解决方案。</p>
+<blockquote>
+<p>转自公众号：vivo互联网技术</p>
+<p><a href="https://mp.weixin.qq.com/s/lqMu6lfk-Ny1ZHYruEeBdA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/lqMu6lfk-Ny1ZHYruEeBdA</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Eli chen 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Eli chen 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      </div>
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Eli chen</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chenqikai.github.io/2020/03/01/Spark 数据倾斜及其解决方案/" title="Spark 数据倾斜及其解决方案">http://chenqikai.github.io/2020/03/01/Spark 数据倾斜及其解决方案/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Spark/" rel="tag"># Spark</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2020/02/20/Hive之数据倾斜的原因和解决方法/" rel="next" title="HIVE之数据倾斜的原因和解决方法">
+                <i class="fa fa-chevron-left"></i> HIVE之数据倾斜的原因和解决方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Eli chen">
+  <p class="site-author-name" itemprop="name">Eli chen</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:1610252715@vip.henu.edu.cn" title="E-Mail &rarr; mailto:1610252715@vip.henu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="http://39.106.192.112/" title="Resume &rarr; http://39.106.192.112/" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>Resume</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是数据倾斜"><span class="nav-number">1.</span> <span class="nav-text">一、什么是数据倾斜</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、数据倾斜的危害"><span class="nav-number">2.</span> <span class="nav-text">二、数据倾斜的危害</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、数据倾斜的现象"><span class="nav-number">3.</span> <span class="nav-text">三、数据倾斜的现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、数据倾斜的原因"><span class="nav-number">4.</span> <span class="nav-text">四、数据倾斜的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、问题发现与定位"><span class="nav-number">5.</span> <span class="nav-text">五、问题发现与定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、如何缓解数据倾斜"><span class="nav-number">6.</span> <span class="nav-text">六、如何缓解数据倾斜</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本思路"><span class="nav-number">6.1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路1-过滤异常数据"><span class="nav-number">6.2.</span> <span class="nav-text">思路1. 过滤异常数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路2-提高-shuffle-并行度"><span class="nav-number">6.3.</span> <span class="nav-text">思路2. 提高 shuffle 并行度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路3-自定义-Partitioner"><span class="nav-number">6.4.</span> <span class="nav-text">思路3. 自定义 Partitioner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路4-Reduce-端-Join-转化为-Map-端-Join"><span class="nav-number">6.5.</span> <span class="nav-text">思路4. Reduce 端 Join 转化为 Map 端 Join</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路5-拆分-join-再-union"><span class="nav-number">6.6.</span> <span class="nav-text">思路5. 拆分 join 再 union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路6-大表-key-加盐，小表扩大-N-倍-jion"><span class="nav-number">6.7.</span> <span class="nav-text">思路6. 大表 key 加盐，小表扩大 N 倍 jion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路7-map-端先局部聚合"><span class="nav-number">6.8.</span> <span class="nav-text">思路7. map 端先局部聚合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路8-加盐局部聚合-去盐全局聚合"><span class="nav-number">6.9.</span> <span class="nav-text">思路8. 加盐局部聚合 + 去盐全局聚合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、Hadoop-中的数据倾斜"><span class="nav-number">7.</span> <span class="nav-text">七、Hadoop 中的数据倾斜</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、参考文章"><span class="nav-number">8.</span> <span class="nav-text">八、参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eli chen</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">278k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:13</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,255,255' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
