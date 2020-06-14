@@ -67,12 +67,12 @@
 <meta property="og:site_name" content="Eli&#39;blog">
 <meta property="og:description" content="本文从数据倾斜的危害、现象、原因等方面，由浅入深阐述Spark数据倾斜及其解决方案。 一、什么是数据倾斜对 Spark/Hadoop 这样的分布式大数据系统来讲，数据量大并不可怕，可怕的是数据倾斜。 对于分布式系统而言，理想情况下，随着系统规模（节点数量）的增加，应用整体耗时线性下降。如果一台机器处理一批大量数据需要120分钟，当机器数量增加到3台时，理想的耗时为120 / 3 = 40分钟。但是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/4g5IMGibSxt7I00KzicX7Y9KLt7XnXKNwP4T4f0Fh2G77E7VTuRf58zZ050u9E48ykibGIiarraOFuXCZsMoiauNaKA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:updated_time" content="2020-03-20T13:58:48.099Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfrnpbukaaj30n70amgmu.jpg">
+<meta property="og:updated_time" content="2020-06-14T03:28:12.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark 数据倾斜及其解决方案">
 <meta name="twitter:description" content="本文从数据倾斜的危害、现象、原因等方面，由浅入深阐述Spark数据倾斜及其解决方案。 一、什么是数据倾斜对 Spark/Hadoop 这样的分布式大数据系统来讲，数据量大并不可怕，可怕的是数据倾斜。 对于分布式系统而言，理想情况下，随着系统规模（节点数量）的增加，应用整体耗时线性下降。如果一台机器处理一批大量数据需要120分钟，当机器数量增加到3台时，理想的耗时为120 / 3 = 40分钟。但是">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/4g5IMGibSxt7I00KzicX7Y9KLt7XnXKNwP4T4f0Fh2G77E7VTuRf58zZ050u9E48ykibGIiarraOFuXCZsMoiauNaKA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfrnpbukaaj30n70amgmu.jpg">
   <link rel="canonical" href="http://chenqikai.github.io/2020/03/01/Spark 数据倾斜及其解决方案/">
 
 
@@ -426,7 +426,7 @@
 <p>（5）劣势</p>
 <p>适用场景有限，只能将不同 Key 分散开，对于同一 Key 对应数据集非常大的场景不适用。效果与调整并行度类似，只能缓解数据倾斜而不能完全消除数据倾斜。而且需要根据数据特点自定义专用的 Partitioner，不够灵活。</p>
 <h3 id="思路4-Reduce-端-Join-转化为-Map-端-Join"><a href="#思路4-Reduce-端-Join-转化为-Map-端-Join" class="headerlink" title="思路4. Reduce 端 Join 转化为 Map 端 Join"></a><strong>思路4. Reduce 端 Join 转化为 Map 端 Join</strong></h3><p>通过 Spark 的 Broadcast 机制，将 Reduce 端 Join 转化为 Map 端 Join，这意味着 Spark 现在不需要跨节点做 shuffle 而是直接通过本地文件进行 join，从而完全消除 Shuffle 带来的数据倾斜。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/4g5IMGibSxt7I00KzicX7Y9KLt7XnXKNwP4T4f0Fh2G77E7VTuRf58zZ050u9E48ykibGIiarraOFuXCZsMoiauNaKA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfrnpbukaaj30n70amgmu.jpg" alt="img"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> broadcast</span><br><span class="line">result = broadcast(A).join(B, [<span class="string">"join_col"</span>], <span class="string">"left"</span>)</span><br></pre></td></tr></table></figure>
 
 <p>其中 A 是比较小的 dataframe 并且能够整个存放在 executor 内存中。</p>
